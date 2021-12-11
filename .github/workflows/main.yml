@@ -19,15 +19,8 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
+      - name: Install JS dependencies
+        uses: yarn install
 
       - name: Lint
         run: yarn lint
