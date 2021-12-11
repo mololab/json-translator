@@ -1,0 +1,20 @@
+{
+  "name": "json-translator",
+  "version": "1.0.0",
+  "description": "Translate your JSON file or object into another languages with Google Translate API",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParvinEyvazov/json-translator.git"
+  },
+  "author": "ParvinEyvazov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParvinEyvazov/json-translator/issues"
+  },
+  "homepage": "https://github.com/ParvinEyvazov/json-translator#readme"
+}
