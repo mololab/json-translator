@@ -1,20 +1,61 @@
 {
-  "name": "json-translator",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
   "description": "Translate your JSON file or object into another languages with Google Translate API",
-  "main": "lib/index.js",
-  "types": "lib",
-  "scripts": {
-    "build": "tsc -p ."
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ParvinEyvazov/json-translator.git"
   },
-  "author": "ParvinEyvazov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ParvinEyvazov/json-translator/issues"
+  "homepage": "https://github.com/ParvinEyvazov/json-translator#readme",
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "homepage": "https://github.com/ParvinEyvazov/json-translator#readme"
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "json-translator",
+  "author": "ParvinEyvazov",
+  "module": "dist/json-translator.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/json-translator.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/json-translator.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.3",
+    "husky": "^7.0.4",
+    "size-limit": "^7.0.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.3"
+  }
 }

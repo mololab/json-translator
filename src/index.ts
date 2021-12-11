@@ -1,3 +1,6 @@
-function translator(word: string) {
-  console.log("will be translated word: ", word);
-}
+export const sum = (a: number, b: number) => {
+  if ('development' === process.env.NODE_ENV) {
+    console.log('dev dev');
+  }
+  return a + b;
+};
