@@ -1,18 +1,43 @@
 import translate from '@vitalets/google-translate-api';
 import { languages } from './languages';
+import { translatedObject } from './types';
 
-export function translateME(word: string, from: string, to: string) {
-  translate(word, { from: from, to: to }).then(res => {
-    console.log(res.text);
-  });
+export async function translateWord(word: string, from: string, to: string) {
+  return await plaintranslate(word, from, to);
 }
 
-export function translateObject(
-  object: object,
+export async function translateObject(
+  object: translatedObject,
   from: languages,
   to: languages
-) {
-  console.log(`translate this object: `, object);
-  console.log(`from: `, from);
-  console.log(`to: `, to);
+): Promise<translatedObject> {
+  let new_object: translatedObject = {};
+
+  if (object && from && to) {
+    await Promise.all(
+      Object.keys(object).map(async function(key) {
+        if (object[key]) {
+          new_object[key] = await plaintranslate(object[key], from, to);
+        } else {
+          new_object[key] = object[key];
+        }
+      })
+    );
+
+    return new_object;
+  } else {
+    throw new Error(
+      `Undefined values detected: object: ${!!object}, from: ${!!from}, to: ${!!to}`
+    );
+  }
+}
+
+async function plaintranslate(
+  word: string,
+  from: string,
+  to: string
+): Promise<string> {
+  const { text } = await translate(word, { from: from, to: to });
+
+  return text;
 }
