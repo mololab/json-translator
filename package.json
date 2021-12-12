@@ -25,7 +25,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -37,7 +36,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "json-translator",
+  "name": "@parvineyvazov/json-translator",
   "author": "ParvinEyvazov",
   "module": "dist/json-translator.esm.js",
   "size-limit": [
@@ -57,5 +56,8 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^7.0.0"
   }
 }
