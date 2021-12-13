@@ -7,7 +7,7 @@ This library will provide you to translate your JSON files or objects into diffe
 # **✅ Install**
 
 ```bash
-...coming soon
+npm i @parvineyvazov/json-translator
 ```
 
 # **💥 Usage**
