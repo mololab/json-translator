@@ -1,7 +1,5 @@
 # <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
 
-### **\*_NOT RELEASED YET_**
-
 This library will provide you to translate your JSON files or objects into different languages using Google Translate API.
 
 # **✅ Install**
