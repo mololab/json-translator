@@ -12,11 +12,18 @@ npm i @parvineyvazov/json-translator
 
 ## **1. Translate a word | sentence**
 
-- Import the library to your code
+- Import the library to your code.
+
+For JavaScript
+
+```javascript
+const translator = require('@parvineyvazov/json-translator');
+```
+
+For TypeScript:
 
 ```typescript
 import * as translator from '@parvineyvazov/json-translator';
-import { languages } from '@parvineyvazov/json-translator/dist/languages';
 ```
 
 ```typescript
@@ -25,8 +32,8 @@ import { languages } from '@parvineyvazov/json-translator/dist/languages';
 // -- AWAIT Syntax
 const my_str = await translator.translateWord(
   'Home sweet home!',
-  languages.English,
-  languages.Chinese_Simplified
+  translator.languages.English,
+  translator.languages.Chinese_Simplified
 );
 
 // my_str: 家，甜蜜的家！
@@ -43,8 +50,8 @@ let my_str: string;
 translator
   .translateWord(
     'Home sweet home!',
-    languages.English,
-    languages.Chinese_Simplified
+    translator.languages.English,
+    translator.languages.Chinese_Simplified
   )
   .then(translate_str => {
     my_str = translate_str;
@@ -64,8 +71,6 @@ translator
 
 ```typescript
 import * as translator from '@parvineyvazov/json-translator';
-import { languages } from '@parvineyvazov/json-translator/dist/languages';
-import { translatedObject } from '@parvineyvazov/json-translator/dist/types';
 ```
 
 ```typescript
@@ -78,16 +83,25 @@ Let`s translate
 object from English to Spanish
 */
 
-const old_object: translatedObject = {
+const old_object: translator.translatedObject = {
   greeting: `Hello!`,
   farewell: `Bye!`,
 };
 
+/*
+FOR JavaScript (no interface):
+
+    const old_object = {
+      greeting: `Hello!`,
+      farewell: `Bye!`,
+    };
+*/
+
 // -- AWAIT Syntax
 let new_object = await translator.translateObject(
   old_object,
-  languages.English,
-  languages.Spanish
+  translator.languages.English,
+  translator.languages.Spanish
 );
 /*
 new_object:
@@ -111,7 +125,12 @@ object from English to Spanish
 */
 
 // -- ASYNC Syntax
-let new_object: translatedObject;
+let new_object: translator.translatedObject;
+
+/*
+FOR JavaScript (no interface):
+      let new_object;
+*/
 
 translator
   .translateObject(
@@ -119,8 +138,8 @@ translator
       greeting: `Hello!`,
       farewell: `Bye!`,
     },
-    languages.English,
-    languages.Spanish
+    translator.languages.English,
+    translator.languages.Spanish
   )
   .then(response_object => {
     new_object = response_object;
@@ -147,6 +166,8 @@ new_object:
 - [ ] Translate JSON file
 - [ ] Translate JSON file with extracting OR filtering some of its fields
 - [ ] Translate nested JSON file
+
+- [ ] CLI support for all above
 
 ## License
 
