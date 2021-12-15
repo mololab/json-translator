@@ -1,4 +1,5 @@
-import translate from '@vitalets/google-translate-api';
+import { plaintranslate } from './core/core';
+import { objectTranslator } from './core/json_object';
 
 export async function translateWord(
   word: string,
@@ -13,35 +14,7 @@ export async function translateObject(
   from: languages,
   to: languages
 ): Promise<translatedObject> {
-  let new_object: translatedObject = {};
-
-  if (object && from && to) {
-    await Promise.all(
-      Object.keys(object).map(async function(key) {
-        if (object[key] && typeof object[key] == 'string') {
-          new_object[key] = await plaintranslate(object[key], from, to);
-        } else {
-          new_object[key] = object[key];
-        }
-      })
-    );
-
-    return new_object;
-  } else {
-    throw new Error(
-      `Undefined values detected. Available ones: object: ${!!object}, from: ${!!from}, to: ${!!to}`
-    );
-  }
-}
-
-async function plaintranslate(
-  word: string,
-  from: languages,
-  to: languages
-): Promise<string> {
-  const { text } = await translate(word, { from: from, to: to });
-
-  return text;
+  return objectTranslator(object, from, to);
 }
 
 // TYPES
