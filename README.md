@@ -167,6 +167,7 @@ new_object:
 - [ ] Translate JSON file with extracting OR filtering some of its fields
 - [ ] Translate nested JSON file
 
+- [ ] Multi language translate
 - [ ] CLI support for all above
 
 ## License
