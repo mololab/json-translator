@@ -2,6 +2,8 @@
 
 This library will provide you to translate your JSON files or objects into different languages using Google Translate API.
 
+[**_Supported languages_**](./docs/LANGUAGES.md#supported-languages-)
+
 # **✅ Install**
 
 ```bash
