@@ -6,23 +6,35 @@ export async function objectTranslator(
   from: languages,
   to: languages
 ): Promise<translatedObject> {
-  let new_object: translatedObject = {};
-
   if (object && from && to) {
-    await Promise.all(
-      Object.keys(object).map(async function(key) {
-        if (object[key] && typeof object[key] == 'string') {
-          new_object[key] = await plaintranslate(object[key], from, to);
-        } else {
-          new_object[key] = object[key];
-        }
-      })
-    );
+    await deepDiver(object, from, to);
 
-    return new_object;
+    return object;
   } else {
     throw new Error(
       `Undefined values detected. Available ones: object: ${!!object}, from: ${!!from}, to: ${!!to}`
     );
   }
+}
+
+async function deepDiver(
+  object: translatedObject,
+  from: languages,
+  to: languages
+) {
+  var has = Object.prototype.hasOwnProperty.bind(object);
+
+  await Promise.all(
+    Object.keys(object).map(async function(k) {
+      if (has(k)) {
+        switch (typeof object[k]) {
+          case 'object':
+            await deepDiver(object[k], from, to);
+            break;
+          case 'string':
+            object[k] = await plaintranslate(object[k], from, to);
+        }
+      }
+    })
+  );
 }
