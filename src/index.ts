@@ -14,7 +14,9 @@ export async function translateObject(
   from: languages,
   to: languages
 ): Promise<translatedObject> {
-  return objectTranslator(object, from, to);
+  let hard_copy = JSON.parse(JSON.stringify(object));
+
+  return objectTranslator(hard_copy, from, to);
 }
 
 // TYPES
