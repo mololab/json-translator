@@ -13,7 +13,7 @@ export async function translateObject(
   object: translatedObject,
   from: languages,
   to: languages | languages[]
-): Promise<translatedObject> {
+): Promise<translatedObject | multipleTranslatedObject> {
   let hard_copy = JSON.parse(JSON.stringify(object));
 
   return objectTranslator(hard_copy, from, to);
@@ -22,6 +22,10 @@ export async function translateObject(
 // TYPES
 export interface translatedObject {
   [key: string]: any;
+}
+
+export interface multipleTranslatedObject {
+  [key: string]: translatedObject;
 }
 
 export enum languages {

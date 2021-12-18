@@ -1,14 +1,14 @@
-import { languages, translatedObject } from '..';
+import { languages, multipleTranslatedObject, translatedObject } from '..';
 import { plaintranslate } from './core';
 
 export async function objectTranslator(
   object: translatedObject,
   from: languages,
   to: languages | languages[]
-): Promise<translatedObject> {
+): Promise<translatedObject | multipleTranslatedObject> {
   if (object && from && to) {
     if (typeof to == 'object') {
-      let general_object: { [key: string]: translatedObject } = {};
+      let general_object: multipleTranslatedObject = {};
 
       await Promise.all(
         Object.keys(to as languages[]).map(async function(index) {
@@ -23,11 +23,11 @@ export async function objectTranslator(
         })
       );
 
-      return general_object;
+      return general_object as multipleTranslatedObject;
     } else {
       await deepDiver(object, from, to);
 
-      return object;
+      return object as translatedObject;
     }
   } else {
     throw new Error(

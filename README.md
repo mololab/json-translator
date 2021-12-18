@@ -71,6 +71,14 @@ translator
 
 - Import the library to your code
 
+For JavaScript
+
+```javascript
+const translator = require('@parvineyvazov/json-translator');
+```
+
+For TypeScript:
+
 ```typescript
 import * as translator from '@parvineyvazov/json-translator';
 ```
@@ -157,7 +165,6 @@ OR
 Let`s translate object from English to Japanese
 */
 
-// -- ASYNC Syntax
 let ja_lang!: translator.translatedObject; // add "!" to the beginning of the variable to avoid "used before assigned" error
 
 const en_lang: translator.translatedObject = {
@@ -189,10 +196,10 @@ const en_lang: translator.translatedObject = {
 };
 
 /*
-FOR JavaScript (no interface):
-      let new_object;
+FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
 */
 
+// -- ASYNC Syntax
 translator
   .translateObject(
     en_lang,
@@ -235,21 +242,239 @@ ja_lang:
 */
 ```
 
+---
+
+## **3. Translate JSON object into Multiple languages (supports deep objects)**
+
+You can translate your JSON object into multiple languages in the same time
+
+- Import the library to your code
+
+For JavaScript
+
+```javascript
+const translator = require('@parvineyvazov/json-translator');
+```
+
+For TypeScript:
+
+```typescript
+import * as translator from '@parvineyvazov/json-translator';
+```
+
+```typescript
+/*
+Let`s translate our object from English to French, Japanese and Italian in the same time:
+*/
+
+const en_lang: translator.translatedObject = {
+  login: {
+    title: 'Login',
+    email: 'Please, enter your email',
+    failure: 'Failed',
+  },
+  edit_screen: {
+    edit: 'Edit your informations',
+    number_editor: [
+      {
+        title: 'Edit number 1',
+        button: 'Edit 1',
+      },
+    ],
+  },
+};
+
+/*
+FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
+*/
+
+// -- AWAIT Syntax
+let general_lang = await translator.translateObject(
+  en_lang,
+  translator.languages.English,
+  [
+    translator.languages.French,
+    translator.languages.Japanese,
+    translator.languages.Italian,
+  ]
+);
+/*
+general_lang:
+            {
+              "fr": {      //  <---- FRENCH
+                "login": {
+                  "title": "Connexion",
+                  "email": "S'il vous plaît, entrez votre email",
+                  "failure": "Manquée"
+                },
+                "edit_screen": {
+                  "edit": "Modifier vos informations",
+                  "number_editor": [
+                    {
+                      "title": "Modifier le numéro 1",
+                      "button": "Éditer 1"
+                    }
+                  ]
+                }
+              },
+              "ja": {     //  <---- JAPANESE
+                "login": {
+                  "title": "ログイン",
+                  "email": "あなたのメールアドレスを入力してください",
+                  "failure": "失敗した"
+                },
+                "edit_screen": {
+                  "edit": "あなたの情報を編集します",
+                  "number_editor": [
+                    {
+                      "title": "番号1を編集します",
+                      "button": "編集1を編集します"
+                    }
+                  ]
+                }
+              },
+              "it": {     //  <---- ITALIAN
+                "login": {
+                  "title": "Login",
+                  "email": "Per favore, inserisci la tua email",
+                  "failure": "Non riuscito"
+                },
+                "edit_screen": {
+                  "edit": "Modifica le tue informazioni",
+                  "number_editor": [
+                    {
+                      "title": "Modifica numero 1.",
+                      "button": "Modifica 1."
+                    }
+                  ]
+                }
+              }
+            }
+*/
+```
+
+OR
+
+```typescript
+/*
+Let`s translate our object from English to French, Japanese and Italian in the same time:
+*/
+
+let general_lang!: translator.translatedObject; // add "!" to the beginning of the variable to avoid "used before assigned" error
+
+const en_lang: translator.translatedObject = {
+  login: {
+    title: 'Login',
+    email: 'Please, enter your email',
+    failure: 'Failed',
+  },
+  edit_screen: {
+    edit: 'Edit your informations',
+    number_editor: [
+      {
+        title: 'Edit number 1',
+        button: 'Edit 1',
+      },
+    ],
+  },
+};
+
+/*
+FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
+*/
+
+// -- ASYNC Syntax
+translator
+  .translateObject(en_lang, translator.languages.English, [
+    translator.languages.French,
+    translator.languages.Japanese,
+    translator.languages.Italian,
+  ])
+  .then(response_object => {
+    general_lang = response_object;
+  });
+/*
+general_lang:
+            {
+              "fr": {      //  <---- FRENCH
+                "login": {
+                  "title": "Connexion",
+                  "email": "S'il vous plaît, entrez votre email",
+                  "failure": "Manquée"
+                },
+                "edit_screen": {
+                  "edit": "Modifier vos informations",
+                  "number_editor": [
+                    {
+                      "title": "Modifier le numéro 1",
+                      "button": "Éditer 1"
+                    }
+                  ]
+                }
+              },
+              "ja": {     //  <---- JAPANESE
+                "login": {
+                  "title": "ログイン",
+                  "email": "あなたのメールアドレスを入力してください",
+                  "failure": "失敗した"
+                },
+                "edit_screen": {
+                  "edit": "あなたの情報を編集します",
+                  "number_editor": [
+                    {
+                      "title": "番号1を編集します",
+                      "button": "編集1を編集します"
+                    }
+                  ]
+                }
+              },
+              "it": {     //  <---- ITALIAN
+                "login": {
+                  "title": "Login",
+                  "email": "Per favore, inserisci la tua email",
+                  "failure": "Non riuscito"
+                },
+                "edit_screen": {
+                  "edit": "Modifica le tue informazioni",
+                  "number_editor": [
+                    {
+                      "title": "Modifica numero 1.",
+                      "button": "Modifica 1."
+                    }
+                  ]
+                }
+              }
+            }
+*/
+```
+
 ## **🏞 Roadmap🏁**
 
 :heavy_check_mark: Translate a word | sentence
 
+</br>
+
+- for JSON objects
+
 :heavy_check_mark: Translate JSON object
 
-:heavy_check_mark: Translate deep JSON objects
+:heavy_check_mark: Translate deep JSON object
+
+:heavy_check_mark: Multi language translate for JSON object
 
 - [ ] Translate JSON object with extracting OR filtering some of its fields
 
-- [ ] Translate JSON file
-- [ ] Translate JSON file with extracting OR filtering some of its fields
-- [ ] Translate nested JSON file
+</br>
 
-- [ ] Multi language translate
+- for JSON files
+
+- [ ] Translate JSON file
+- [ ] Translate deep JSON file
+- [ ] Multi language translate for JSON file
+- [ ] Translate JSON file with extracting OR filtering some of its fields
+
+- General
+
 - [ ] CLI support for all above
 - [ ] Browser support
 
