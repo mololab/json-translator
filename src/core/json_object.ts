@@ -4,12 +4,31 @@ import { plaintranslate } from './core';
 export async function objectTranslator(
   object: translatedObject,
   from: languages,
-  to: languages
+  to: languages | languages[]
 ): Promise<translatedObject> {
   if (object && from && to) {
-    await deepDiver(object, from, to);
+    if (typeof to == 'object') {
+      let general_object: { [key: string]: translatedObject } = {};
 
-    return object;
+      await Promise.all(
+        Object.keys(to as languages[]).map(async function(index) {
+          const index_as_num = Number(index);
+          const copy_object = JSON.parse(JSON.stringify(object));
+
+          general_object[to[index_as_num]] = await deepDiver(
+            copy_object,
+            from,
+            to[index_as_num]
+          );
+        })
+      );
+
+      return general_object;
+    } else {
+      await deepDiver(object, from, to);
+
+      return object;
+    }
   } else {
     throw new Error(
       `Undefined values detected. Available ones: object: ${!!object}, from: ${!!from}, to: ${!!to}`
@@ -37,4 +56,6 @@ async function deepDiver(
       }
     })
   );
+
+  return object;
 }

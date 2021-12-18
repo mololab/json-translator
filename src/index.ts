@@ -12,7 +12,7 @@ export async function translateWord(
 export async function translateObject(
   object: translatedObject,
   from: languages,
-  to: languages
+  to: languages | languages[]
 ): Promise<translatedObject> {
   let hard_copy = JSON.parse(JSON.stringify(object));
 
