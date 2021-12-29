@@ -1,4 +1,5 @@
 import { plaintranslate } from './core/core';
+import { fileTranslator } from './core/json_file';
 import { objectTranslator } from './core/json_object';
 
 export async function translateWord(
@@ -17,6 +18,14 @@ export async function translateObject(
   let hard_copy = JSON.parse(JSON.stringify(object));
 
   return objectTranslator(hard_copy, from, to);
+}
+
+export async function translateFile(
+  objectPath: string,
+  from: languages,
+  to: languages
+) {
+  return fileTranslator(objectPath, from, to);
 }
 
 // TYPES
