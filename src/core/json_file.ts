@@ -1,4 +1,4 @@
-import { languages } from '..';
+import { languages, translatedObject } from '..';
 import { getFile, getRootFolder, saveFilePublic } from './core';
 import { objectTranslator } from './json_object';
 
@@ -22,7 +22,11 @@ export async function fileTranslator(
 
   json_obj = { data: JSON.parse(json_obj) };
 
-  let new_json_obj = await objectTranslator(json_obj, from, to);
+  let new_json_obj: translatedObject = await objectTranslator(
+    json_obj,
+    from,
+    to
+  );
 
   if (new_json_obj == undefined) {
     throw new Error('Error. Could not translate the file.');

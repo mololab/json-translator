@@ -31,36 +31,11 @@ import * as translator from '@parvineyvazov/json-translator';
 ```typescript
 // Let`s translate `Home sweet home!` string from English to Chinese
 
-// -- AWAIT Syntax
 const my_str = await translator.translateWord(
   'Home sweet home!',
   translator.languages.English,
   translator.languages.Chinese_Simplified
 );
-
-// my_str: 家，甜蜜的家！
-```
-
-OR
-
-```typescript
-// Let`s translate `Home sweet home!` string from English to Chinese
-
-// -- ASYNC Syntax
-let my_str: string;
-
-translator
-  .translateWord(
-    'Home sweet home!',
-    translator.languages.English,
-    translator.languages.Chinese_Simplified
-  )
-  .then(translate_str => {
-    my_str = translate_str;
-  })
-  .catch(error => {
-    throw new Error(`Error on translate: ${error}`);
-  });
 
 // my_str: 家，甜蜜的家！
 ```
@@ -120,7 +95,6 @@ const en_lang: translator.translatedObject = {
 FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
 */
 
-// -- AWAIT Syntax
 let es_lang = await translator.translateObject(
   en_lang,
   translator.languages.English,
@@ -150,90 +124,6 @@ es_lang:
                     {
                       "title": "Editar número 2",
                       "button": "Editar 2"
-                    }
-                  ]
-                }
-              }
-            }
-*/
-```
-
-OR
-
-```typescript
-/* 
-Let`s translate object from English to Japanese
-*/
-
-let ja_lang!: translator.translatedObject; // add "!" to the beginning of the variable to avoid "used before assigned" error
-
-const en_lang: translator.translatedObject = {
-  login: {
-    title: 'Login',
-    email: 'Please, enter your email',
-    failure: 'Failed',
-  },
-  homepage: {
-    welcoming: 'Welcome!',
-    title: 'Live long, live healthily!',
-  },
-  profile: {
-    edit_screen: {
-      edit: 'Edit your informations',
-      edit_age: 'Edit your age',
-      number_editor: [
-        {
-          title: 'Edit number 1',
-          button: 'Edit 1',
-        },
-        {
-          title: 'Edit number 2',
-          button: 'Edit 2',
-        },
-      ],
-    },
-  },
-};
-
-/*
-FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
-*/
-
-// -- ASYNC Syntax
-translator
-  .translateObject(
-    en_lang,
-    translator.languages.English,
-    translator.languages.Japanese
-  )
-  .then(response_object => {
-    ja_lang = response_object;
-  });
-
-/*
-ja_lang:
-            {
-              "login": {
-                "title": "ログイン",
-                "email": "あなたのメールアドレスを入力してください",
-                "failure": "失敗した"
-              },
-              "homepage": {
-                "welcoming": "いらっしゃいませ！",
-                "title": "長い、健康的に生きている！"
-              },
-              "profile": {
-                "edit_screen": {
-                  "edit": "あなたの情報を編集します",
-                  "edit_age": "年齢を編集します",
-                  "number_editor": [
-                    {
-                      "title": "番号1を編集します",
-                      "button": "編集1を編集します"
-                    },
-                    {
-                      "title": "番号2を編集",
-                      "button": "編集2を編集する"
                     }
                   ]
                 }
@@ -288,163 +178,69 @@ const en_lang: translator.translatedObject = {
 FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
 */
 
-// -- AWAIT Syntax
-let general_lang = await translator.translateObject(
+const [french, georgian, japanese] = (await translator.translateObject(
   en_lang,
-  translator.languages.English,
+  translator.languages.Automatic,
   [
     translator.languages.French,
+    translator.languages.Georgian,
     translator.languages.Japanese,
-    translator.languages.Italian,
   ]
-);
+)) as Array<translator.translatedObject>; // FOR JAVASCRIPT YOU DO NOT NEED TO SPECIFY THE TYPE
 /*
-general_lang:
-            {
-              "fr": {      //  <---- FRENCH
-                "login": {
-                  "title": "Connexion",
-                  "email": "S'il vous plaît, entrez votre email",
-                  "failure": "Manquée"
-                },
-                "edit_screen": {
-                  "edit": "Modifier vos informations",
-                  "number_editor": [
-                    {
-                      "title": "Modifier le numéro 1",
-                      "button": "Éditer 1"
-                    }
-                  ]
-                }
-              },
-              "ja": {     //  <---- JAPANESE
-                "login": {
-                  "title": "ログイン",
-                  "email": "あなたのメールアドレスを入力してください",
-                  "failure": "失敗した"
-                },
-                "edit_screen": {
-                  "edit": "あなたの情報を編集します",
-                  "number_editor": [
-                    {
-                      "title": "番号1を編集します",
-                      "button": "編集1を編集します"
-                    }
-                  ]
-                }
-              },
-              "it": {     //  <---- ITALIAN
-                "login": {
-                  "title": "Login",
-                  "email": "Per favore, inserisci la tua email",
-                  "failure": "Non riuscito"
-                },
-                "edit_screen": {
-                  "edit": "Modifica le tue informazioni",
-                  "number_editor": [
-                    {
-                      "title": "Modifica numero 1.",
-                      "button": "Modifica 1."
-                    }
-                  ]
-                }
-              }
-            }
-*/
-```
-
-OR
-
-```typescript
-/*
-Let`s translate our object from English to French, Japanese and Italian in the same time:
-*/
-
-let general_lang!: translator.translatedObject; // add "!" to the beginning of the variable to avoid "used before assigned" error
-
-const en_lang: translator.translatedObject = {
-  login: {
-    title: 'Login',
-    email: 'Please, enter your email',
-    failure: 'Failed',
+french: 
+{
+  "login": {
+    "title": "Connexion",
+    "email": "S'il vous plaît, entrez votre email",
+    "failure": "Manquée"
   },
-  edit_screen: {
-    edit: 'Edit your informations',
-    number_editor: [
+  "edit_screen": {
+    "edit": "Modifier vos informations",
+    "number_editor": [
       {
-        title: 'Edit number 1',
-        button: 'Edit 1',
-      },
-    ],
+        "title": "Modifier le numéro 1",
+        "button": "Éditer 1"
+      }
+    ]
+  }
+}
+
+georgian: 
+{
+  "login": {
+    "title": "Შესვლა",
+    "email": "გთხოვთ, შეიყვანეთ თქვენი ელ",
+    "failure": "მცდელობა"
   },
-};
+  "edit_screen": {
+    "edit": "თქვენი ინფორმაციათა რედაქტირება",
+    "number_editor": [
+      {
+        "title": "რედაქტირების ნომერი 1",
+        "button": "რედაქტირება 1"
+      }
+    ]
+  }
+}
 
-/*
-FOR JavaScript don`t use translator.translatedObject (No need to remark its type)
-*/
-
-// -- ASYNC Syntax
-translator
-  .translateObject(en_lang, translator.languages.English, [
-    translator.languages.French,
-    translator.languages.Japanese,
-    translator.languages.Italian,
-  ])
-  .then(response_object => {
-    general_lang = response_object;
-  });
-/*
-general_lang:
-            {
-              "fr": {      //  <---- FRENCH
-                "login": {
-                  "title": "Connexion",
-                  "email": "S'il vous plaît, entrez votre email",
-                  "failure": "Manquée"
-                },
-                "edit_screen": {
-                  "edit": "Modifier vos informations",
-                  "number_editor": [
-                    {
-                      "title": "Modifier le numéro 1",
-                      "button": "Éditer 1"
-                    }
-                  ]
-                }
-              },
-              "ja": {     //  <---- JAPANESE
-                "login": {
-                  "title": "ログイン",
-                  "email": "あなたのメールアドレスを入力してください",
-                  "failure": "失敗した"
-                },
-                "edit_screen": {
-                  "edit": "あなたの情報を編集します",
-                  "number_editor": [
-                    {
-                      "title": "番号1を編集します",
-                      "button": "編集1を編集します"
-                    }
-                  ]
-                }
-              },
-              "it": {     //  <---- ITALIAN
-                "login": {
-                  "title": "Login",
-                  "email": "Per favore, inserisci la tua email",
-                  "failure": "Non riuscito"
-                },
-                "edit_screen": {
-                  "edit": "Modifica le tue informazioni",
-                  "number_editor": [
-                    {
-                      "title": "Modifica numero 1.",
-                      "button": "Modifica 1."
-                    }
-                  ]
-                }
-              }
-            }
+japanese:
+{
+  "login": {
+    "title": "ログイン",
+    "email": "あなたのメールアドレスを入力してください",
+    "failure": "失敗した"
+  },
+  "edit_screen": {
+    "edit": "あなたの情報を編集します",
+    "number_editor": [
+      {
+        "title": "番号1を編集します",
+        "button": "編集1を編集します"
+      }
+    ]
+  }
+}
 */
 ```
 
