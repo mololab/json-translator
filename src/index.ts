@@ -23,7 +23,7 @@ export async function translateObject(
 export async function translateFile(
   objectPath: string,
   from: languages,
-  to: languages
+  to: languages | languages[]
 ) {
   return fileTranslator(objectPath, from, to);
 }

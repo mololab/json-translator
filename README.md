@@ -136,8 +136,6 @@ es_lang:
 
 ## **3. Translate JSON object into Multiple languages (supports deep objects)**
 
-You can translate your JSON object into multiple languages in the same time
-
 - Import the library to your code
 
 For JavaScript
@@ -154,7 +152,7 @@ import * as translator from '@parvineyvazov/json-translator';
 
 ```typescript
 /*
-Let`s translate our object from English to French, Japanese and Italian in the same time:
+Let`s translate our object from English to French, Georgian and Japanese in the same time:
 */
 
 const en_lang: translator.translatedObject = {
@@ -244,6 +242,86 @@ japanese:
 */
 ```
 
+## **4. Translate JSON file (supports deep objects)**
+
+- Import the library to your code.
+
+For JavaScript
+
+```javascript
+const translator = require('@parvineyvazov/json-translator');
+```
+
+For TypeScript:
+
+```typescript
+import * as translator from '@parvineyvazov/json-translator';
+```
+
+```typescript
+/*
+Let`s translate our json file into another language and save it into the same folder of en.json
+*/
+
+let path = 'C:/files/en.json'; // PATH OF YOUR JSON FILE (includes file name)
+
+await translator.translateFile(
+  path,
+  translator.languages.English,
+  translator.languages.German
+);
+```
+
+```bash
+── files
+   ├── en.json
+   └── de.json
+```
+
+---
+
+## **5. Translate JSON file into Multiple languages (supports deep objects)**
+
+- Import the library to your code.
+
+For JavaScript
+
+```javascript
+const translator = require('@parvineyvazov/json-translator');
+```
+
+For TypeScript:
+
+```typescript
+import * as translator from '@parvineyvazov/json-translator';
+```
+
+```typescript
+/*
+Let`s translate our json file into multiple languages and save them into the same folder of en.json
+*/
+
+let path = 'C:/files/en.json'; // PATH OF YOUR JSON FILE (includes file name)
+
+await translator.translateFile(path, translator.languages.English, [
+  translator.languages.Cebuano,
+  translator.languages.French,
+  translator.languages.German,
+  translator.languages.Hungarian,
+  translator.languages.Japanese,
+]);
+```
+
+```bash
+── files
+   ├── en.json
+   ├── ceb.json
+   ├── fr.json
+   ├── de.json
+   ├── hu.json
+   └── ja.json
+```
+
 ## **🏞 Roadmap🏁**
 
 :heavy_check_mark: Translate a word | sentence
@@ -264,9 +342,12 @@ japanese:
 
 - for JSON files
 
-- [ ] Translate JSON file
-- [ ] Translate deep JSON file
-- [ ] Multi language translate for JSON file
+:heavy_check_mark: Translate JSON file
+
+:heavy_check_mark: Translate deep JSON file
+
+:heavy_check_mark: Multi language translate for JSON file
+
 - [ ] Translate JSON file with extracting OR filtering some of its fields
 
 - General
