@@ -49,6 +49,9 @@
       "limit": "10 KB"
     }
   ],
+  "bin": {
+    "jsontt": "bin/jsontt"
+  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.3",
     "husky": "^7.0.4",

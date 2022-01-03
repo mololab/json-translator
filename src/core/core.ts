@@ -1,6 +1,7 @@
 import translate from '@vitalets/google-translate-api';
 import { languages } from '..';
 import * as fs from 'fs/promises';
+import { error, messages } from '../utils/console';
 
 export async function plaintranslate(
   word: string,
@@ -20,8 +21,7 @@ export async function getFile(objectPath: string) {
     .then(data => {
       json_file = data;
     })
-    .catch(err => {
-      console.log('Error on reading file', err);
+    .catch(_ => {
       json_file = undefined;
     });
 
@@ -31,7 +31,14 @@ export async function getFile(objectPath: string) {
 export function getRootFolder(path: string) {
   let arr = path.split('/');
   arr.pop();
-  return arr.join('/');
+
+  let root = arr.join('/');
+
+  if (root == undefined || root == '') {
+    root = './';
+  }
+
+  return root;
 }
 
 export async function saveFilePublic(path: string, data: any) {
@@ -40,7 +47,7 @@ export async function saveFilePublic(path: string, data: any) {
   await fs
     .writeFile(path, json, 'utf8')
     .then(_ => {})
-    .catch(err => {
-      console.log(`err: `, err);
+    .catch(_ => {
+      error(messages.file.cannot_save_file);
     });
 }

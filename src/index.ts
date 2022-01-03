@@ -1,3 +1,4 @@
+import { initializeCli } from './cli/cli';
 import { plaintranslate } from './core/core';
 import { fileTranslator } from './core/json_file';
 import { objectTranslator } from './core/json_object';
@@ -26,6 +27,10 @@ export async function translateFile(
   to: languages | languages[]
 ) {
   return fileTranslator(objectPath, from, to);
+}
+
+export async function runCli() {
+  initializeCli();
 }
 
 // TYPES

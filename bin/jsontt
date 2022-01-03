@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+process.title = "jsontt cli";
+const { runCli } = require("../dist/index");
+runCli();

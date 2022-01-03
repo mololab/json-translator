@@ -1,4 +1,6 @@
 import { languages, translatedObject } from '..';
+import { error, info, messages, success } from '../utils/console';
+import { getLanguageFromCode } from '../utils/micro';
 import { getFile, getRootFolder, saveFilePublic } from './core';
 import { objectTranslator } from './json_object';
 
@@ -7,17 +9,14 @@ export async function fileTranslator(
   from: languages,
   to: languages | languages[]
 ) {
-  let json_obj: any = await getFile(objectPath);
+  let file_from_path = await getFileFromPath(objectPath);
 
-  // try combined path
+  let { json_obj } = file_from_path;
+  objectPath = file_from_path.objectPath;
+
   if (json_obj == undefined) {
-    objectPath = __dirname + '\\' + objectPath;
-
-    json_obj = await getFile(objectPath);
-
-    if (json_obj == undefined) {
-      throw new Error(`ERROR. Could not found the file in the path.`);
-    }
+    error(messages.file.no_file_in_path);
+    return;
   }
 
   json_obj = { data: JSON.parse(json_obj) };
@@ -25,7 +24,8 @@ export async function fileTranslator(
   let new_json_obj = await objectTranslator(json_obj, from, to);
 
   if (new_json_obj == undefined) {
-    throw new Error('Error. Could not translate the file.');
+    error(messages.file.cannot_translate);
+    return;
   }
 
   let latest_path = objectPath.replace(/\\/g, '/');
@@ -38,11 +38,15 @@ export async function fileTranslator(
         const current_json_obj = element.data;
 
         let file_name = `/${to[index]}.json`;
+
         await saveFilePublic(root_folder + file_name, current_json_obj);
 
-        console.log(`DONE -> ${to[index]}.json`);
+        success(
+          `For ${getLanguageFromCode(to[index])} --> ${to[index]}.json created.`
+        );
       }
     );
+    info(messages.cli.creation_done_multiple);
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
@@ -50,6 +54,21 @@ export async function fileTranslator(
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
-    console.log(`DONE -> ${to}.json`);
+    success(`For ${getLanguageFromCode(to as string)} --> ${to}.json created.`);
+    info(messages.cli.creation_done_single);
   }
+}
+
+export async function getFileFromPath(
+  objectPath: string
+): Promise<{ json_obj: any; objectPath: string }> {
+  let json_obj: any = await getFile(objectPath);
+
+  if (json_obj == undefined) {
+    objectPath = __dirname + '\\' + objectPath;
+
+    json_obj = await getFile(objectPath);
+  }
+
+  return { json_obj, objectPath };
 }
