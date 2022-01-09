@@ -394,7 +394,8 @@ json --help
 
 - General
 
-- [ ] CLI support for all above
+:heavy_check_mark: CLI support
+
 - [ ] Browser support
 
 ## License
