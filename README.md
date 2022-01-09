@@ -10,6 +10,14 @@ This package will provide you to translate your JSON files or objects into diffe
 npm i @parvineyvazov/json-translator
 ```
 
+# **💫 CLI**
+
+```bash
+jsontt folder/file.json
+```
+
+![How cli works?](./assets/jsontt-usage.gif)
+
 # **💥 Usage**
 
 ## **1. Translate a word | sentence**
@@ -320,6 +328,40 @@ await translator.translateFile(path, translator.languages.English, [
    ├── de.json
    ├── hu.json
    └── ja.json
+```
+
+## **6. CLI commands**
+
+- translate
+
+```bash
+jsontt file.json
+```
+
+```bash
+jsontt folder/file.json
+```
+
+```bash
+jsontt "folder\file.json"
+```
+
+```bash
+jsontt "C:\folder1\folder\en.json"
+```
+
+Result will be in the same folder as the original JSON file.
+
+<br>
+
+- help
+
+```bash
+json -h
+```
+
+```bash
+json --help
 ```
 
 ## **🏞 Roadmap🏁**

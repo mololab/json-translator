@@ -1,16 +1,44 @@
 import { languages } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
-import { error, messages, warn } from '../utils/console';
-
+import {
+  commands,
+  error,
+  info,
+  messages,
+  success,
+  warn,
+} from '../utils/console';
+import loading from 'loading-cli';
+import { getCodeFromLanguage } from '../utils/micro';
 var inquirer = require('inquirer');
 
 export async function initializeCli() {
   const myArgs = process.argv.slice(2);
 
+  if (
+    myArgs.length == 0 ||
+    myArgs[0] == commands.help1 ||
+    myArgs[0] == commands.help2
+  ) {
+    help();
+    return;
+  }
+
+  translate();
+}
+
+export async function help() {
+  success(messages.cli.welcome);
+  info(messages.cli.usage);
+}
+
+async function translate() {
+  const myArgs = process.argv.slice(2);
+
   // no path condition
   let objectPath = myArgs[0];
-  if (objectPath == undefined) {
-    error(messages.file.no_path);
+  if (objectPath == undefined || objectPath == '') {
+    error(messages.file.no_path + ' ' + messages.cli.usage);
     return;
   }
 
@@ -21,7 +49,7 @@ export async function initializeCli() {
     return;
   }
 
-  let from!: languages;
+  let from!: string;
   let to!: string[];
 
   const from_choices = Object.entries(languages).map(([key, _]) => key);
@@ -56,5 +84,17 @@ export async function initializeCli() {
 
   const to_languages = to.map(language => (languages as any)[language]);
 
-  await fileTranslator(objectPath, from, to_languages);
+  const load = loading({
+    text: 'Translating. Please wait.',
+    color: 'yellow',
+    interval: 100,
+    stream: process.stdout,
+    frames: ['.', 'o', 'O', '°', 'O', 'o', '.'],
+  }).start();
+
+  await fileTranslator(objectPath, getCodeFromLanguage(from), to_languages);
+
+  load.succeed('DONE');
+
+  info(messages.cli.creation_done);
 }

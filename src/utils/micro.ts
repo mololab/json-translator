@@ -4,6 +4,10 @@ export function getLanguageFromCode(language_code: string) {
   return getEnumKeyByEnumValue(languages, language_code);
 }
 
+export function getCodeFromLanguage(language: string) {
+  return languages[language as keyof typeof languages];
+}
+
 function getEnumKeyByEnumValue(
   myEnum: any,
   enumValue: number | string

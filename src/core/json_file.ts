@@ -1,5 +1,5 @@
 import { languages, translatedObject } from '..';
-import { error, info, messages, success } from '../utils/console';
+import { error, messages, success } from '../utils/console';
 import { getLanguageFromCode } from '../utils/micro';
 import { getFile, getRootFolder, saveFilePublic } from './core';
 import { objectTranslator } from './json_object';
@@ -46,7 +46,6 @@ export async function fileTranslator(
         );
       }
     );
-    info(messages.cli.creation_done_multiple);
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
@@ -55,7 +54,6 @@ export async function fileTranslator(
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
     success(`For ${getLanguageFromCode(to as string)} --> ${to}.json created.`);
-    info(messages.cli.creation_done_single);
   }
 }
 
