@@ -396,6 +396,8 @@ json --help
 
 :heavy_check_mark: CLI support
 
+- [ ] Safe translation (translating big JSON objects can cause network error)
+
 - [ ] Browser support
 
 ## License
