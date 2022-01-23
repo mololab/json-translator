@@ -56,7 +56,7 @@ export async function saveFilePublic(path: string, data: any) {
     });
 }
 
-function safeValueTransition(value: string) {
+export function safeValueTransition(value: string) {
   const value_safety: ValueSafety = valueIsSafe(value);
 
   if (value_safety.is_safe == true) {
