@@ -1,3 +1,5 @@
+import { current_version } from './micro';
+
 const cli_name = 'jsontt';
 
 const success_color = '\x1b[32m';
@@ -28,7 +30,7 @@ export const commands = {
 
 export const messages = {
   cli: {
-    welcome: 'Welcome to the JSON translator.',
+    welcome: `Welcome to the JSON translator. v${current_version}`,
     usage: `Usage: \n\n\t${cli_name} "C:/json/file/path" \n\t${cli_name} ${commands.help1} \n\t${cli_name} ${commands.help2}`,
     from_message: 'From which language?',
     to_message:

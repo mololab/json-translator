@@ -15,3 +15,7 @@ function getEnumKeyByEnumValue(
   let keys = Object.keys(myEnum).filter(x => myEnum[x] == enumValue);
   return keys.length > 0 ? keys[0] : '';
 }
+
+export const current_version = '0.6.3';
+export const default_value = '-';
+export const translation_value_limit = 5000;

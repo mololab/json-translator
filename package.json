@@ -19,7 +19,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "jest",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -56,15 +56,17 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.3",
     "husky": "^7.0.4",
+    "jest": "^27.4.7",
     "size-limit": "^7.0.4",
+    "ts-jest": "^27.1.3",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.3"
   },
   "dependencies": {
-    "inquirer": "^7.0.0",
     "@types/filesystem": "^0.0.32",
     "@vitalets/google-translate-api": "^7.0.0",
+    "inquirer": "^7.0.0",
     "loading-cli": "^1.1.0"
   }
 }
