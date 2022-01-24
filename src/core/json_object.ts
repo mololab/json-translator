@@ -36,7 +36,7 @@ export async function objectTranslator(
   }
 }
 
-async function deepDiver(
+export async function deepDiver(
   object: translatedObject,
   from: languages,
   to: languages
