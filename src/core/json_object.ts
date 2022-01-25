@@ -40,7 +40,7 @@ export async function deepDiver(
   object: translatedObject,
   from: languages,
   to: languages
-) {
+): Promise<translatedObject> {
   var has = Object.prototype.hasOwnProperty.bind(object);
 
   await Promise.all(
