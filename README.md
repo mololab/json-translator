@@ -357,11 +357,11 @@ Result will be in the same folder as the original JSON file.
 - help
 
 ```bash
-json -h
+jsontt -h
 ```
 
 ```bash
-json --help
+jsontt --help
 ```
 
 ## **🏞 Roadmap🏁**
