@@ -396,7 +396,11 @@ jsontt --help
 
 :heavy_check_mark: CLI support
 
-- [ ] Safe translation (Checking undefined, long, or empty values)
+:heavy_check_mark: Safe translation (Checking undefined, long, or empty values)
+
+- [ ] Proxy support for big translations
+
+- [ ] Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
 
 - [ ] Browser support
 
