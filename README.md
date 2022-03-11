@@ -1,5 +1,21 @@
 # <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
 
+<p align="center">
+  <a href="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads">
+    <img src="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads" alt="npm downloads">
+  </a> 
+  <br>
+  <a href="https://img.shields.io/npm/v/@parvineyvazov/json-translator?color=navy&label=version">
+    <img src="https://img.shields.io/npm/v/@parvineyvazov/json-translator?color=navy&label=version" alt="version">
+  </a>
+  <a href="https://img.shields.io/bundlephobia/min/@parvineyvazov/json-translator?style=plastic">
+    <img src="https://img.shields.io/bundlephobia/min/@parvineyvazov/json-translator?style=plastic" alt="minified size">
+  </a>
+  <a href="https://img.shields.io/bundlephobia/minzip/@parvineyvazov/json-translator?style=plastic">
+    <img src="https://img.shields.io/bundlephobia/minzip/@parvineyvazov/json-translator?style=plastic" alt="minzipped size">
+  </a>
+</p>
+
 This package will provide you to translate your JSON files or objects into different languages using Google Translate API in your **Node applications**. (Browser support will come soon...)
 
 [**_Supported languages_**](./docs/LANGUAGES.md#supported-languages-)
