@@ -3,7 +3,7 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": ".", // if out path for a file is same as its src path, nothing will be emitted
+    "outDir": "../dist/", // if out path for a file is same as its src path, nothing will be emitted
     "composite": true, // required on the dependency project for references to work
     "module": "esnext",
     "lib": ["dom", "esnext"],
@@ -34,5 +34,8 @@
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true
   },
-  "files": ["package.json"]
+  "references": [
+    // this is how we declare a dependency from
+    { "path": "../" } // this project to the one at the root dir`
+  ]
 }

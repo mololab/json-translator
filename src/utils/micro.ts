@@ -1,4 +1,5 @@
 import { languages } from '..';
+import * as packageJSON from '../../package.json';
 
 export function getLanguageFromCode(language_code: string) {
   return getEnumKeyByEnumValue(languages, language_code);
@@ -16,6 +17,6 @@ function getEnumKeyByEnumValue(
   return keys.length > 0 ? keys[0] : '';
 }
 
-export const current_version = '0.6.3';
+export const current_version = packageJSON.version;
 export const default_value = '-';
 export const translation_value_limit = 5000;
