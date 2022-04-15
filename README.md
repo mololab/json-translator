@@ -416,7 +416,7 @@ jsontt --help
 
 - [ ] Proxy support for big translations
 
-- [ ] Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
+:heavy_check_mark: Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
 
 - [ ] Browser support
 

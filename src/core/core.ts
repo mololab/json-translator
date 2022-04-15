@@ -14,6 +14,8 @@ export async function plaintranslate(
     to: to,
   });
 
+  global.totalTranslated = global.totalTranslated + 1;
+
   return text;
 }
 

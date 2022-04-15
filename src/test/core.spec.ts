@@ -3,11 +3,16 @@ import {
   getRootFolder,
   safeValueTransition,
   saveFilePublic,
-} from '../src/core/core';
+} from '../core/core';
 import * as fs from 'fs/promises';
-import * as appConsole from '../src/utils/console';
+import * as appConsole from '../utils/console';
 
 jest.mock('fs/promises');
+
+declare global {
+  var totalTranslation: number;
+  var totalTranslated: number;
+}
 
 describe(`CORE`, () => {
   test('sanity check for test environment', () => {

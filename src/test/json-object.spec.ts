@@ -1,6 +1,11 @@
-import { languages } from '../src';
-import * as core from '../src/core/core';
-import { deepDiver, objectTranslator } from '../src/core/json_object';
+import { languages } from '../index';
+import * as core from '../core/core';
+import { deepDiver, objectTranslator } from '../core/json_object';
+
+declare global {
+  var totalTranslation: number;
+  var totalTranslated: number;
+}
 
 describe(`JSON OBJECT`, () => {
   test('sanity check for test environment', () => {

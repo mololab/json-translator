@@ -9,10 +9,13 @@ import {
   warn,
 } from '../utils/console';
 import loading from 'loading-cli';
-import { getCodeFromLanguage } from '../utils/micro';
+import { getCodeFromLanguage, translationStatistic } from '../utils/micro';
 var inquirer = require('inquirer');
 
 export async function initializeCli() {
+  global.totalTranslation = 0;
+  global.totalTranslated = 0;
+
   const myArgs = process.argv.slice(2);
 
   if (
@@ -85,16 +88,32 @@ async function translate() {
   const to_languages = to.map(language => (languages as any)[language]);
 
   const load = loading({
-    text: 'Translating. Please wait.',
+    text: `Translating. Please wait. ${translationStatistic(
+      global.totalTranslated,
+      global.totalTranslation
+    )}`,
     color: 'yellow',
     interval: 100,
     stream: process.stdout,
     frames: ['.', 'o', 'O', '°', 'O', 'o', '.'],
   }).start();
 
+  const refreshInterval = setInterval(() => {
+    load.text = `Translating. Please wait. ${translationStatistic(
+      global.totalTranslated,
+      global.totalTranslation
+    )}`;
+  }, 200);
+
   await fileTranslator(objectPath, getCodeFromLanguage(from), to_languages);
 
-  load.succeed('DONE');
+  load.succeed(
+    `DONE! ${translationStatistic(
+      global.totalTranslation,
+      global.totalTranslation
+    )}`
+  );
+  clearInterval(refreshInterval);
 
   info(messages.cli.creation_done);
 }

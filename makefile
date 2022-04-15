@@ -1,6 +1,5 @@
 run-win:
 	yarn
-	tsdx build
 	npm link
 
 cli-d:

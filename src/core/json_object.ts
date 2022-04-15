@@ -51,6 +51,7 @@ export async function deepDiver(
             await deepDiver(object[k], from, to);
             break;
           case 'string':
+            global.totalTranslation = global.totalTranslation + 1;
             object[k] = await plaintranslate(object[k], from, to);
         }
       }

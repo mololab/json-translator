@@ -1,8 +1,13 @@
-import { languages } from '../src';
-import * as core from '../src/core/core';
-import { fileTranslator } from '../src/core/json_file';
-import * as appConsole from '../src/utils/console';
-import * as jsonObject from '../src/core/json_object';
+import { languages } from '..';
+import * as core from '../core/core';
+import { fileTranslator } from '../core/json_file';
+import * as appConsole from '../utils/console';
+import * as jsonObject from '../core/json_object';
+
+declare global {
+  var totalTranslation: number;
+  var totalTranslated: number;
+}
 
 describe(`JSON FILE`, () => {
   it(`test environment is ready`, () => {
