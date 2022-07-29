@@ -26,6 +26,12 @@ This package will provide you to translate your JSON files or objects into diffe
 npm i @parvineyvazov/json-translator
 ```
 
+- OR you can install it globally (in case of using CLI)
+
+```bash
+npm i -g @parvineyvazov/json-translator
+```
+
 # **💫 CLI**
 
 ```bash
