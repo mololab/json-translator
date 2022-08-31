@@ -1,9 +1,11 @@
+import { Sources } from '..';
 import { error, info, success, warn } from '../utils/console';
 import { getCodeFromLanguage, getLanguageFromCode } from '../utils/micro';
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var source: Sources;
 }
 
 describe(`UTIL`, () => {

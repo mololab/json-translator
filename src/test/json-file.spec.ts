@@ -2,11 +2,12 @@ import * as core from '../core/core';
 import { fileTranslator } from '../core/json_file';
 import * as appConsole from '../utils/console';
 import * as jsonObject from '../core/json_object';
-import { GoogleTranslateLanguages } from '..';
+import { GoogleTranslateLanguages, Sources } from '..';
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var source: Sources;
 }
 
 describe(`JSON FILE`, () => {

@@ -6,12 +6,14 @@ import {
 } from '../core/core';
 import * as fs from 'fs/promises';
 import * as appConsole from '../utils/console';
+import { Sources } from '..';
 
 jest.mock('fs/promises');
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var source: Sources;
 }
 
 describe(`CORE`, () => {

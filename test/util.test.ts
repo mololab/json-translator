@@ -1,5 +1,12 @@
+import { Sources } from '../src';
 import { error, info, success, warn } from '../src/utils/console';
 import { getCodeFromLanguage, getLanguageFromCode } from '../src/utils/micro';
+
+declare global {
+  var totalTranslation: number;
+  var totalTranslated: number;
+  var source: Sources;
+}
 
 describe(`UTIL`, () => {
   it(`sanity check for test environment`, () => {

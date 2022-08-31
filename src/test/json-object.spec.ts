@@ -1,10 +1,11 @@
-import { GoogleTranslateLanguages } from '..';
+import { GoogleTranslateLanguages, Sources } from '..';
 import * as core from '../core/core';
 import { deepDiver, objectTranslator } from '../core/json_object';
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var source: Sources;
 }
 
 describe(`JSON OBJECT`, () => {
