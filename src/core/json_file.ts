@@ -1,4 +1,4 @@
-import { languages, translatedObject } from '..';
+import { LanguageCode, LanguageCodes, translatedObject } from '..';
 import { error, messages, success } from '../utils/console';
 import { getLanguageFromCode } from '../utils/micro';
 import { getFile, getRootFolder, saveFilePublic } from './core';
@@ -6,8 +6,8 @@ import { objectTranslator } from './json_object';
 
 export async function fileTranslator(
   objectPath: string,
-  from: languages,
-  to: languages | languages[]
+  from: LanguageCode,
+  to: LanguageCode | LanguageCodes
 ) {
   let file_from_path = await getFileFromPath(objectPath);
 

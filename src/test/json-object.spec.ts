@@ -1,4 +1,4 @@
-import { languages } from '../index';
+import { GoogleTranslateLanguages } from '..';
 import * as core from '../core/core';
 import { deepDiver, objectTranslator } from '../core/json_object';
 
@@ -43,18 +43,18 @@ describe(`JSON OBJECT`, () => {
     ],
   };
 
-  const from = languages.English;
+  const from = GoogleTranslateLanguages.English;
 
-  const to = languages.Dutch;
+  const to = GoogleTranslateLanguages.Dutch;
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   const to_multiple = [
-    languages.Bulgarian,
-    languages.Catalan,
-    languages.Turkish,
+    GoogleTranslateLanguages.Bulgarian,
+    GoogleTranslateLanguages.Catalan,
+    GoogleTranslateLanguages.Turkish,
   ];
 
   it('should dive every value in the object', async () => {

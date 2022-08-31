@@ -1,8 +1,8 @@
-import { languages } from '..';
 import * as core from '../core/core';
 import { fileTranslator } from '../core/json_file';
 import * as appConsole from '../utils/console';
 import * as jsonObject from '../core/json_object';
+import { GoogleTranslateLanguages } from '..';
 
 declare global {
   var totalTranslation: number;
@@ -17,8 +17,8 @@ describe(`JSON FILE`, () => {
   it('should get `no file` error on undefined file path', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = languages.Dutch;
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = GoogleTranslateLanguages.Dutch;
 
     const mock_json_file = undefined;
 
@@ -38,8 +38,8 @@ describe(`JSON FILE`, () => {
   it('should get file & translate it to one language & saves it', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = languages.German;
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = GoogleTranslateLanguages.German;
     const mock_json_object = JSON.stringify({
       login: {
         title: 'Login',
@@ -77,8 +77,11 @@ describe(`JSON FILE`, () => {
   it('should get file & translate it to multiple languages & saves it', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = [languages.German, languages.French];
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = [
+      GoogleTranslateLanguages.German,
+      GoogleTranslateLanguages.French,
+    ];
     const mock_json_object = JSON.stringify({
       login: {
         title: 'Login',

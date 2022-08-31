@@ -1,14 +1,29 @@
 import translate from '@vitalets/google-translate-api';
-import { languages } from '..';
+import { LanguageCode, Sources } from '..';
 import * as fs from 'fs/promises';
 import { error, messages } from '../utils/console';
 import { default_value, translation_value_limit } from '../utils/micro';
+import axios from 'axios';
 
 export async function plaintranslate(
   word: string,
-  from: languages,
-  to: languages
+  from: LanguageCode,
+  to: LanguageCode
 ): Promise<string> {
+  if (global.source == Sources.LibreTranslate) {
+    let translatedWord = await translateWithLibre(word, from, to);
+    return translatedWord;
+  } else {
+    let translatedWord = await translateWithGoogle(word, from, to);
+    return translatedWord;
+  }
+}
+
+async function translateWithGoogle(
+  word: string,
+  from: LanguageCode,
+  to: LanguageCode
+) {
   const { text } = await translate(safeValueTransition(word), {
     from: from,
     to: to,
@@ -17,6 +32,28 @@ export async function plaintranslate(
   global.totalTranslated = global.totalTranslated + 1;
 
   return text;
+}
+
+async function translateWithLibre(
+  word: string,
+  from: LanguageCode,
+  to: LanguageCode
+) {
+  let body = {
+    q: word,
+    source: from,
+    target: to,
+  };
+
+  console.log('body:', body);
+
+  const { data } = await axios.post(
+    'https://libretranslate.com/translate',
+    body,
+    { headers: { Origin: 'https://libretranslate.com' } }
+  );
+
+  return data?.translatedText ? data?.translatedText : default_value;
 }
 
 export async function getFile(objectPath: string) {

@@ -5,16 +5,16 @@ import { objectTranslator } from './core/json_object';
 
 export async function translateWord(
   word: string,
-  from: languages,
-  to: languages
+  from: LanguageCode,
+  to: LanguageCode
 ) {
   return await plaintranslate(word, from, to);
 }
 
 export async function translateObject(
   object: translatedObject,
-  from: languages,
-  to: languages | languages[]
+  from: LanguageCode,
+  to: LanguageCode | LanguageCodes
 ): Promise<translatedObject | translatedObject[]> {
   let hard_copy = JSON.parse(JSON.stringify(object));
 
@@ -23,8 +23,8 @@ export async function translateObject(
 
 export async function translateFile(
   objectPath: string,
-  from: languages,
-  to: languages | languages[]
+  from: LanguageCode,
+  to: LanguageCode | LanguageCodes
 ) {
   return fileTranslator(objectPath, from, to);
 }
@@ -33,12 +33,61 @@ export async function runCli() {
   initializeCli();
 }
 
+export enum Sources {
+  // All = 'all', // will come soon... -> it will works like smart choice of the source for each translation
+  GoogleTranslate = 'GoogleTranslate',
+  LibreTranslate = 'LibreTranslate',
+}
+
 // TYPES
 export interface translatedObject {
   [key: string]: any;
 }
 
-export enum languages {
+export type LanguageCode = string;
+export type LanguageCodes = LanguageCode[];
+
+export function getLanguages() {
+  if (global.source == Sources.LibreTranslate) {
+    return LibreTranslateLanguages;
+  }
+  return GoogleTranslateLanguages;
+}
+
+export enum LibreTranslateLanguages {
+  Automatic = 'auto',
+  English = 'en',
+  Arabic = 'ar',
+  Azerbaijani = 'az',
+  Chinese = 'zh',
+  Czech = 'cs',
+  Danish = 'da',
+  Dutch = 'nl',
+  Esperanto = 'eo',
+  Finnish = 'fi',
+  French = 'fr',
+  German = 'de',
+  Greek = 'el',
+  Hebrew = 'iw',
+  Hindi = 'hi',
+  Hungarian = 'hu',
+  Indonesian = 'id',
+  Irish = 'ga',
+  Italian = 'it',
+  Japanese = 'ja',
+  Korean = 'ko',
+  Persian = 'fa',
+  Polish = 'pl',
+  Portuguese = 'pt',
+  Russian = 'ru',
+  Slovak = 'sk',
+  Spanish = 'es',
+  Swedish = 'sv',
+  Turkish = 'tr',
+  Ukrainian = 'uk',
+}
+
+export enum GoogleTranslateLanguages {
   Automatic = 'auto',
   Afrikaans = 'af',
   Albanian = 'sq',

@@ -32,6 +32,7 @@ export const messages = {
   cli: {
     welcome: `Welcome to the JSON translator. v${current_version}`,
     usage: `Usage: \n\n\t${cli_name} "C:/json/file/path" \n\t${cli_name} ${commands.help1} \n\t${cli_name} ${commands.help2}`,
+    from_source: 'From which source?',
     from_message: 'From which language?',
     to_message:
       'To which language | languages? (Can select more than one with space bar)',

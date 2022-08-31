@@ -1,12 +1,13 @@
-import { languages } from '..';
+import { getLanguages } from '..';
 import * as packageJSON from '../../package.json';
 
 export function getLanguageFromCode(language_code: string) {
-  return getEnumKeyByEnumValue(languages, language_code);
+  return getEnumKeyByEnumValue(getLanguages(), language_code);
 }
 
 export function getCodeFromLanguage(language: string) {
-  return languages[language as keyof typeof languages];
+  let languages = getLanguages();
+  return (languages as any)[language as keyof typeof languages];
 }
 
 function getEnumKeyByEnumValue(

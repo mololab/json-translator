@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Translate your JSON file or object into another languages with Google Translate API",
@@ -64,6 +64,7 @@
   "dependencies": {
     "@types/filesystem": "^0.0.32",
     "@vitalets/google-translate-api": "^7.0.0",
+    "axios": "^0.27.2",
     "inquirer": "^7.0.0",
     "loading-cli": "^1.1.0"
   }

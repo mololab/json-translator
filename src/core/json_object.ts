@@ -1,17 +1,17 @@
-import { languages, translatedObject } from '..';
+import { LanguageCode, LanguageCodes, translatedObject } from '..';
 import { plaintranslate } from './core';
 
 export async function objectTranslator(
   object: translatedObject,
-  from: languages,
-  to: languages | languages[]
+  from: LanguageCode,
+  to: LanguageCode | LanguageCodes
 ): Promise<translatedObject | translatedObject[]> {
   if (object && from && to) {
     if (typeof to == 'object') {
       let general_object: translatedObject[] = [];
 
       await Promise.all(
-        Object.keys(to as languages[]).map(async function(index) {
+        Object.keys(to as LanguageCodes).map(async function(index) {
           const index_as_num = Number(index);
           const copy_object = JSON.parse(JSON.stringify(object));
 
@@ -38,8 +38,8 @@ export async function objectTranslator(
 
 export async function deepDiver(
   object: translatedObject,
-  from: languages,
-  to: languages
+  from: LanguageCode,
+  to: LanguageCode
 ): Promise<translatedObject> {
   var has = Object.prototype.hasOwnProperty.bind(object);
 

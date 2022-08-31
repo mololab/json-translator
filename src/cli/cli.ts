@@ -1,4 +1,4 @@
-import { languages } from '..';
+import { getLanguages, LanguageCodes, Sources } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   commands,
@@ -55,8 +55,23 @@ async function translate() {
   let from!: string;
   let to!: string[];
 
-  const from_choices = Object.entries(languages).map(([key, _]) => key);
-  const to_choices = from_choices.filter(language => language != `Automatic`);
+  const source_choices = Object.entries(Sources).map(([key, _]) => key);
+
+  await inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'source',
+        message: messages.cli.from_source,
+        pageSize: 20,
+        choices: [...source_choices, new inquirer.Separator()],
+      },
+    ])
+    .then((answers: any) => {
+      global.source = answers.source;
+    });
+
+  const { from_choices, to_choices } = getLanguageChoices();
 
   await inquirer
     .prompt([
@@ -85,7 +100,7 @@ async function translate() {
     return;
   }
 
-  const to_languages = to.map(language => (languages as any)[language]);
+  const to_languages = to.map(language => (getLanguages() as any)[language]);
 
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
@@ -116,4 +131,20 @@ async function translate() {
   clearInterval(refreshInterval);
 
   info(messages.cli.creation_done);
+}
+
+function getLanguageChoices(): {
+  from_choices: LanguageCodes;
+  to_choices: LanguageCodes;
+} {
+  let from_choices = getFromChoices();
+  let to_choices = from_choices.filter(language => language != `Automatic`);
+
+  return { from_choices, to_choices };
+}
+
+function getFromChoices(): LanguageCodes {
+  let languages = Object.entries(getLanguages() as any).map(([key, _]) => key);
+
+  return languages;
 }
