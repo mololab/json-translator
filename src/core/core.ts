@@ -48,9 +48,14 @@ async function translateWithLibre(
   console.log('body:', body);
 
   const { data } = await axios.post(
-    'https://libretranslate.com/translate',
+    'https://translate.argosopentech.com/translate',
     body,
-    { headers: { Origin: 'https://libretranslate.com' } }
+    {
+      headers: {
+        Origin: 'https://translate.argosopentech.com',
+        Referer: 'https://translate.argosopentech.com',
+      },
+    }
   );
 
   return data?.translatedText ? data?.translatedText : default_value;
