@@ -37,6 +37,7 @@ export enum Sources {
   // All = 'all', // will come soon... -> it will works like smart choice of the source for each translation
   GoogleTranslate = 'GoogleTranslate',
   LibreTranslate = 'LibreTranslate',
+  ArgosTranslate = 'ArgosTranslate',
 }
 
 // TYPES
@@ -50,11 +51,13 @@ export type LanguageCodes = LanguageCode[];
 export function getLanguages() {
   if (global.source == Sources.LibreTranslate) {
     return LibreTranslateLanguages;
+  } else if (global.source == Sources.ArgosTranslate) {
+    return ArgosTranslateLanguages;
   }
   return GoogleTranslateLanguages;
 }
 
-export enum LibreTranslateLanguages {
+enum LibreTranslateLanguages {
   Automatic = 'auto',
   English = 'en',
   Arabic = 'ar',
@@ -87,7 +90,28 @@ export enum LibreTranslateLanguages {
   Ukrainian = 'uk',
 }
 
-export enum GoogleTranslateLanguages {
+enum ArgosTranslateLanguages {
+  Automatic = 'auto',
+  English = 'en',
+  Arabic = 'ar',
+  Chinese = 'zh',
+  French = 'fr',
+  German = 'de',
+  Hindi = 'hi',
+  Indonesian = 'id',
+  Irish = 'ga',
+  Italian = 'it',
+  Japanese = 'ja',
+  Korean = 'ko',
+  Polish = 'pl',
+  Portuguese = 'pt',
+  Russian = 'ru',
+  Spanish = 'es',
+  Turkish = 'tr',
+  Vietnamese = 'vi',
+}
+
+enum GoogleTranslateLanguages {
   Automatic = 'auto',
   Afrikaans = 'af',
   Albanian = 'sq',
@@ -194,3 +218,5 @@ export enum GoogleTranslateLanguages {
   Yoruba = 'yo',
   Zulu = 'zu',
 }
+
+export const languages = GoogleTranslateLanguages;

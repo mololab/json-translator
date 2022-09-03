@@ -13,10 +13,66 @@ export async function plaintranslate(
   if (global.source == Sources.LibreTranslate) {
     let translatedWord = await translateWithLibre(word, from, to);
     return translatedWord;
+  } else if (global.source == Sources.ArgosTranslate) {
+    let translatedWord = await translateWithArgos(word, from, to);
+    return translatedWord;
   } else {
     let translatedWord = await translateWithGoogle(word, from, to);
     return translatedWord;
   }
+}
+
+async function translateWithLibre(
+  word: string,
+  from: LanguageCode,
+  to: LanguageCode
+) {
+  let body = {
+    q: word,
+    source: from,
+    target: to,
+  };
+
+  const { data } = await axios.post(
+    'https://libretranslate.com/translate',
+    body,
+    {
+      headers: {
+        Origin: 'https://libretranslate.com',
+      },
+    }
+  );
+
+  global.totalTranslated = global.totalTranslated + 1;
+
+  return data?.translatedText ? data?.translatedText : default_value;
+}
+
+async function translateWithArgos(
+  word: string,
+  from: LanguageCode,
+  to: LanguageCode
+) {
+  let body = {
+    q: word,
+    source: from,
+    target: to,
+  };
+
+  const { data } = await axios.post(
+    'https://translate.argosopentech.com/translate',
+    body,
+    {
+      headers: {
+        Origin: 'https://translate.argosopentech.com',
+        Referer: 'https://translate.argosopentech.com',
+      },
+    }
+  );
+
+  global.totalTranslated = global.totalTranslated + 1;
+
+  return data?.translatedText ? data?.translatedText : default_value;
 }
 
 async function translateWithGoogle(
@@ -32,33 +88,6 @@ async function translateWithGoogle(
   global.totalTranslated = global.totalTranslated + 1;
 
   return text;
-}
-
-async function translateWithLibre(
-  word: string,
-  from: LanguageCode,
-  to: LanguageCode
-) {
-  let body = {
-    q: word,
-    source: from,
-    target: to,
-  };
-
-  console.log('body:', body);
-
-  const { data } = await axios.post(
-    'https://translate.argosopentech.com/translate',
-    body,
-    {
-      headers: {
-        Origin: 'https://translate.argosopentech.com',
-        Referer: 'https://translate.argosopentech.com',
-      },
-    }
-  );
-
-  return data?.translatedText ? data?.translatedText : default_value;
 }
 
 export async function getFile(objectPath: string) {

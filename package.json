@@ -62,9 +62,12 @@
     "typescript": "^4.5.3"
   },
   "dependencies": {
+    "@types/bluebird": "^3.5.36",
     "@types/filesystem": "^0.0.32",
     "@vitalets/google-translate-api": "^7.0.0",
     "axios": "^0.27.2",
+    "bluebird": "^3.7.2",
+    "cwait": "^1.1.2",
     "inquirer": "^7.0.0",
     "loading-cli": "^1.1.0"
   }

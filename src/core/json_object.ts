@@ -1,5 +1,10 @@
 import { LanguageCode, LanguageCodes, translatedObject } from '..';
 import { plaintranslate } from './core';
+import { TaskQueue } from 'cwait';
+import { Promise } from 'bluebird';
+const MAX_SIMULTANEOUS_REQUEST = 3;
+
+var queue = new TaskQueue(Promise, MAX_SIMULTANEOUS_REQUEST);
 
 export async function objectTranslator(
   object: translatedObject,
@@ -52,7 +57,17 @@ export async function deepDiver(
             break;
           case 'string':
             global.totalTranslation = global.totalTranslation + 1;
-            object[k] = await plaintranslate(object[k], from, to);
+
+            return queue.add(async () => {
+              return await plaintranslate(object[k], from, to)
+                .then(data => {
+                  object[k] = data;
+                })
+                .catch(err => {
+                  // TODO: return error
+                  console.log('Translation error:', err);
+                });
+            });
         }
       }
     })
