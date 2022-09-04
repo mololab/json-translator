@@ -4,6 +4,7 @@ import {
   commands,
   error,
   info,
+  language_choices,
   messages,
   success,
   warn,
@@ -55,7 +56,13 @@ async function translate() {
   let from!: string;
   let to!: string[];
 
-  const source_choices = Object.entries(Sources).map(([key, _]) => key);
+  const source_choices = Object.entries(Sources).map(([key, _]) => {
+    return {
+      name: language_choices[key],
+      value: key,
+      short: key,
+    };
+  });
 
   await inquirer
     .prompt([

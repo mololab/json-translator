@@ -34,7 +34,6 @@ export async function runCli() {
 }
 
 export enum Sources {
-  // All = 'all', // will come soon... -> it will works like smart choice of the source for each translation
   GoogleTranslate = 'GoogleTranslate',
   LibreTranslate = 'LibreTranslate',
   ArgosTranslate = 'ArgosTranslate',

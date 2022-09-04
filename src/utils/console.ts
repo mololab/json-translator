@@ -28,6 +28,12 @@ export const commands = {
   help2: '-h',
 };
 
+export const language_choices: { [key: string]: string } = {
+  GoogleTranslate: `Google Translate (104 languages)`,
+  LibreTranslate: `Libre Translate (29 languages)`,
+  ArgosTranslate: `Argos Translate (17 languages)`,
+};
+
 export const messages = {
   cli: {
     welcome: `Welcome to the JSON translator. v${current_version}`,
@@ -48,5 +54,4 @@ export const messages = {
     cannot_translate: `Could not translate the file.`,
     cannot_save_file: `Could not save the file.`,
   },
-  general: {},
 };

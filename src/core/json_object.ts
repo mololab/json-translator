@@ -1,10 +1,10 @@
 import { LanguageCode, LanguageCodes, translatedObject } from '..';
 import { plaintranslate } from './core';
 import { TaskQueue } from 'cwait';
-import { Promise } from 'bluebird';
+import { Promise as bluebirdPromise } from 'bluebird';
 const MAX_SIMULTANEOUS_REQUEST = 3;
 
-var queue = new TaskQueue(Promise, MAX_SIMULTANEOUS_REQUEST);
+var queue = new TaskQueue(bluebirdPromise, MAX_SIMULTANEOUS_REQUEST);
 
 export async function objectTranslator(
   object: translatedObject,
@@ -12,6 +12,7 @@ export async function objectTranslator(
   to: LanguageCode | LanguageCodes
 ): Promise<translatedObject | translatedObject[]> {
   if (object && from && to) {
+    // need to translate to more than 1 languages
     if (typeof to == 'object') {
       let general_object: translatedObject[] = [];
 
