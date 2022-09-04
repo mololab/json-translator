@@ -2,6 +2,8 @@
 
 **json-translator** package supports 100+ languages. Also, it can detect and translate to the target language if you mark the source language as `Automatic`.
 
+<details><summary>Google Translate</summary>
+
 </br>
 
 - **A**
@@ -178,3 +180,159 @@
 
 - **Z**
   - Zulu
+
+</details>
+
+<details><summary>Libre Translate</summary>
+
+</br>
+
+- **A**
+
+  - Arabic
+  - Azerbaijani
+
+* **C**
+
+  - Chinese
+  - Czech
+
+* **D**
+
+  - Danish
+  - Dutch
+
+* **E**
+
+  - English
+  - Esperanto
+
+* **F**
+
+  - Finnish
+  - French
+
+* **G**
+
+  - German
+  - Greek
+
+* **H**
+
+  - Hebrew
+  - Hindi
+  - Hungarian
+
+* **I**
+
+  - Indonesian
+  - Irish
+  - Italian
+
+* **J**
+
+  - Japanese
+
+* **K**
+
+  - Korean
+
+- **P**
+
+  - Persian
+  - Polish
+  - Portuguese
+
+- **R**
+
+  - Russian
+
+- **S**
+
+  - Slovak
+  - Spanish
+  - Swedish
+
+- **T**
+
+  - Turkish
+
+- **U**
+
+  - Ukrainian
+
+</details>
+
+<details><summary>Argos Translate</summary>
+
+Japanese = 'ja',
+Korean = 'ko',
+Polish = 'pl',
+Portuguese = 'pt',
+Russian = 'ru',
+Spanish = 'es',
+Turkish = 'tr',
+Vietnamese = 'vi',
+
+</br>
+
+- **A**
+
+  - Arabic
+
+* **C**
+
+  - Chinese
+
+- **E**
+
+  - English
+
+- **F**
+
+  - French
+
+- **G**
+
+  - German
+
+- **H**
+
+  - Hindi
+
+- **I**
+
+  - Indonesian
+  - Irish
+  - Italian
+
+- **J**
+
+  - Japanese
+
+- **K**
+
+  - Korean
+
+* **P**
+
+  - Polish
+  - Portuguese
+
+* **R**
+
+  - Russian
+
+* **S**
+
+  - Spanish
+
+* **T**
+
+  - Turkish
+
+- **V**
+
+  - Vietnamese
+
+</details>

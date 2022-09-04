@@ -1,9 +1,8 @@
-import * as core from '../core/core';
 import { fileTranslator } from '../core/json_file';
 import * as appConsole from '../utils/console';
 import * as jsonObject from '../core/json_object';
 import { languages, Sources } from '..';
-
+import * as core from '../core/core';
 
 declare global {
   var totalTranslation: number;

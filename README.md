@@ -16,7 +16,15 @@
   </a>
 </p>
 
-This package will provide you to translate your JSON files or objects into different languages using Google Translate API in your **Node applications**. (Browser support will come soon...)
+This package will provide you to translate your JSON files or objects into different languages FREE.
+
+### Types of usages 👀
+
+- CLI (Supports Google Translate, Libre Translate, Argos Translate)
+
+- In code (Node.js) as a package (Supports only Google Translate)
+
+`Browser support will come soon...`
 
 [**_Supported languages_**](./docs/LANGUAGES.md#supported-languages-)
 
@@ -420,9 +428,17 @@ jsontt --help
 
 :heavy_check_mark: Safe translation (Checking undefined, long, or empty values)
 
-- [ ] Proxy support for big translations
+:heavy_check_mark: Queue support for big translations
 
 :heavy_check_mark: Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
+
+:heavy_check_mark: Libre Translate option (CLI)
+
+:heavy_check_mark: Argos Translate option (CLI)
+
+- [ ] Libre Translate option (in code package)
+
+- [ ] Argos Translate option (in code package)
 
 - [ ] Browser support
 
