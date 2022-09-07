@@ -103,7 +103,7 @@ Let`s translate our deep object from English to Spanish
 
 const en_lang: translator.translatedObject = {
   login: {
-    title: 'Login',
+    title: 'Login {{name}}',
     email: 'Please, enter your email',
     failure: 'Failed',
   },
@@ -142,7 +142,7 @@ let es_lang = await translator.translateObject(
 es_lang:
             {
               "login": {
-                "title": "Acceso",
+                "title": "Acceso {{name}}",
                 "email": "Por favor introduzca su correo electrónico",
                 "failure": "Fallida"
               },
@@ -360,7 +360,23 @@ await translator.translateFile(path, translator.languages.English, [
    └── ja.json
 ```
 
-## **6. CLI commands**
+## **6. Ignore words**
+
+To ignore words on translation use `{{word}}` style on your object.
+
+```
+{
+  "one": "Welcome {{name}}"
+}
+
+...translating to spanish
+
+{
+  "one": "Bienvenido {{name}}"
+}
+```
+
+## **7. CLI commands**
 
 - translate
 
@@ -431,6 +447,8 @@ jsontt --help
 :heavy_check_mark: Queue support for big translations
 
 :heavy_check_mark: Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
+
+:heavy_check_mark: Ignore value words in translation (such as ignore {{name}} on translation)
 
 :heavy_check_mark: Libre Translate option (CLI)
 
