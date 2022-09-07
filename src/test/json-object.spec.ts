@@ -35,7 +35,7 @@ describe(`JSON OBJECT`, () => {
           n: {
             o: {
               p: {
-                q: 'q',
+                q: 'q {{name}}',
               },
             },
           },

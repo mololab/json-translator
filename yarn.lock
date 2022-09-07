@@ -1623,10 +1623,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@vitalets/google-translate-api@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@vitalets/google-translate-api/-/google-translate-api-7.0.0.tgz#0aa37d92d475daf4a434ded27e72d80b03686a23"
-  integrity sha512-zuKF+jG0EhFzRU/QAyHgTVzIDhrv5zDUmQWy7umwZryMbG8H0jK4fdMGrgla5AhQGU8ViiDWi/xbxNCKK7KHYA==
+"@vitalets/google-translate-api@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@vitalets/google-translate-api/-/google-translate-api-8.0.0.tgz#3dfbab1e051e4fcfe5ee97e1c5923a0ec0d106ae"
+  integrity sha512-CHOi8DRgDAoLlFQy9pm1KHUauIk5ZXys3+Eh0aSYxzJSuxAE7Z2UL8+5MgNdl1oX7t/O7u+SwGhkhu6+U1bNcg==
   dependencies:
     configstore "^5.0.1"
     got "^9.6.0"

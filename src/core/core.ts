@@ -10,14 +10,19 @@ export async function plaintranslate(
   from: LanguageCode,
   to: LanguageCode
 ): Promise<string> {
+  let { map, word: ignored_word } = mapIgnoredValues(word);
+
   if (global.source == Sources.LibreTranslate) {
-    let translatedWord = await translateWithLibre(word, from, to);
+    let translatedWord = await translateWithLibre(ignored_word, from, to);
+    translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   } else if (global.source == Sources.ArgosTranslate) {
-    let translatedWord = await translateWithArgos(word, from, to);
+    let translatedWord = await translateWithArgos(ignored_word, from, to);
+    translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   } else {
-    let translatedWord = await translateWithGoogle(word, from, to);
+    let translatedWord = await translateWithGoogle(ignored_word, from, to);
+    translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   }
 }
@@ -88,6 +93,36 @@ async function translateWithGoogle(
   global.totalTranslated = global.totalTranslated + 1;
 
   return text;
+}
+
+function mapIgnoredValues(
+  str: string
+): { word: string; map: { [key: string]: string } } {
+  let counter = 0;
+  let map: { [key: string]: string } = {};
+
+  let new_str = str.replace(/{{(.*?)\}}/g, function(word) {
+    word = word.substring(2, word.length - 2);
+
+    map[`${counter}`] = word;
+
+    let locked_ignored = '{' + counter + '}';
+
+    counter++;
+    return locked_ignored;
+  });
+
+  return { word: new_str, map: map };
+}
+
+function unmapIgnoredValues(str: string, map: object): string {
+  for (const [key, value] of Object.entries(map)) {
+    let for_replace = '{' + key + '}';
+
+    str = str.replace(for_replace, '{{' + value + '}}');
+  }
+
+  return str;
 }
 
 export async function getFile(objectPath: string) {
