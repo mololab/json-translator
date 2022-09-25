@@ -1,4 +1,10 @@
+
+<p align="center" >
+    <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
+</p>
+
 # <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
+
 
 <p align="center">
   <a href="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads">
@@ -46,7 +52,9 @@ npm i -g @parvineyvazov/json-translator
 jsontt folder/file.json
 ```
 
-![How cli works?](./assets/jsontt-usage.gif)
+<p align="center" >
+    <img src="https://s4.gifyu.com/images/jsontt-usage.gif" alt="jsontt logo" />
+</p>
 
 # **💥 Usage**
 
