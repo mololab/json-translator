@@ -37,7 +37,7 @@ export const language_choices: { [key: string]: string } = {
 export const messages = {
   cli: {
     welcome: `Welcome to the JSON translator. v${current_version}`,
-    usage: `Usage: \n\n\t${cli_name} <path/file.json> \n\t${cli_name} ${commands.help1} \n\t${cli_name} ${commands.help2}`,
+    usage: `Usage: \n\n\t${cli_name} <path/file.json> \n\t${cli_name} <path/file.json> <path/proxy_list.txt> \n\t${cli_name} ${commands.help1} \n\t${cli_name} ${commands.help2}`,
     from_source: 'From which source?',
     from_message: 'From which language?',
     to_message:

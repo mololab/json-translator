@@ -1,10 +1,8 @@
-
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
 
 # <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
-
 
 <p align="center">
   <a href="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads">
@@ -402,6 +400,12 @@ jsontt "folder\file.json"
 
 ```bash
 jsontt "C:\folder1\folder\en.json"
+```
+
+- with proxy
+
+```bash
+jsontt file.json proxy.txt
 ```
 
 Result will be in the same folder as the original JSON file.
