@@ -1,4 +1,5 @@
-import translate from '@vitalets/google-translate-api';
+import { translate } from '@vitalets/google-translate-api';
+import createHttpProxyAgent from 'http-proxy-agent';
 import { LanguageCode, Sources } from '..';
 import * as fs from 'fs/promises';
 import { error, messages } from '../utils/console';
@@ -21,7 +22,30 @@ export async function plaintranslate(
     translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   } else {
-    let translatedWord = await translateWithGoogle(ignored_word, from, to);
+    let translatedWord: any;
+
+    try {
+      let proxy = global.proxyList[global.proxyIndex];
+      if (!proxy && global.proxyList.length && global.proxyIndex != -1) {
+        error('there is no new proxy');
+        global.proxyIndex = -1;
+      }
+      let agent;
+      if (!!proxy) agent = createHttpProxyAgent(`http://${proxy}`);
+      if (global.proxyIndex != -1)
+        translatedWord = await translateWithGoogle(ignored_word, from, to, {
+          agent,
+          timeout: 4000,
+        });
+      else translatedWord = await translateWithGoogle(ignored_word, from, to);
+    } catch (e) {
+      error(`\n---------------- ${e.name} ----------------\n` || '\nUnknown error!\n');
+      if (global.proxyIndex != -1) {
+        global.proxyIndex++;
+        return plaintranslate(word, from, to);
+      }
+    }
+
     translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   }
@@ -83,11 +107,13 @@ async function translateWithArgos(
 async function translateWithGoogle(
   word: string,
   from: LanguageCode,
-  to: LanguageCode
+  to: LanguageCode,
+  options?: any
 ) {
   const { text } = await translate(safeValueTransition(word), {
     from: from,
     to: to,
+    fetchOptions: options,
   });
 
   global.totalTranslated = global.totalTranslated + 1;

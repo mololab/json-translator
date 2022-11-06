@@ -11,14 +11,16 @@ import {
 } from '../utils/console';
 import loading from 'loading-cli';
 import { getCodeFromLanguage, translationStatistic } from '../utils/micro';
+import { readProxyFile } from '../core/proxy_file';
 var inquirer = require('inquirer');
 
 export async function initializeCli() {
   global.totalTranslation = 0;
   global.totalTranslated = 0;
+  global.proxyIndex = 0;
+  global.proxyList = [];
 
   const myArgs = process.argv.slice(2);
-
   if (
     myArgs.length == 0 ||
     myArgs[0] == commands.help1 ||
@@ -27,7 +29,6 @@ export async function initializeCli() {
     help();
     return;
   }
-
   translate();
 }
 
@@ -38,6 +39,11 @@ export async function help() {
 
 async function translate() {
   const myArgs = process.argv.slice(2);
+
+  if (myArgs[1] && typeof myArgs[1] == "string") {
+    const file_path = myArgs[1]
+    await readProxyFile(file_path)
+  }
 
   // no path condition
   let objectPath = myArgs[0];
