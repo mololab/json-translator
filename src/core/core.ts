@@ -22,32 +22,32 @@ export async function plaintranslate(
     translatedWord = unmapIgnoredValues(translatedWord, map);
     return translatedWord;
   } else {
-    let translatedWord: any;
-
-    try {
+    if (global.proxyList.length > 0 && global.proxyIndex != -1) {
       let proxy = global.proxyList[global.proxyIndex];
-      if (!proxy && global.proxyList.length && global.proxyIndex != -1) {
-        error('there is no new proxy');
-        global.proxyIndex = -1;
-      }
-      let agent;
-      if (!!proxy) agent = createHttpProxyAgent(`http://${proxy}`);
-      if (global.proxyIndex != -1)
-        translatedWord = await translateWithGoogle(ignored_word, from, to, {
+
+      if (proxy) {
+        let agent;
+        agent = createHttpProxyAgent(`http://${proxy}`);
+        let translatedWord = await translateWithGoogle(ignored_word, from, to, {
           agent,
           timeout: 4000,
         });
-      else translatedWord = await translateWithGoogle(ignored_word, from, to);
-    } catch (e) {
-      error(`\n---------------- ${e.name} ----------------\n` || '\nUnknown error!\n');
-      if (global.proxyIndex != -1) {
-        global.proxyIndex++;
-        return plaintranslate(word, from, to);
+        translatedWord = unmapIgnoredValues(translatedWord, map);
+        return translatedWord;
+      } else {
+        error('there is no new proxy');
+        global.proxyIndex = -1;
+        // TODO: translate without proxy
+        let translatedWord = await translateWithGoogle(ignored_word, from, to);
+        translatedWord = unmapIgnoredValues(translatedWord, map);
+        return translatedWord;
       }
+    } else {
+      // TODO: no proxy normal translate
+      let translatedWord = await translateWithGoogle(ignored_word, from, to);
+      translatedWord = unmapIgnoredValues(translatedWord, map);
+      return translatedWord;
     }
-
-    translatedWord = unmapIgnoredValues(translatedWord, map);
-    return translatedWord;
   }
 }
 
