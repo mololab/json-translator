@@ -40,9 +40,9 @@ export async function help() {
 async function translate() {
   const myArgs = process.argv.slice(2);
 
-  if (myArgs[1] && typeof myArgs[1] == "string") {
-    const file_path = myArgs[1]
-    await readProxyFile(file_path)
+  if (myArgs[1] && typeof myArgs[1] == 'string') {
+    const file_path = myArgs[1];
+    await readProxyFile(file_path);
   }
 
   // no path condition
