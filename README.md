@@ -466,6 +466,8 @@ jsontt --help
 
 :heavy_check_mark: Argos Translate option (CLI)
 
+- [ ] Ignore URL translation on given string
+
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
