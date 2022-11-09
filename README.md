@@ -368,17 +368,21 @@ await translator.translateFile(path, translator.languages.English, [
 
 ## **6. Ignore words**
 
-To ignore words on translation use `{{word}}` style on your object.
+To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 
 ```
 {
-  "one": "Welcome {{name}}"
+  "one": "Welcome {{name}}",
+  "two": "Welcome {name}",
+  "three": "I am {name} {{surname}}"
 }
 
 ...translating to spanish
 
 {
-  "one": "Bienvenido {{name}}"
+  "one": "Bienvenido {{name}}",
+  "two": "Bienvenido {name}",
+  "three": "Soy {name} {{surname}}"
 }
 ```
 
@@ -460,7 +464,7 @@ jsontt --help
 
 :heavy_check_mark: Informing the user about the translation process (number of completed ones, the total number of lines and etc.)
 
-:heavy_check_mark: Ignore value words in translation (such as ignore {{name}} on translation)
+:heavy_check_mark: Ignore value words in translation (such as ignore {{name}} OR {name} on translation)
 
 :heavy_check_mark: Libre Translate option (CLI)
 
