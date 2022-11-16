@@ -476,6 +476,8 @@ jsontt --help
 
 - [ ] Argos Translate option (in code package)
 
+- [ ] Sync translation
+
 - [ ] Browser support
 
 ## License
