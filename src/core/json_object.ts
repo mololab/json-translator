@@ -14,7 +14,7 @@ export async function objectTranslator(
   if (object && from && to) {
     // need to translate to more than 1 languages
     if (typeof to == 'object') {
-      let general_object: translatedObject[] = [];
+      let general_object: translatedObject[] | null[] = [];
 
       await Promise.all(
         Object.keys(to as LanguageCodes).map(async function(index) {
@@ -46,8 +46,12 @@ export async function deepDiver(
   object: translatedObject,
   from: LanguageCode,
   to: LanguageCode
-): Promise<translatedObject> {
+): Promise<translatedObject | null> {
   var has = Object.prototype.hasOwnProperty.bind(object);
+
+  if (object === null) {
+    return null;
+  }
 
   await Promise.all(
     Object.keys(object).map(async function(k) {
