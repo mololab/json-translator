@@ -23,7 +23,11 @@ export async function plaintranslate(
     translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
     return translatedWord;
   } else {
-    if (global.proxyList.length > 0 && global.proxyIndex != -1) {
+    if (
+      global.proxyList &&
+      global.proxyList.length > 0 &&
+      global.proxyIndex != -1
+    ) {
       let proxy = global.proxyList[global.proxyIndex];
 
       if (proxy) {
