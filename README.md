@@ -386,6 +386,22 @@ To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 }
 ```
 
+- jsontt also ignores the `URL` in the text which means sometimes translations ruin the URL in the given string while translating that string. It prevents such cases by ignoring URLs in the string while translating.
+
+  - You don't especially need to do anything for it, it ignores them automatically.
+
+```
+{
+  "text": "this is a puppy https://shorturl.at/lvPY5"
+}
+
+...translating to german
+
+{
+  "text": "das ist ein welpe https://shorturl.at/lvPY5"
+}
+```
+
 ## **7. CLI commands**
 
 - translate
@@ -470,7 +486,7 @@ jsontt --help
 
 :heavy_check_mark: Argos Translate option (CLI)
 
-- [ ] Ignore URL translation on given string
+:heavy_check_mark: Ignore URL translation on given string
 
 - [ ] Libre Translate option (in code package)
 

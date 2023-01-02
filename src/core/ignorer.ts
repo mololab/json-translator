@@ -5,6 +5,9 @@ export function map(
   db_map: { [key: string]: string };
   sb_map: { [key: string]: string };
 } {
+  // encode urls if exists in the str
+  str = urlEncoder(str);
+
   let { map: db_map, word: initial_ignored_word } = mapByDoubleBracket(str);
   let { map: sb_map, word: ignored_word } = mapBySingleBracket(
     initial_ignored_word
@@ -20,6 +23,9 @@ export function map(
 export function unMap(str: string, db_map: object, sb_map: object): string {
   let word = unmapBySingleBracket(str, sb_map);
   word = unmapByDoubleBracket(word, db_map);
+
+  // decode urls if exists in the str
+  word = urlDecoder(word);
 
   return word;
 }
@@ -88,4 +94,29 @@ function unmapIgnoredValues(
   }
 
   return str;
+}
+
+// URL detector & encode AND decoder
+function urlEncoder(text: string): string {
+  // url finder regex => url
+  const regex = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!;:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gim;
+
+  let new_text = text.replace(regex, function(url) {
+    url = `{` + url + `}`;
+    return url;
+  });
+
+  return new_text;
+}
+
+function urlDecoder(text: string): string {
+  // url finder regex => {url}
+  const regex = /{(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!;:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[A-Z0-9+&@#\/%=~_|$])}/gim;
+
+  let new_text = text.replace(regex, function(url) {
+    url = url.substring(1, url.length - 1);
+    return url;
+  });
+
+  return new_text;
 }
