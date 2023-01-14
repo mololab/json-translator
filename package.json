@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Translate your JSON file or object into another languages with Google Translate API",
@@ -65,7 +65,7 @@
   "dependencies": {
     "@types/bluebird": "^3.5.36",
     "@types/filesystem": "^0.0.32",
-    "@vitalets/google-translate-api": "^9.0.0",
+    "@vitalets/google-translate-api": "8.0.0",
     "axios": "^1.2.2",
     "bluebird": "^3.7.2",
     "cwait": "^1.1.2",

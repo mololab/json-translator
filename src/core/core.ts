@@ -1,4 +1,4 @@
-import { translate } from '@vitalets/google-translate-api';
+import translate from '@vitalets/google-translate-api';
 import createHttpProxyAgent from 'http-proxy-agent';
 import { LanguageCode, Sources } from '..';
 import * as fs from 'fs/promises';
@@ -113,13 +113,18 @@ async function translateWithGoogle(
   word: string,
   from: LanguageCode,
   to: LanguageCode,
-  options?: any
+  options?: { agent: any; timeout: number }
 ) {
-  const { text } = await translate(safeValueTransition(word), {
-    from: from,
-    to: to,
-    fetchOptions: options,
-  });
+  const { text } = await translate(
+    safeValueTransition(word),
+    {
+      from: from,
+      to: to,
+    },
+    {
+      agent: options != undefined ? options.agent : undefined,
+    }
+  );
 
   global.totalTranslated = global.totalTranslated + 1;
 
