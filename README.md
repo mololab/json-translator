@@ -486,11 +486,15 @@ jsontt --help
 
 :heavy_check_mark: Argos Translate option (CLI)
 
+- [ ] Bing Translate option (CLI)
+
 :heavy_check_mark: Ignore URL translation on given string
 
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
+
+- [ ] Bing Translate option (in code package)
 
 - [ ] Sync translation
 
