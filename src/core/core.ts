@@ -14,14 +14,12 @@ export async function plaintranslate(
 ): Promise<string> {
   let { word: ignored_word, db_map, sb_map } = ignorer.map(word);
 
+  let translatedWord = '';
+
   if (global.source == Sources.LibreTranslate) {
-    let translatedWord = await translateWithLibre(ignored_word, from, to);
-    translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
-    return translatedWord;
+    translatedWord = await translateWithLibre(ignored_word, from, to);
   } else if (global.source == Sources.ArgosTranslate) {
-    let translatedWord = await translateWithArgos(ignored_word, from, to);
-    translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
-    return translatedWord;
+    translatedWord = await translateWithArgos(ignored_word, from, to);
   } else {
     if (
       global.proxyList &&
@@ -33,27 +31,24 @@ export async function plaintranslate(
       if (proxy) {
         let agent;
         agent = createHttpProxyAgent(`http://${proxy}`);
-        let translatedWord = await translateWithGoogle(ignored_word, from, to, {
+        translatedWord = await translateWithGoogle(ignored_word, from, to, {
           agent,
           timeout: 4000,
         });
-        translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
-        return translatedWord;
       } else {
         error('there is no new proxy');
         global.proxyIndex = -1;
-        // TODO: translate without proxy
-        let translatedWord = await translateWithGoogle(ignored_word, from, to);
-        translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
-        return translatedWord;
+        // translate without proxy
+        translatedWord = await translateWithGoogle(ignored_word, from, to);
       }
     } else {
-      // TODO: no proxy normal translate
-      let translatedWord = await translateWithGoogle(ignored_word, from, to);
-      translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
-      return translatedWord;
+      // no proxy normal translate
+      translatedWord = await translateWithGoogle(ignored_word, from, to);
     }
   }
+
+  translatedWord = ignorer.unMap(translatedWord, db_map, sb_map);
+  return translatedWord;
 }
 
 async function translateWithLibre(

@@ -8,6 +8,17 @@
     "dist",
     "src"
   ],
+  "keywords": [
+    "free",
+    "i18n",
+    "json",
+    "translator",
+    "javascript",
+    "typescript",
+    "node",
+    "translate",
+    "internationalization"
+  ],
   "engines": {
     "node": ">=12"
   },
