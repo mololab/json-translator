@@ -1,4 +1,5 @@
 import translate from '@vitalets/google-translate-api';
+import * as bingTranslator from 'bing-translate-api';
 import createHttpProxyAgent from 'http-proxy-agent';
 import { LanguageCode, Sources } from '..';
 import * as fs from 'fs/promises';
@@ -20,6 +21,8 @@ export async function plaintranslate(
     translatedWord = await translateWithLibre(ignored_word, from, to);
   } else if (global.source == Sources.ArgosTranslate) {
     translatedWord = await translateWithArgos(ignored_word, from, to);
+  } else if (global.source == Sources.BingTranslate) {
+    translatedWord = await translateWithBing(ignored_word, from, to);
   } else {
     if (
       global.proxyList &&
@@ -102,6 +105,19 @@ async function translateWithArgos(
   global.totalTranslated = global.totalTranslated + 1;
 
   return data?.translatedText ? data?.translatedText : default_value;
+}
+
+async function translateWithBing(
+  word: string,
+  from: LanguageCode,
+  to: LanguageCode
+) {
+  console.log('BING BING *****************************');
+  const { translation } = await bingTranslator.translate(word, from, to, true);
+
+  global.totalTranslated = global.totalTranslated + 1;
+
+  return translation;
 }
 
 async function translateWithGoogle(

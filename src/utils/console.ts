@@ -30,6 +30,7 @@ export const commands = {
 
 export const language_choices: { [key: string]: string } = {
   GoogleTranslate: `Google Translate (104 languages)`,
+  BingTranslate: 'Bing Microsoft Translate (110 languages) \x1b[33m**NEW**\x1b[0m',
   LibreTranslate: `Libre Translate (29 languages)`,
   ArgosTranslate: `Argos Translate (17 languages)`,
 };
