@@ -22,9 +22,9 @@ export async function initializeCli() {
 
   const myArgs = process.argv.slice(2);
   if (
-    myArgs.length == 0 ||
-    myArgs[0] == commands.help1 ||
-    myArgs[0] == commands.help2
+    myArgs.length === 0 ||
+    myArgs[0] === commands.help1 ||
+    myArgs[0] === commands.help2
   ) {
     help();
     return;
@@ -40,21 +40,21 @@ export async function help() {
 async function translate() {
   const myArgs = process.argv.slice(2);
 
-  if (myArgs[1] && typeof myArgs[1] == 'string') {
+  if (myArgs[1] && typeof myArgs[1] === 'string') {
     const file_path = myArgs[1];
     await readProxyFile(file_path);
   }
 
   // no path condition
   let objectPath = myArgs[0];
-  if (objectPath == undefined || objectPath == '') {
+  if (objectPath === undefined || objectPath === '') {
     error(messages.file.no_path + ' ' + messages.cli.usage);
     return;
   }
 
   // no file in the path condition
   let { json_obj } = await getFileFromPath(objectPath);
-  if (json_obj == undefined) {
+  if (json_obj === undefined) {
     error(messages.file.no_file_in_path);
     return;
   }
@@ -108,7 +108,7 @@ async function translate() {
       to = answers.to;
     });
 
-  if (to.length == 0 || to == undefined) {
+  if (to.length === 0 || to === undefined) {
     warn(messages.cli.no_selected_language);
     return;
   }
@@ -151,7 +151,7 @@ function getLanguageChoices(): {
   to_choices: LanguageCodes;
 } {
   let from_choices = getFromChoices();
-  let to_choices = from_choices.filter(language => language != `Automatic`);
+  let to_choices = from_choices.filter(language => language !== `Automatic`);
 
   return { from_choices, to_choices };
 }

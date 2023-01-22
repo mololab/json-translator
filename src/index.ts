@@ -49,11 +49,11 @@ export type LanguageCode = string;
 export type LanguageCodes = LanguageCode[];
 
 export function getLanguages() {
-  if (global.source == Sources.LibreTranslate) {
+  if (global.source === Sources.LibreTranslate) {
     return LibreTranslateLanguages;
-  } else if (global.source == Sources.ArgosTranslate) {
+  } else if (global.source === Sources.ArgosTranslate) {
     return ArgosTranslateLanguages;
-  } else if (global.source == Sources.BingTranslate) {
+  } else if (global.source === Sources.BingTranslate) {
     return BingTranslateLanguages;
   }
 

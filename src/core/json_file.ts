@@ -14,7 +14,7 @@ export async function fileTranslator(
   let { json_obj } = file_from_path;
   objectPath = file_from_path.objectPath;
 
-  if (json_obj == undefined) {
+  if (json_obj === undefined) {
     error(messages.file.no_file_in_path);
     return;
   }
@@ -23,7 +23,7 @@ export async function fileTranslator(
 
   let new_json_obj = await objectTranslator(json_obj, from, to);
 
-  if (new_json_obj == undefined) {
+  if (new_json_obj === undefined) {
     error(messages.file.cannot_translate);
     return;
   }
@@ -31,7 +31,7 @@ export async function fileTranslator(
   let latest_path = objectPath.replace(/\\/g, '/');
   let root_folder = getRootFolder(latest_path);
 
-  if (Array.isArray(new_json_obj) == true && Array.isArray(to) == true) {
+  if (Array.isArray(new_json_obj) === true && Array.isArray(to) === true) {
     // multiple file saving
     (new_json_obj as Array<translatedObject>).forEach(
       async (element, index) => {
@@ -62,7 +62,7 @@ export async function getFileFromPath(
 ): Promise<{ json_obj: any; objectPath: string }> {
   let json_obj: any = await getFile(objectPath);
 
-  if (json_obj == undefined) {
+  if (json_obj === undefined) {
     objectPath = __dirname + '\\' + objectPath;
 
     json_obj = await getFile(objectPath);

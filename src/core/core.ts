@@ -17,17 +17,17 @@ export async function plaintranslate(
 
   let translatedWord = '';
 
-  if (global.source == Sources.LibreTranslate) {
+  if (global.source === Sources.LibreTranslate) {
     translatedWord = await translateWithLibre(ignored_word, from, to);
-  } else if (global.source == Sources.ArgosTranslate) {
+  } else if (global.source === Sources.ArgosTranslate) {
     translatedWord = await translateWithArgos(ignored_word, from, to);
-  } else if (global.source == Sources.BingTranslate) {
+  } else if (global.source === Sources.BingTranslate) {
     translatedWord = await translateWithBing(ignored_word, from, to);
   } else {
     if (
       global.proxyList &&
       global.proxyList.length > 0 &&
-      global.proxyIndex != -1
+      global.proxyIndex !== -1
     ) {
       let proxy = global.proxyList[global.proxyIndex];
 
@@ -133,7 +133,7 @@ async function translateWithGoogle(
       to: to,
     },
     {
-      agent: options != undefined ? options.agent : undefined,
+      agent: options !== undefined ? options.agent : undefined,
     }
   );
 
@@ -163,7 +163,7 @@ export function getRootFolder(path: string) {
 
   let root = arr.join('/');
 
-  if (root == undefined || root == '') {
+  if (root === undefined || root === '') {
     root = './';
   }
 
@@ -184,7 +184,7 @@ export async function saveFilePublic(path: string, data: any) {
 export function safeValueTransition(value: string) {
   const value_safety: ValueSafety = valueIsSafe(value);
 
-  if (value_safety.is_safe == true) {
+  if (value_safety.is_safe === true) {
     return value;
   }
 
@@ -208,14 +208,14 @@ function valueIsSafe(value: string): ValueSafety {
     type: undefined,
   };
 
-  if (value == undefined) {
+  if (value === undefined) {
     result.is_safe = false;
     result['type'] = nonSafeTypes.undefined;
 
     return result;
   }
 
-  if (value == null) {
+  if (value === null) {
     result.is_safe = false;
     result['type'] = nonSafeTypes.null;
 
@@ -229,7 +229,7 @@ function valueIsSafe(value: string): ValueSafety {
     return result;
   }
 
-  if (value == '') {
+  if (value === '') {
     result.is_safe = false;
     result['type'] = nonSafeTypes.empty;
 

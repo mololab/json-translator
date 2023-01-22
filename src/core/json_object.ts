@@ -13,7 +13,7 @@ export async function objectTranslator(
 ): Promise<translatedObject | translatedObject[]> {
   if (object && from && to) {
     // need to translate to more than 1 languages
-    if (typeof to == 'object') {
+    if (typeof to === 'object') {
       let general_object: translatedObject[] | null[] = [];
 
       await Promise.all(
