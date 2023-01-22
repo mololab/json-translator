@@ -51,7 +51,7 @@ jsontt folder/file.json
 ```
 
 <p align="center" >
-    <img src="https://s4.gifyu.com/images/jsontt-usage.gif" alt="jsontt logo" />
+    <img src="https://s3.gifyu.com/images/jsonttgif.gif" alt="jsontt logo" />
 </p>
 
 # **💥 Usage**
