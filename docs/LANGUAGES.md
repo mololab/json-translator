@@ -183,6 +183,193 @@
 
 </details>
 
+<details><summary>Bing Microsoft Translate</summary>
+
+- **A**
+
+  - Afrikaans
+  - Albanian
+  - Amharic
+  - Arabic
+  - Armenian
+  - Assamese
+  - Azerbaijani
+
+- **B**
+
+  - Bangla
+  - Bashkir
+  - Basque
+  - Bosnian
+  - Bulgarian
+
+- **C**
+
+  - Cantonese (Traditional)
+  - Catalan
+  - Chinese (Literary)
+  - Chinese (Simplified)
+  - Chinese (Traditional)
+  - Croatian
+  - Czech
+
+- **D**
+
+  - Danish
+  - Dari
+  - Divehi
+  - Dutch
+
+- **E**
+
+  - English
+  - Estonian
+
+- **F**
+
+  - Faroese
+  - Fijian
+  - Filipino
+  - Finnish
+  - French
+  - French (Canada)
+
+- **G**
+
+  - Galician
+  - Georgian
+  - German
+  - Greek
+  - Gujarati
+
+- **H**
+
+  - Haitian Creole
+  - Hebrew
+  - Hindi
+  - Hmong Daw
+  - Hungarian
+
+- **I**
+
+  - Icelandic
+  - Indonesian
+  - Inuinnaqtun
+  - Inuktitut
+  - Inuktitut (Latin)
+  - Irish
+  - Italian
+
+- **J**
+
+  - Japanese
+
+- **K**
+
+  - Kannada
+  - Khmer
+  - Klingon (Latin)
+  - Korean
+  - Kurdish (Central)
+  - Kurdish (Northern)
+  - Kyrgyz
+
+- **L**
+
+  - Lao
+  - Latvian
+  - Lithuanian
+
+- **M**
+
+  - Macedonian
+  - Malagasy
+  - Malay
+  - Malayalam
+  - Maltese
+  - Maori
+  - Marathi
+  - Mongolian (Cyrillic)
+  - Mongolian (Traditional)
+  - Myanmar (Burmese)
+
+- **N**
+
+  - Nepali
+  - Norwegian
+
+- **O**
+
+  - Odia
+
+- **P**
+
+  - Pashto
+  - Persian
+  - Polish
+  - Portuguese (Brazil)
+  - Portuguese (Portugal)
+  - Punjabi
+
+- **Q**
+
+  - Querétaro Otomi
+
+- **R**
+
+  - Romanian
+  - Russian
+
+- **S**
+
+  - Samoan
+  - Serbian (Cyrillic)
+  - Serbian (Latin)
+  - Slovak
+  - Slovenian
+  - Somali
+  - Spanish
+  - Swahili
+  - Swedish
+
+- **T**
+
+  - Tahitian
+  - Tamil
+  - Tatar
+  - Telugu
+  - Thai
+  - Tibetan
+  - Tigrinya
+  - Tongan
+  - Turkish
+  - Turkmen
+
+- **U**
+
+  - Ukrainian
+  - Upper Sorbian
+  - Urdu
+  - Uyghur
+  - Uzbek (Latin)
+
+- **V**
+
+  - Vietnamese
+
+- **W**
+
+  - Welsh
+
+* **Y**
+
+  - Yucatec_Maya
+
+* **Z**
+  - Zulu
+
+</details>
+
 <details><summary>Libre Translate</summary>
 
 </br>
@@ -264,15 +451,6 @@
 </details>
 
 <details><summary>Argos Translate</summary>
-
-Japanese = 'ja',
-Korean = 'ko',
-Polish = 'pl',
-Portuguese = 'pt',
-Russian = 'ru',
-Spanish = 'es',
-Turkish = 'tr',
-Vietnamese = 'vi',
 
 </br>
 

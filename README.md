@@ -24,7 +24,7 @@ This package will provide you to translate your JSON files or objects into diffe
 
 ### Types of usages 👀
 
-- CLI (Supports Google Translate, Libre Translate, Argos Translate)
+- CLI (Supports Google Translate, Bing Microsoft Translate, Libre Translate, Argos Translate)
 
 - In code (Node.js) as a package (Supports only Google Translate)
 
