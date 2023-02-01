@@ -53,30 +53,57 @@ export async function deepDiver(
     return null;
   }
 
-  await Promise.all(
-    Object.keys(object).map(async function(k) {
-      if (has(k)) {
-        switch (typeof object[k]) {
-          case 'object':
-            await deepDiver(object[k], from, to);
-            break;
-          case 'string':
-            global.totalTranslation = global.totalTranslation + 1;
 
-            return queue.add(async () => {
-              return await plaintranslate(object[k], from, to)
-                .then(data => {
-                  object[k] = data;
-                })
-                .catch(err => {
-                  // TODO: return error
-                  console.log('Translation error:', err);
-                });
-            });
+  if (Array.isArray(object)) {
+    await Promise.all(
+      object.map(async function(value,k) {
+          switch (typeof value) {
+            case 'object':
+              await deepDiver(value, from, to);
+              break;
+            case 'string':
+              global.totalTranslation = global.totalTranslation + 1;
+  
+              return queue.add(async () => {
+                return await plaintranslate(value, from, to)
+                  .then(data => {
+                    object[k] = data;
+                  })
+                  .catch(err => {
+                    // TODO: return error
+                    console.log('Translation error:', err);
+                  });
+              });
+          }
+      })
+    );
+  } else {
+    await Promise.all(
+      Object.keys(object).map(async function(k) {
+        if (has(k)) {
+          switch (typeof object[k]) {
+            case 'object':
+              await deepDiver(object[k], from, to);
+              break;
+            case 'string':
+              global.totalTranslation = global.totalTranslation + 1;
+  
+              return queue.add(async () => {
+                return await plaintranslate(object[k], from, to)
+                  .then(data => {
+                    object[k] = data;
+                  })
+                  .catch(err => {
+                    // TODO: return error
+                    console.log('Translation error:', err);
+                  });
+              });
+          }
         }
-      }
-    })
-  );
+      })
+    );
+  }
+
 
   return object;
 }
