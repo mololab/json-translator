@@ -442,6 +442,42 @@ jsontt -h
 jsontt --help
 ```
 
+## How to contribute?
+
+- Clone it
+
+```
+git clone https://github.com/mololab/json-translator.git
+```
+
+- Install dependencies (with using yarn - [install yarn if you don't have](https://classic.yarnpkg.com/lang/en/docs/install))
+
+```
+yarn
+```
+
+- Show the magic:
+
+  - Update CLI
+
+    Go to file `src/cli/cli.ts`
+
+  - Update translation
+
+    Go to file `src/core/core.ts`
+
+  - Update JSON operations(deep dive, send translation request)
+
+    Go to file `src/core/json_object.ts`
+
+  - Update JSON file read/write operations
+
+    Go to file `src/core/json_file.ts`
+
+  - Update ignoring values in translation (map/unmap)
+
+    Go to file `src/core/ignorer.ts`
+
 ## **🏞 Roadmap🏁**
 
 :heavy_check_mark: Translate a word | sentence
