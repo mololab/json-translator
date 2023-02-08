@@ -478,6 +478,22 @@ yarn
 
     Go to file `src/core/ignorer.ts`
 
+- Check CLI locally
+
+For checking CLI locally we need to `link` the package using `npm`
+
+```
+npm link
+```
+
+Or you can run the whole steps using make
+
+```
+make run-only-cli
+```
+
+Make sure your terminal has admin access while running these commands to prevent any access issues.
+
 ## **🏞 Roadmap🏁**
 
 :heavy_check_mark: Translate a word | sentence
