@@ -538,7 +538,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: Argos Translate option (CLI)
 
-- [ ] Bing Translate option (CLI)
+:heavy_check_mark: Bing Translate option (CLI)
 
 :heavy_check_mark: Ignore URL translation on given string
 
