@@ -522,6 +522,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translate JSON file with extracting OR filtering some of its fields
 
+</br>
+
 - General
 
 :heavy_check_mark: CLI support
@@ -551,6 +553,8 @@ Make sure your terminal has admin access while running these commands to prevent
 - [ ] Sync translation
 
 - [ ] Browser support
+
+- [ ] Translation Option for own LibreTranslate instance
 
 ## License
 
