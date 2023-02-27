@@ -112,7 +112,7 @@ async function translateWithBing(
   from: LanguageCode,
   to: LanguageCode
 ) {
-  const { translation } = await bingTranslator.translate(word, from, to, true);
+  const { translation } = await bingTranslator.translate(word, from, to, false);
 
   global.totalTranslated = global.totalTranslated + 1;
 
