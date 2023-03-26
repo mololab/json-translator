@@ -550,6 +550,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Bing Translate option (in code package)
 
+- [ ] ChatGPT support
+
 - [ ] Sync translation
 
 - [ ] Browser support
