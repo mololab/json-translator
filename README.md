@@ -44,7 +44,7 @@ npm i @parvineyvazov/json-translator
 npm i -g @parvineyvazov/json-translator
 ```
 
-# **💫 CLI**
+# **1. 💫 CLI Usage**
 
 ```bash
 jsontt folder/file.json
@@ -54,7 +54,7 @@ jsontt folder/file.json
     <img src="https://s3.gifyu.com/images/jsonttgif.gif" alt="jsontt logo" />
 </p>
 
-# **💥 Usage**
+# **2. 💥 Package Usage**
 
 ## **1. Translate a word | sentence**
 
