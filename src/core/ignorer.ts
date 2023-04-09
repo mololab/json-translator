@@ -2,27 +2,34 @@ export function map(
   str: string
 ): {
   word: string;
-  db_map: { [key: string]: string };
-  sb_map: { [key: string]: string };
+  double_brackets_map: { [key: string]: string };
+  single_brackets_map: { [key: string]: string };
 } {
   // encode urls if exists in the str
   str = urlEncoder(str);
 
-  let { map: db_map, word: initial_ignored_word } = mapByDoubleBracket(str);
-  let { map: sb_map, word: ignored_word } = mapBySingleBracket(
+  let {
+    map: double_brackets_map,
+    word: initial_ignored_word,
+  } = mapByDoubleBracket(str);
+  let { map: single_brackets_map, word: ignored_word } = mapBySingleBracket(
     initial_ignored_word
   );
 
   return {
     word: ignored_word,
-    db_map: db_map,
-    sb_map: sb_map,
+    double_brackets_map,
+    single_brackets_map: single_brackets_map,
   };
 }
 
-export function unMap(str: string, db_map: object, sb_map: object): string {
-  let word = unmapBySingleBracket(str, sb_map);
-  word = unmapByDoubleBracket(word, db_map);
+export function unMap(
+  str: string,
+  double_brackets_map: object,
+  single_brackets_map: object
+): string {
+  let word = unmapBySingleBracket(str, single_brackets_map);
+  word = unmapByDoubleBracket(word, double_brackets_map);
 
   // decode urls if exists in the str
   word = urlDecoder(word);
