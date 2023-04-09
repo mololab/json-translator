@@ -1,5 +1,5 @@
 import { initializeCli } from './cli/cli';
-import { plaintranslate } from './core/core';
+import { plaintranslate } from './core/translator';
 import { fileTranslator } from './core/json_file';
 import { objectTranslator } from './core/json_object';
 

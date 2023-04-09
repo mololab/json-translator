@@ -1,5 +1,5 @@
 import { LanguageCode, LanguageCodes, translatedObject } from '..';
-import { plaintranslate } from './core';
+import { plaintranslate } from './translator';
 import { TaskQueue } from 'cwait';
 import { Promise as bluebirdPromise } from 'bluebird';
 const MAX_SIMULTANEOUS_REQUEST = 3;

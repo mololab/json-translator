@@ -1,5 +1,5 @@
 import { languages, Sources } from '..';
-import * as core from '../core/core';
+import * as translator from '../core/translator';
 import { deepDiver, objectTranslator } from '../core/json_object';
 
 declare global {
@@ -62,18 +62,18 @@ describe(`JSON OBJECT`, () => {
 
   it('should dive every value in the object', async () => {
     // arrange
-    jest.spyOn(core, 'plaintranslate').mockResolvedValue('');
+    jest.spyOn(translator, 'plaintranslate').mockResolvedValue('');
 
     // act
     await deepDiver(test_object, from, to);
 
     // assert
-    expect(core.plaintranslate).toBeCalledTimes(10);
+    expect(translator.plaintranslate).toBeCalledTimes(10);
   });
 
   it('should translate object into one language', async () => {
     // arrange
-    jest.spyOn(core, 'plaintranslate').mockResolvedValue('');
+    jest.spyOn(translator, 'plaintranslate').mockResolvedValue('');
 
     // act
     const response = await objectTranslator(test_object, from, to);
@@ -84,7 +84,7 @@ describe(`JSON OBJECT`, () => {
 
   it('should translate object into multiple languages', async () => {
     // arrange
-    jest.spyOn(core, 'plaintranslate').mockResolvedValue('');
+    jest.spyOn(translator, 'plaintranslate').mockResolvedValue('');
 
     // act
     const response = await objectTranslator(test_object, from, to_multiple);
