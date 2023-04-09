@@ -40,6 +40,9 @@ export enum Sources {
   BingTranslate = 'BingTranslate',
 }
 
+// default
+global.source = Sources.GoogleTranslate;
+
 // TYPES
 export interface translatedObject {
   [key: string]: any;

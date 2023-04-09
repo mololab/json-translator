@@ -23,7 +23,7 @@ export async function plaintranslate(
   // STEP: translate in try-catch to keep continuity
   try {
     // STEP: translate with proper source
-    let translatedStr = await translateSourceMap.get(global.source)(
+    let translatedStr = await translateSourceFunction(global.source)(
       ignored_str,
       from,
       to
@@ -36,19 +36,33 @@ export async function plaintranslate(
       single_brackets_map
     );
 
+    global.totalTranslated = global.totalTranslated + 1;
+
     return translatedStr;
   } catch (e) {
     // error case -> return
-    return '--';
+    warn(
+      `\nerror while translating \n\t"${str}" \nassigned "--" instead of exit from cli.`
+    );
+
+    global.totalTranslated = global.totalTranslated + 1;
+
+    return default_value;
   }
 }
 
-const translateSourceMap = new Map<string, any>([
-  [Sources.LibreTranslate, translateWithLibre],
-  [Sources.ArgosTranslate, translateWithArgos],
-  [Sources.BingTranslate, translateWithBing],
-  [Sources.GoogleTranslate, translateWithGoogle],
-]);
+function translateSourceFunction(source: string) {
+  switch (source) {
+    case Sources.LibreTranslate:
+      return translateWithLibre;
+    case Sources.ArgosTranslate:
+      return translateWithArgos;
+    case Sources.BingTranslate:
+      return translateWithBing;
+    default:
+      return translateWithGoogle;
+  }
+}
 
 async function translateWithLibre(
   str: string,
@@ -59,6 +73,9 @@ async function translateWithLibre(
     q: safeValueTransition(str),
     source: from,
     target: to,
+    format: 'text',
+    api_key: '',
+    secret: '2NEKGMB',
   };
 
   const { data } = await axios.post(
@@ -70,8 +87,6 @@ async function translateWithLibre(
       },
     }
   );
-
-  global.totalTranslated = global.totalTranslated + 1;
 
   return data?.translatedText ? data?.translatedText : default_value;
 }
@@ -98,8 +113,6 @@ async function translateWithArgos(
     }
   );
 
-  global.totalTranslated = global.totalTranslated + 1;
-
   return data?.translatedText ? data?.translatedText : default_value;
 }
 
@@ -114,8 +127,6 @@ async function translateWithBing(
     to,
     false
   );
-
-  global.totalTranslated = global.totalTranslated + 1;
 
   return translation;
 }
@@ -152,15 +163,17 @@ async function translateWithGoogle(
       warn('No new proxy exists, continuing without proxy');
       global.proxyIndex = -1;
 
-      let translatedStr = await translateWithGoogle(str, from, to);
+      let translatedStr = await translateWithGoogleByProxySupport(
+        str,
+        from,
+        to
+      );
 
       return translatedStr;
     }
-  }
-
-  // STEP: translate without proxy
-  else {
-    let translatedStr = await translateWithGoogle(str, from, to);
+  } else {
+    // STEP: translate without proxy
+    let translatedStr = await translateWithGoogleByProxySupport(str, from, to);
 
     return translatedStr;
   }
@@ -182,8 +195,6 @@ async function translateWithGoogleByProxySupport(
       agent: options !== undefined ? options.agent : undefined,
     }
   );
-
-  global.totalTranslated = global.totalTranslated + 1;
 
   return text;
 }

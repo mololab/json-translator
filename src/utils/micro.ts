@@ -26,5 +26,5 @@ export function translationStatistic(
 }
 
 export const current_version = packageJSON.version;
-export const default_value = '-';
+export const default_value = '--';
 export const translation_value_limit = 5000;
