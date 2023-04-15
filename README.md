@@ -558,6 +558,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translation Option for own LibreTranslate instance
 
+- [ ] CLI options for langs & source selection
+
 ## License
 
 **_@parvineyvazov/json-translator_** will be available under the [MIT license](LICENSE).
