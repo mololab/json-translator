@@ -1,8 +1,8 @@
-import translate from '@vitalets/google-translate-api';
+import { translate } from '@vitalets/google-translate-api';
 import * as bingTranslator from 'bing-translate-api';
 import createHttpProxyAgent from 'http-proxy-agent';
 import { LanguageCode, Sources } from '..';
-import { warn } from '../utils/console';
+import { error, warn } from '../utils/console';
 import { default_value } from '../utils/micro';
 import axios from 'axios';
 import * as ignorer from './ignorer';
@@ -44,7 +44,6 @@ export async function plaintranslate(
     warn(
       `\nerror while translating \n\t"${str}" \nassigned "--" instead of exit from cli.`
     );
-
     global.totalTranslated = global.totalTranslated + 1;
 
     return default_value;
@@ -190,9 +189,7 @@ async function translateWithGoogleByProxySupport(
     {
       from: from,
       to: to,
-    },
-    {
-      agent: options !== undefined ? options.agent : undefined,
+      fetchOptions: { agent: options !== undefined ? options.agent : undefined },
     }
   );
 

@@ -35,7 +35,7 @@ export async function saveFilePublic(path: string, data: any) {
 
   await fs
     .writeFile(path, json, 'utf8')
-    .then(_ => {})
+    .then(_ => { })
     .catch(_ => {
       error(messages.file.cannot_save_file);
     });
@@ -98,6 +98,9 @@ function valueIsSafe(value: string): ValueSafety {
 
   return result;
 }
+
+
+
 
 interface ValueSafety {
   is_safe: boolean;
