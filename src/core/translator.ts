@@ -2,7 +2,7 @@ import { translate } from '@vitalets/google-translate-api';
 import * as bingTranslator from 'bing-translate-api';
 import createHttpProxyAgent from 'http-proxy-agent';
 import { LanguageCode, Sources } from '..';
-import { error, warn } from '../utils/console';
+import { warn } from '../utils/console';
 import { default_value } from '../utils/micro';
 import axios from 'axios';
 import * as ignorer from './ignorer';

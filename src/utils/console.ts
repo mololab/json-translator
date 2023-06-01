@@ -19,9 +19,7 @@ export function info(message: string) {
   console.log(info_color, `${message}`, '\x1b[0m');
 }
 
-export function infoChoices(messages: string, choices: string) {
-  console.log(messages, info_color, `${choices}`, '\x1b[0m');
-}
+
 
 export function warn(message: string) {
   console.log(warn_color, `${message}`, '\x1b[0m');
@@ -62,7 +60,7 @@ export const messages = {
     - Please ensure that the value for the option "-t, --to <Languages>" is not empty.
     - Please make sure to provide a valid path for the proxy list file at "<your/path/to/proxy_list.txt>".
     `,
-    no_selected_language: 'You didn`t select any language. Please try it again and select languages with the space bar.',
+    no_selected_language: 'You didn`t select any language.  Choose from the bottom list it again and select languages with the space bar.',
     creation_done: 'All files are created! You can find them in the same folder as the original JSON file.',
   },
   object: {},

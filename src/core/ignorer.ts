@@ -1,3 +1,4 @@
+
 export function map(
   str: string
 ): {
@@ -69,7 +70,7 @@ function mapIgnoredValues(
 
   let regex = new RegExp(`${start}(.*?)${end}`, 'g');
 
-  let new_str = str.replace(regex, function(word) {
+  let new_str = str.replace(regex, function (word) {
     word = word.substring(start.length, word.length - end.length);
 
     // const key = "*".repeat(counter)
@@ -108,7 +109,7 @@ function urlEncoder(text: string): string {
   // url finder regex => url
   const regex = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!;:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gim;
 
-  let new_text = text.replace(regex, function(url) {
+  let new_text = text.replace(regex, function (url) {
     url = `{` + url + `}`;
     return url;
   });
@@ -120,10 +121,11 @@ function urlDecoder(text: string): string {
   // url finder regex => {url}
   const regex = /{(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!;:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!;:,.]*\)|[A-Z0-9+&@#\/%=~_|$])}/gim;
 
-  let new_text = text.replace(regex, function(url) {
+  let new_text = text.replace(regex, function (url) {
     url = url.substring(1, url.length - 1);
     return url;
   });
 
   return new_text;
 }
+
