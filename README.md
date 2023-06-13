@@ -56,20 +56,22 @@ jsontt <your/path/to/file.json>
 
 ## Arguments
 
-- `[path]`: Required JSON file path `<your/path/to/file.json>` or proxy list text file path `<your/path/to/file.json> <your/path/to/proxy_list.txt>`
+- `[path]`: Required JSON file path `<your/path/to/file.json>`
+- `[path]`: optional proxy list txt file path `<your/path/to/proxy_list.txt>`
 
 ## Options
 
-- `-T, --translator <TranslationService>`: Specify the translation service to use (e.g., `--translator Google`)
-- `-f, --from <Language>`: Specify the current language (e.g., `--from English`)
-- `-t, --to <Languages>`: Specify the target languages, separated by commas (e.g., `--to Arabic,Chinese_Simplified,French`)
-
+  - -V, --version                  output the version number
+  - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
+  - -f, --from <Language>          the translate language from it, e.g., --from en
+  - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
+  - -h, --help                     display help for command
 ## Examples
 
 Translate a JSON file using Google Translate:
 
 ```bash
-jsontt <your/path/to/file.json> --translator google --from English --to Arabic,Chinese_Simplified,French
+jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN
 ```
 
 # **2. 💥 Package Usage**
