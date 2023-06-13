@@ -1,18 +1,17 @@
-import { getLanguages,  Sources } from '..';
+import { listIOS, Sources, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,
   info,
   messages,
-  success,
+  supportedLanguagesUrl,
   warn,
 } from '../utils/console';
 import loading from 'loading-cli';
 import { capitalize, current_version, getCodeFromLanguage, translationStatistic } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
-import { Command } from "commander";
+import { Command, Option } from "commander";
 import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
-var figlet = require("figlet");
 
 const program = new Command();
 
@@ -23,13 +22,23 @@ export async function initializeCli() {
   global.proxyList = [];
   program
     .version(current_version)
+    .addHelpText('beforeAll', messages.cli.welcome)
+    .description(messages.cli.description)
     .usage(messages.cli.usage)
-    .description(`${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}\n\n\n${messages.cli.description}`)
-    .option("-T, --translator <TranslationService>", messages.cli.translator, false)
-    .option("-f, --from  <Language>", messages.cli.from, false)
-    .option("-t, --to <Languages>", messages.cli.to, false)
+    .addOption(
+      new Option(`-T, --translator <Translator>`, messages.cli.translator)
+        .choices(translatorsNames)
+    )
+    .addOption(
+      new Option(`-f, --from <Language>`, messages.cli.from)
+    )
+    .addOption(
+      new Option(`-t, --to <Languages...>`, messages.cli.to)
+    )
+    .addHelpText('after', `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`)
+    .addHelpText('afterAll', supportedLanguagesUrl)
 
-
+  program.showSuggestionAfterError()
   program.exitOverride();
 
   try {
@@ -38,45 +47,38 @@ export async function initializeCli() {
 
     process.exit()
   }
-  /*
-      If the user adds an option without a value or forgets the value of the option, the value of the next option is applied to the proxy file path.
-      It is actually a problem in commander.js
-      I've come to this temporary solution, which is if the proxy path does not end with .txt display error 'messages.cli.proxy_File_notValid_or_not_empty_options'
-  */
-  if (program.args[1] !== undefined && !program.args[1].includes('.txt')) {
-    error(messages.cli.proxy_File_notValid_or_not_empty_options)
-    process.exit(1)
-  }
+
 
 
   if (!process.argv.slice(2).length) {
-    help();
+    program.outputHelp()
     return;
+  }
+
+  /*
+    If the user adds an option without a value or forgets the value of the option, the value of the next option is applied to the proxy file path.
+    It is actually a problem in commander.js
+    I've come to this temporary solution, which is if the proxy path does not end with .txt display error 'messages.cli.proxy_File_notValid_or_not_empty_options'
+*/
+  if (program.args[1] !== undefined && !program.args[1].includes('.txt')) {
+    error(messages.cli.proxy_File_notValid_or_not_empty_options)
+    process.exit(1)
   }
   translate();
 
 }
 
-export async function help() {
-  console.log(messages.cli.welcome);
-  success(
-    figlet.textSync("json-translator")
-  );
-  console.log(messages.cli.version)
-  program.outputHelp()
-
-}
 
 async function translate() {
-  const myArgs = program.args;
-  const myOpts = program.opts();
-  if (myArgs[1] && typeof myArgs[1] === 'string') {
-    const file_path = myArgs[1];
+  const commandArguments = program.args;
+  const commandOptions = program.opts();
+  if (commandArguments[1] && typeof commandArguments[1] === 'string') {
+    const file_path = commandArguments[1];
     await readProxyFile(file_path);
   }
 
   // no path condition
-  let objectPath = myArgs[0];
+  let objectPath = commandArguments[0];
   if (objectPath === undefined || objectPath === '') {
     error(messages.file.no_path);
     info(`([path] ${messages.cli.paths})`)
@@ -91,82 +93,68 @@ async function translate() {
   }
 
 
-  let translator = myOpts.translator
-  if (translator && translator !== '') {
-    translator = capitalize(myOpts.translator)
-    switch (translator) {
-      case 'Google':
-        global.source = Sources.GoogleTranslate
-        break;
-      case 'Argos':
-        global.source = Sources.ArgosTranslate
-
-        break;
-      case 'Libre':
-        global.source = Sources.LibreTranslate
-
-        break;
-      case 'Bing':
-        global.source = Sources.BingTranslate
-        break;
-      default:
-        error(translator + ' ' + messages.cli.translator_not_available);
-        promptTranslator()
-        break;
+  let translatorInput = commandOptions.translator ? commandOptions.translator : undefined
+  if (translatorInput && translatorInput !== '') {
+    if (translatorsNames.includes(translatorInput)) {
+      let translator = translatorsNames.find((el: string) => el.includes(translatorInput as string))
+      global.source = capitalize(translator as string) as Sources
+    }
+    else {
+      error(`${messages.cli.translator_not_available}`)
+      process.exit(1)
     }
   } else {
-   await promptTranslator()
+    await promptTranslator()
   }
 
 
 
 
-  const opt_from: any = myOpts.from ? capitalize(myOpts.from) : undefined;
-  const opt_to: any = myOpts.to ? (myOpts.to as string).split(',').map(lang => capitalize(lang)) : undefined;
-  let from!: string;
-  let to!: string[];
-  
+  const sourceLanguageInput: any = commandOptions.from ? commandOptions.from : undefined;
+  const targetLanguageInput: any = commandOptions.to ? commandOptions.to : undefined;
 
-  if (!opt_from && !opt_to) {
-    ({ from } = await promptFrom());
-    ({ to } = await promptTo());
+  let sourceLanguageISO: string;
+  let targetLanguageISOs: string[];
+
+
+  if (!sourceLanguageInput) {
+    const { from } = await promptFrom();
+    sourceLanguageISO = getCodeFromLanguage(from);
   } else {
-    if (opt_from) {
-      if ((getLanguages() as any)[opt_from]) {
-        from = opt_from;
+    if (listIOS.includes(sourceLanguageInput)) { 
+      sourceLanguageISO = sourceLanguageInput;
+    } else {
+      error(`[${sourceLanguageInput}]: ${messages.cli.from_not_available}`);
+      process.exit(1);
+    }
+  }
+
+
+  if (!targetLanguageInput) {
+    const { to } = await promptTo();
+    targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+
+    if (targetLanguageISOs.length === 0 || targetLanguageISOs === undefined) {
+      warn(messages.cli.no_selected_language);
+      const { to } = await promptTo();
+      targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+    }
+
+  } else {
+
+    targetLanguageISOs = targetLanguageInput.map((lang: string) => {
+      if (listIOS.includes(lang)) {
+        return lang;
       } else {
-        error(opt_from + ' ' + messages.cli.from_not_available);
-        ({ from } = await promptFrom());
+        error(`[${lang}]: ${messages.cli.to_not_available}`);
+        process.exit(1);
       }
-    } else {
-      ({ from } = await promptFrom());
-    }
-
-    if (opt_to) {
-      to = opt_to;
-    } else {
-      ({ to } = await promptTo());
-    }
-  }
-
-  let available_languages = to.filter((language) => (getLanguages() as any)[language] !== undefined);
-  let not_available_languages = to.filter((language) => (getLanguages() as any)[language] === undefined);
-
-  if (not_available_languages.length !== 0) {
-    for (let lang of not_available_languages) {
-      error(lang + ' ' + messages.cli.from_not_available);
-    }
-    ({ to } = await promptTo(available_languages));
+    });
   }
 
 
 
-  if (to.length === 0 || to === undefined) {
-    warn(messages.cli.no_selected_language);
-    ({ to } = await promptTo());
-  }
 
-  const to_languages = to.map(language => (getLanguages() as any)[language]);
 
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
@@ -186,7 +174,7 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, getCodeFromLanguage(from), to_languages);
+  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs);
 
   load.succeed(
     `DONE! ${translationStatistic(

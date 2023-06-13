@@ -41,7 +41,7 @@ export async function promptFrom() {
   return answers;
 }
 
-export async function promptTo( default_languages?: any) {
+export async function promptTo(default_languages?: any) {
   const answers = await inquirer.prompt([
     {
       type: 'checkbox',
@@ -52,21 +52,22 @@ export async function promptTo( default_languages?: any) {
       default: default_languages ? default_languages : []
     },
   ]);
+
   return answers;
 }
 
 function getLanguageChoices(): {
-    from_choices: LanguageCodes;
-    to_choices: LanguageCodes;
-  } {
-    let from_choices = getFromChoices();
-    let to_choices = from_choices.filter(language => language !== `Automatic`);
-  
-    return { from_choices, to_choices };
-  }
-  
-  function getFromChoices(): LanguageCodes {
-    let languages = Object.entries(getLanguages() as any).map(([key, _]) => key);
-  
-    return languages;
-  }
+  from_choices: LanguageCodes;
+  to_choices: LanguageCodes;
+} {
+  let from_choices = getFromChoices();
+  let to_choices = from_choices.filter(language => language !== `Automatic`);
+
+  return { from_choices, to_choices };
+}
+
+function getFromChoices(): LanguageCodes {
+  let languages = Object.entries(getLanguages() as any).map(([key, _]) => key);
+
+  return languages;
+}

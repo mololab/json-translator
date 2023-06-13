@@ -43,6 +43,7 @@ export enum Sources {
 // default
 global.source = Sources.GoogleTranslate;
 
+export const translatorsNames = Object.values(Sources).map(s => s.split('Translate')[0].toLowerCase())
 // TYPES
 export interface translatedObject {
   [key: string]: any;
@@ -50,7 +51,6 @@ export interface translatedObject {
 
 export type LanguageCode = string;
 export type LanguageCodes = LanguageCode[];
-
 export function getLanguages() {
   if (global.source === Sources.LibreTranslate) {
     return LibreTranslateLanguages;
@@ -62,6 +62,8 @@ export function getLanguages() {
 
   return GoogleTranslateLanguages;
 }
+
+
 
 enum LibreTranslateLanguages {
   Automatic = 'auto',
@@ -340,3 +342,8 @@ enum BingTranslateLanguages {
 }
 
 export const languages = GoogleTranslateLanguages;
+
+
+export const listIOS = Object.values(getLanguages() as any);
+
+
