@@ -234,6 +234,7 @@
 
 <details>
   <summary>LibreTranslate</summary>
+  
   | ABC | Language   | Code |
   |-----|------------|------|
   | A   | Arabic     | ar   |
@@ -269,6 +270,7 @@
 
 <details>
   <summary>ArgosTranslate</summary>
+  
   | ABC | Language   | Code |
   |-----|------------|------|
   | A   | Arabic     | ar   |
