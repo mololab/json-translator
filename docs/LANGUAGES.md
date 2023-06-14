@@ -2,515 +2,294 @@
 
 **json-translator** package supports 100+ languages. Also, it can detect and translate to the target language if you mark the source language as `Automatic`.
 
-<details><summary>Google Translate</summary>
+## Supported Languages
 
-</br>
-
-- **A**
-
-  - Afrikaans
-  - Albanian
-  - Amharic
-  - Arabic
-  - Armenian
-  - Azerbaijani
-
-- **B**
-
-  - Basque
-  - Belarusian
-  - Bengali
-  - Bosnian
-  - Bulgarian
-
-- **C**
-
-  - Catalan
-  - Cebuano
-  - Chichewa
-  - Chinese (Simplified)
-  - Chinese (Traditional)
-  - Corsican
-  - Croatian
-  - Czech
-
-- **D**
-
-  - Danish
-  - Dutch
-
-- **E**
-
-  - English
-  - Esperanto
-  - Estonian
-
-- **F**
-
-  - Filipino
-  - Finnish
-  - French
-  - Frisian
-
-- **G**
-
-  - Galician
-  - Georgian
-  - German
-  - Greek
-  - Gujarati
-
-- **H**
-
-  - Haitian Creole
-  - Hausa
-  - Hawaiian
-  - Hebrew
-  - Hindi
-  - Hmong
-  - Hungarian
-
-- **I**
-
-  - Icelandic
-  - Igbo
-  - Indonesian
-  - Irish
-  - Italian
-
-- **J**
-
-  - Japanese
-  - Javanese
-
-- **K**
-
-  - Kannada
-  - Kazakh
-  - Khmer
-  - Korean
-  - Kurdish (Kurmanji)
-  - Kyrgyz
-
-- **L**
-
-  - Lao
-  - Latin
-  - Latvian
-  - Lithuanian
-  - Luxembourgish
-
-- **M**
-
-  - Macedonian
-  - Malagasy
-  - Malay
-  - Malayalam
-  - Maltese
-  - Maori
-  - Marathi
-  - Mongolian
-  - Myanmar (Burmese)
-
-- **N**
-
-  - Nepali
-  - Norwegian
-
-- **P**
-
-  - Pashto
-  - Persian
-  - Polish
-  - Portuguese
-  - Punjabi
-  - Romanian
-
-- **R**
-
-  - Russian
-
-- **S**
-
-  - Samoan
-  - Scots Gaelic
-  - Serbian
-  - Sesotho
-  - Shona
-  - Sindhi
-  - Sinhala
-  - Slovak
-  - Slovenian
-  - Somali
-  - Spanish
-  - Sundanese
-  - Swahili
-  - Swedish
-
-- **T**
-
-  - Tajik
-  - Tamil
-  - Telugu
-  - Thai
-  - Turkish
-
-- **U**
-
-  - Ukrainian
-  - Urdu
-  - Uzbek
-
-- **V**
-
-  - Vietnamese
-
-- **W**
-
-  - Welsh
-
-- **X**
-
-  - Xhosa
-
-- **Y**
-
-  - Yiddish
-  - Yoruba
-
-- **Z**
-  - Zulu
-
+<details>
+  <summary>Google Translate</summary>
+  
+  | ABC | Language              | Code |
+  |-----|-----------------------|------|
+  | A   | Afrikaans             | af   |
+  |     | Albanian              | sq   |
+  |     | Amharic               | am   |
+  |     | Arabic                | ar   |
+  |     | Armenian              | hy   |
+  |     | Azerbaijani           | az   |
+  | B   | Basque                | eu   |
+  |     | Belarusian            | be   |
+  |     | Bengali               | bn   |
+  |     | Bosnian               | bs   |
+  |     | Bulgarian             | bg   |
+  | C   | Catalan               | ca   |
+  |     | Cebuano               | ceb  |
+  |     | Chichewa              | ny   |
+  |     | Chinese_Simplified    | zh-CN|
+  |     | Chinese_Traditional   | zh-TW|
+  |     | Corsican              | co   |
+  |     | Croatian              | hr   |
+  |     | Czech                 | cs   |
+  | D   | Danish                | da   |
+  |     | Dutch                 | nl   |
+  | E   | English               | en   |
+  |     | Esperanto             | eo   |
+  |     | Estonian              | et   |
+  | F   | Filipino              | tl   |
+  |     | Finnish               | fi   |
+  |     | French                | fr   |
+  |     | Frisian               | fy   |
+  | G   | Galician              | gl   |
+  |     | Georgian              | ka   |
+  |     | German                | de   |
+  |     | Greek                 | el   |
+  |     | Gujarati              | gu   |
+  | H   | Haitian_Creole        | ht   |
+  |     | Hausa                 | ha   |
+  |     | Hawaiian              | haw  |
+  |     | Hebrew                | iw   |
+  |     | Hindi                 | hi   |
+  |     | Hmong                 | hmn  |
+  |     | Hungarian             | hu   |
+  | I   | Icelandic             | is   |
+  |     | Igbo                  | ig   |
+  |     | Indonesian            | id   |
+  |     | Irish                 | ga   |
+  |     | Italian               | it   |
+  | J   | Japanese              | ja   |
+  |     | Javanese              | jw   |
+  | K   | Kannada               | kn   |
+  |     | Kazakh                | kk   |
+  |     | Khmer                 | km   |
+  |     | Korean                | ko   |
+  |     | Kurdish_Kurmanji      | ku   |
+  |     | Kyrgyz                | ky   |
+  | L   | Lao                   | lo   |
+  |     | Latin                 | la   |
+  |     | Latvian               | lv   |
+  |     | Lithuanian            | lt   |
+  |     | Luxembourgish         | lb   |
+  | M   | Macedonian            | mk   |
+  |     | Malagasy              | mg   |
+  |     | Malay                 | ms   |
+  |     | Malayalam             | ml   |
+  |     | Maltese               | mt   |
+  |     | Maori                 | mi   |
+  |     | Marathi               | mr   |
+  |     | Mongolian             | mn   |
+  |     | Myanmar_Burmese       | my   |
+  | N   | Nepali                | ne   |
+  |     | Norwegian             | no   |
+  | P   | Pashto                | ps   |
+  |     | Persian               | fa   |
+  |     | Polish                | pl   |
+  |     | Portuguese            | pt   |
+  |     | Punjabi               | pa   |
+  | R   | Romanian              | ro   |
+  |     | Russian               | ru   |
+  | S   | Samoan                | sm   |
+  |     | Scots_Gaelic          | gd   |
+  |     | Serbian               | sr   |
+  |     | Sesotho               | st   |
+  |     | Shona                 | sn   |
+  |     | Sindhi                | sd   |
+  |     | Sinhala               | si   |
+  |     | Slovak                | sk   |
+  |     | Slovenian             | sl   |
+  |     | Somali                | so   |
+  |     | Spanish               | es   |
+  |     | Sundanese             | su   |
+  |     | Swahili               | sw   |
+  |     | Swedish               | sv   |
+  | T   | Tajik                 | tg   |
+  |     | Tamil                 | ta   |
+  |     | Telugu                | te   |
+  |     | Thai                  | th   |
+  |     | Turkish               | tr   |
+  | U   | Ukrainian             | uk   |
+  |     | Urdu                  | ur   |
+  |     | Uzbek                 | uz   |
+  | V   | Vietnamese            | vi   |
+  | W   | Welsh                 | cy   |
+  | X   | Xhosa                 | xh   |
+  | Y   | Yiddish               | yi   |
+  |     | Yoruba                | yo   |
+  | Z   | Zulu                  | zu   |
 </details>
 
-<details><summary>Bing Microsoft Translate</summary>
+<details>
+  <summary>Bing Microsoft  Translate</summary>
 
-- **A**
-
-  - Afrikaans
-  - Albanian
-  - Amharic
-  - Arabic
-  - Armenian
-  - Assamese
-  - Azerbaijani
-
-- **B**
-
-  - Bangla
-  - Bashkir
-  - Basque
-  - Bosnian
-  - Bulgarian
-
-- **C**
-
-  - Cantonese (Traditional)
-  - Catalan
-  - Chinese (Literary)
-  - Chinese (Simplified)
-  - Chinese (Traditional)
-  - Croatian
-  - Czech
-
-- **D**
-
-  - Danish
-  - Dari
-  - Divehi
-  - Dutch
-
-- **E**
-
-  - English
-  - Estonian
-
-- **F**
-
-  - Faroese
-  - Fijian
-  - Filipino
-  - Finnish
-  - French
-  - French (Canada)
-
-- **G**
-
-  - Galician
-  - Georgian
-  - German
-  - Greek
-  - Gujarati
-
-- **H**
-
-  - Haitian Creole
-  - Hebrew
-  - Hindi
-  - Hmong Daw
-  - Hungarian
-
-- **I**
-
-  - Icelandic
-  - Indonesian
-  - Inuinnaqtun
-  - Inuktitut
-  - Inuktitut (Latin)
-  - Irish
-  - Italian
-
-- **J**
-
-  - Japanese
-
-- **K**
-
-  - Kannada
-  - Khmer
-  - Klingon (Latin)
-  - Korean
-  - Kurdish (Central)
-  - Kurdish (Northern)
-  - Kyrgyz
-
-- **L**
-
-  - Lao
-  - Latvian
-  - Lithuanian
-
-- **M**
-
-  - Macedonian
-  - Malagasy
-  - Malay
-  - Malayalam
-  - Maltese
-  - Maori
-  - Marathi
-  - Mongolian (Cyrillic)
-  - Mongolian (Traditional)
-  - Myanmar (Burmese)
-
-- **N**
-
-  - Nepali
-  - Norwegian
-
-- **O**
-
-  - Odia
-
-- **P**
-
-  - Pashto
-  - Persian
-  - Polish
-  - Portuguese (Brazil)
-  - Portuguese (Portugal)
-  - Punjabi
-
-- **Q**
-
-  - Querétaro Otomi
-
-- **R**
-
-  - Romanian
-  - Russian
-
-- **S**
-
-  - Samoan
-  - Serbian (Cyrillic)
-  - Serbian (Latin)
-  - Slovak
-  - Slovenian
-  - Somali
-  - Spanish
-  - Swahili
-  - Swedish
-
-- **T**
-
-  - Tahitian
-  - Tamil
-  - Tatar
-  - Telugu
-  - Thai
-  - Tibetan
-  - Tigrinya
-  - Tongan
-  - Turkish
-  - Turkmen
-
-- **U**
-
-  - Ukrainian
-  - Upper Sorbian
-  - Urdu
-  - Uyghur
-  - Uzbek (Latin)
-
-- **V**
-
-  - Vietnamese
-
-- **W**
-
-  - Welsh
-
-* **Y**
-
-  - Yucatec_Maya
-
-* **Z**
-  - Zulu
-
+  | ABC | Language              | Code    |
+  |-----|-----------------------|---------|
+  | A   | Afrikaans             | af      |
+  |     | Albanian              | sq      |
+  |     | Amharic               | am      |
+  |     | Arabic                | ar      |
+  |     | Armenian              | hy      |
+  |     | Assamese              | as      |
+  |     | Azerbaijani           | az      |
+  | B   | Bangla                | bn      |
+  |     | Bashkir               | ba      |
+  |     | Basque                | eu      |
+  |     | Bosnian               | bs      |
+  |     | Bulgarian             | bg      |
+  | C   | Cantonese_Traditional | yue     |
+  |     | Catalan               | ca      |
+  |     | Chinese_Literary      | lzh     |
+  |     | Chinese_Simplified    | zh-Hans |
+  |     | Chinese_Traditional   | zh-Hant |
+  |     | Croatian              | hr      |
+  |     | Czech                 | cs      |
+  | D   | Danish                | da      |
+  |     | Dari                  | prs     |
+  |     | Divehi                | dv      |
+  |     | Dutch                 | nl      |
+  | E   | English               | en      |
+  |     | Estonian              | et      |
+  | F   | Faroese               | fo      |
+  |     | Fijian                | fj      |
+  |     | Filipino              | fil     |
+  |     | Finnish               | fi      |
+  |     | French                | fr      |
+  |     | French_Canada         | fr-CA   |
+  | G   | Galician              | gl      |
+  |     | Georgian              | ka      |
+  |     | German                | de      |
+  |     | Greek                 | el      |
+  |     | Gujarati              | gu      |
+  | H   | Haitian_Creole        | ht      |
+  |     | Hebrew                | he      |
+  |     | Hindi                 | hi      |
+  |     | Hmong_Daw             | mww     |
+  |     | Hungarian             | hu      |
+  | I   | Icelandic             | is      |
+  |     | Indonesian            | id      |
+  |     | Inuinnaqtun           | ikt     |
+  |     | Inuktitut             | iu      |
+  |     | Inuktitut_Latin       | iu-Latn |
+  |     | Irish                 | ga      |
+  |     | Italian               | it      |
+  | J   | Japanese              | ja      |
+  | K   | Kannada               | kn      |
+  |     | Kazakh                | kk      |
+  |     | Khmer                 | km      |
+  |     | Klingon_Latin         | tlh-Latn|
+  |     | Korean                | ko      |
+  |     | Kurdish_Central       | ku      |
+  |     | Kurdish_Northern      | kmr     |
+  |     | Kyrgyz                | ky      |
+  | L   | Lao                   | lo      |
+  |     | Latvian               | lv      |
+  |     | Lithuanian            | lt      |
+  | M   | Macedonian            | mk      |
+  |     | Malagasy              | mg      |
+  |     | Malay                 | ms      |
+  |     | Malayalam             | ml      |
+  |     | Maltese               | mt      |
+  |     | Marathi               | mr      |
+  |     | Mongolian_Cyrillic    | mn-Cyrl |
+  |     | Mongolian_Traditional | mn-Mong |
+  |     | Myanmar_Burmese       | my      |
+  |     | Māori                 | mi      |
+  | N   | Nepali                | ne      |
+  |     | Norwegian             | nb      |
+  | O   | Odia                  | or      |
+  | P   | Pashto                | ps      |
+  |     | Persian               | fa      |
+  |     | Polish                | pl      |
+  |     | Portuguese_Brazil     | pt      |
+  |     | Portuguese_Portugal   | pt-PT   |
+  |     | Punjabi               | pa      |
+  | Q   | Querétaro_Otomi       | otq     |
+  | R   | Romanian              | ro      |
+  |     | Russian               | ru      |
+  | S   | Samoan                | sm      |
+  |     | Serbian_Cyrillic      | sr-Cyrl |
+  |     | Serbian_Latin         | sr-Latn |
+  |     | Slovak                | sk      |
+  |     | Slovenian             | sl      |
+  |     | Somali                | so      |
+  |     | Spanish               | es      |
+  |     | Swahili               | sw      |
+  |     | Swedish               | sv      |
+  | T   | Tahitian              | ty      |
+  |     | Tamil                 | ta      |
+  |     | Tatar                 | tt      |
+  |     | Telugu                | te      |
+  |     | Thai                  | th      |
+  |     | Tibetan               | bo      |
+  |     | Tigrinya              | ti      |
+  |     | Tongan                | to      |
+  |     | Turkish               | tr      |
+  |     | Turkmen               | tk      |
+  | U   | Ukrainian             | uk      |
+  |     | Upper_Sorbian         | hsb     |
+  |     | Urdu                  | ur      |
+  |     | Uyghur                | ug      |
+  |     | Uzbek_Latin           | uz      |
+  | V   | Vietnamese            | vi      |
+  | W   | Welsh                 | cy      |
+  | Y   | Yucatec_Maya          | yua     |
+  | Z   | Zulu                  | zu      |
 </details>
 
-<details><summary>Libre Translate</summary>
-
-</br>
-
-- **A**
-
-  - Arabic
-  - Azerbaijani
-
-* **C**
-
-  - Chinese
-  - Czech
-
-* **D**
-
-  - Danish
-  - Dutch
-
-* **E**
-
-  - English
-  - Esperanto
-
-* **F**
-
-  - Finnish
-  - French
-
-* **G**
-
-  - German
-  - Greek
-
-* **H**
-
-  - Hebrew
-  - Hindi
-  - Hungarian
-
-* **I**
-
-  - Indonesian
-  - Irish
-  - Italian
-
-* **J**
-
-  - Japanese
-
-* **K**
-
-  - Korean
-
-- **P**
-
-  - Persian
-  - Polish
-  - Portuguese
-
-- **R**
-
-  - Russian
-
-- **S**
-
-  - Slovak
-  - Spanish
-  - Swedish
-
-- **T**
-
-  - Turkish
-
-- **U**
-
-  - Ukrainian
-
+<details>
+  <summary>LibreTranslate</summary>
+  | ABC | Language   | Code |
+  |-----|------------|------|
+  | A   | Arabic     | ar   |
+  |     | Azerbaijani| az   |
+  | C   | Chinese    | zh   |
+  |     | Czech      | cs   |
+  | D   | Danish     | da   |
+  |     | Dutch      | nl   |
+  | E   | English    | en   |
+  |     | Esperanto  | eo   |
+  | F   | Finnish    | fi   |
+  |     | French     | fr   |
+  | G   | German     | de   |
+  |     | Greek      | el   |
+  | H   | Hebrew     | iw   |
+  |     | Hindi      | hi   |
+  |     | Hungarian  | hu   |
+  | I   | Indonesian | id   |
+  |     | Irish      | ga   |
+  |     | Italian    | it   |
+  | J   | Japanese   | ja   |
+  | K   | Korean     | ko   |
+  | P   | Persian    | fa   |
+  |     | Polish     | pl   |
+  |     | Portuguese | pt   |
+  | R   | Russian    | ru   |
+  | S   | Slovak     | sk   |
+  |     | Spanish    | es   |
+  |     | Swedish    | sv   |
+  | T   | Turkish    | tr   |
+  | U   | Ukrainian  | uk   |
 </details>
 
-<details><summary>Argos Translate</summary>
-
-</br>
-
-- **A**
-
-  - Arabic
-
-* **C**
-
-  - Chinese
-
-- **E**
-
-  - English
-
-- **F**
-
-  - French
-
-- **G**
-
-  - German
-
-- **H**
-
-  - Hindi
-
-- **I**
-
-  - Indonesian
-  - Irish
-  - Italian
-
-- **J**
-
-  - Japanese
-
-- **K**
-
-  - Korean
-
-* **P**
-
-  - Polish
-  - Portuguese
-
-* **R**
-
-  - Russian
-
-* **S**
-
-  - Spanish
-
-* **T**
-
-  - Turkish
-
-- **V**
-
-  - Vietnamese
-
+<details>
+  <summary>ArgosTranslate</summary>
+  | ABC | Language   | Code |
+  |-----|------------|------|
+  | A   | Arabic     | ar   |
+  |     | Automatic  | auto |
+  | C   | Chinese    | zh   |
+  | E   | English    | en   |
+  | F   | French     | fr   |
+  | G   | German     | de   |
+  | H   | Hindi      | hi   |
+  | I   | Indonesian | id   |
+  |     | Irish      | ga   |
+  | I   | Italian    | it   |
+  | J   | Japanese   | ja   |
+  | K   | Korean     | ko   |
+  | P   | Polish     | pl   |
+  |     | Portuguese | pt   |
+  | R   | Russian    | ru   |
+  | S   | Spanish    | es   |
+  | T   | Turkish    | tr   |
+  | V   | Vietnamese | vi   |
 </details>
+
+
+
