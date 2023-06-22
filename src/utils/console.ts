@@ -46,7 +46,7 @@ export const messages = {
     description: 'This package will provide you the ability to translate your JSON files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,
     usageWithProxy: `Usage with proxy list file: ${cli_name} <your/path/to/file.json> <your/path/to/proxy_list.txt>`,
-    usageByOps: `Usage with options: ${cli_name} <your/path/to/file.json>  --translator <TranslationService> --from <Language> --to <Languages...>`,
+    usageByOps: `Usage with options: ${cli_name} <your/path/to/file.json> --translator <TranslationService> --from <Language> --to <Languages...>`,
     paths: 'required json file path <path/file.json> or json file with proxy list txt file path <your/path/to/file.json> <your/path/to/proxy_list.txt>',
     translator: 'specify translation service',
     from: 'the translate language from it, e.g., --from en',
