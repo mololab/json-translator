@@ -1,54 +1,87 @@
-import { getLanguages, LanguageCodes, Sources } from '..';
+import { listIOS, Sources, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
-  commands,
   error,
   info,
-  language_choices,
   messages,
-  success,
+  supportedLanguagesUrl,
   warn,
 } from '../utils/console';
 import loading from 'loading-cli';
-import { getCodeFromLanguage, translationStatistic } from '../utils/micro';
+import { capitalize, current_version, getCodeFromLanguage, translationStatistic } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
-var inquirer = require('inquirer');
+import { Command, Option } from "commander";
+import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
+
+const program = new Command();
 
 export async function initializeCli() {
   global.totalTranslation = 0;
   global.totalTranslated = 0;
   global.proxyIndex = 0;
   global.proxyList = [];
+  program
+    .version(current_version)
+    .addHelpText('beforeAll', messages.cli.welcome)
+    .description(messages.cli.description)
+    .usage(messages.cli.usage)
+    .addOption(
+      new Option(`-T, --translator <Translator>`, messages.cli.translator)
+        .choices(translatorsNames)
+    )
+    .addOption(
+      new Option(`-f, --from <Language>`, messages.cli.from)
+    )
+    .addOption(
+      new Option(`-t, --to <Languages...>`, messages.cli.to)
+    )
+    .addHelpText('after', `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`)
+    .addHelpText('afterAll', supportedLanguagesUrl)
 
-  const myArgs = process.argv.slice(2);
-  if (
-    myArgs.length === 0 ||
-    myArgs[0] === commands.help1 ||
-    myArgs[0] === commands.help2
-  ) {
-    help();
+  program.showSuggestionAfterError()
+  program.exitOverride();
+
+  try {
+    program.parse();
+  } catch (err) {
+
+    process.exit()
+  }
+
+
+
+  if (!process.argv.slice(2).length) {
+    program.outputHelp()
     return;
   }
+
+  /*
+    If the user adds an option without a value or forgets the value of the option, the value of the next option is applied to the proxy file path.
+    It is actually a problem in commander.js
+    I've come to this temporary solution, which is if the proxy path does not end with .txt display error 'messages.cli.proxy_File_notValid_or_not_empty_options'
+*/
+  if (program.args[1] !== undefined && !program.args[1].includes('.txt')) {
+    error(messages.cli.proxy_File_notValid_or_not_empty_options)
+    process.exit(1)
+  }
   translate();
+
 }
 
-export async function help() {
-  success(messages.cli.welcome);
-  info(messages.cli.usage);
-}
 
 async function translate() {
-  const myArgs = process.argv.slice(2);
-
-  if (myArgs[1] && typeof myArgs[1] === 'string') {
-    const file_path = myArgs[1];
+  const commandArguments = program.args;
+  const commandOptions = program.opts();
+  if (commandArguments[1] && typeof commandArguments[1] === 'string') {
+    const file_path = commandArguments[1];
     await readProxyFile(file_path);
   }
 
   // no path condition
-  let objectPath = myArgs[0];
+  let objectPath = commandArguments[0];
   if (objectPath === undefined || objectPath === '') {
-    error(messages.file.no_path + ' ' + messages.cli.usage);
+    error(messages.file.no_path);
+    info(`([path] ${messages.cli.paths})`)
     return;
   }
 
@@ -59,61 +92,69 @@ async function translate() {
     return;
   }
 
-  let from!: string;
-  let to!: string[];
 
-  const source_choices = Object.entries(Sources).map(([key, _]) => {
-    return {
-      name: language_choices[key],
-      value: key,
-      short: key,
-    };
-  });
-
-  await inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'source',
-        message: messages.cli.from_source,
-        pageSize: 20,
-        choices: [...source_choices, new inquirer.Separator()],
-      },
-    ])
-    .then((answers: any) => {
-      global.source = answers.source;
-    });
-
-  const { from_choices, to_choices } = getLanguageChoices();
-
-  await inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'from',
-        message: messages.cli.from_message,
-        pageSize: 20,
-        choices: [...from_choices, new inquirer.Separator()],
-      },
-      {
-        type: 'checkbox',
-        name: 'to',
-        pageSize: 20,
-        message: messages.cli.to_message,
-        choices: to_choices,
-      },
-    ])
-    .then((answers: any) => {
-      from = answers.from;
-      to = answers.to;
-    });
-
-  if (to.length === 0 || to === undefined) {
-    warn(messages.cli.no_selected_language);
-    return;
+  let translatorInput = commandOptions.translator ? commandOptions.translator : undefined
+  if (translatorInput && translatorInput !== '') {
+    if (translatorsNames.includes(translatorInput)) {
+      let translator = translatorsNames.find((el: string) => el.includes(translatorInput as string))
+      global.source = capitalize(translator as string) as Sources
+    }
+    else {
+      error(`${messages.cli.translator_not_available}`)
+      process.exit(1)
+    }
+  } else {
+    await promptTranslator()
   }
 
-  const to_languages = to.map(language => (getLanguages() as any)[language]);
+
+
+
+  const sourceLanguageInput: any = commandOptions.from ? commandOptions.from : undefined;
+  const targetLanguageInput: any = commandOptions.to ? commandOptions.to : undefined;
+
+  let sourceLanguageISO: string;
+  let targetLanguageISOs: string[];
+
+
+  if (!sourceLanguageInput) {
+    const { from } = await promptFrom();
+    sourceLanguageISO = getCodeFromLanguage(from);
+  } else {
+    if (listIOS.includes(sourceLanguageInput)) { 
+      sourceLanguageISO = sourceLanguageInput;
+    } else {
+      error(`[${sourceLanguageInput}]: ${messages.cli.from_not_available}`);
+      process.exit(1);
+    }
+  }
+
+
+  if (!targetLanguageInput) {
+    const { to } = await promptTo();
+    targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+
+    if (targetLanguageISOs.length === 0 || targetLanguageISOs === undefined) {
+      warn(messages.cli.no_selected_language);
+      const { to } = await promptTo();
+      targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+    }
+
+  } else {
+
+    targetLanguageISOs = targetLanguageInput.map((lang: string) => {
+      if (listIOS.includes(lang)) {
+        return lang;
+      } else {
+        error(`[${lang}]: ${messages.cli.to_not_available}`);
+        process.exit(1);
+      }
+    });
+  }
+
+
+
+
 
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
@@ -133,7 +174,7 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, getCodeFromLanguage(from), to_languages);
+  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs);
 
   load.succeed(
     `DONE! ${translationStatistic(
@@ -146,18 +187,4 @@ async function translate() {
   info(messages.cli.creation_done);
 }
 
-function getLanguageChoices(): {
-  from_choices: LanguageCodes;
-  to_choices: LanguageCodes;
-} {
-  let from_choices = getFromChoices();
-  let to_choices = from_choices.filter(language => language !== `Automatic`);
 
-  return { from_choices, to_choices };
-}
-
-function getFromChoices(): LanguageCodes {
-  let languages = Object.entries(getLanguages() as any).map(([key, _]) => key);
-
-  return languages;
-}

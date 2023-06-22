@@ -47,12 +47,32 @@ npm i -g @parvineyvazov/json-translator
 # **1. 💫 CLI Usage**
 
 ```bash
-jsontt folder/file.json
+jsontt <your/path/to/file.json>
 ```
 
 <p align="center" >
     <img src="https://s3.gifyu.com/images/jsonttgif.gif" alt="jsontt logo" />
 </p>
+
+## Arguments
+
+- `[path]`: Required JSON file path `<your/path/to/file.json>`
+- `[path]`: optional proxy list txt file path `<your/path/to/proxy_list.txt>`
+
+## Options
+
+  - -V, --version                  output the version number
+  - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
+  - -f, --from <Language>          the translate language from it, e.g., --from en
+  - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
+  - -h, --help                     display help for command
+## Examples
+
+Translate a JSON file using Google Translate:
+
+```bash
+jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN
+```
 
 # **2. 💥 Package Usage**
 
