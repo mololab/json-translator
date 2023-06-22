@@ -8,9 +8,14 @@ import {
   warn,
 } from '../utils/console';
 import loading from 'loading-cli';
-import { capitalize, current_version, getCodeFromLanguage, translationStatistic } from '../utils/micro';
+import {
+  capitalize,
+  current_version,
+  getCodeFromLanguage,
+  translationStatistic,
+} from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
-import { Command, Option } from "commander";
+import { Command, Option } from 'commander';
 import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
 
 const program = new Command();
@@ -26,32 +31,30 @@ export async function initializeCli() {
     .description(messages.cli.description)
     .usage(messages.cli.usage)
     .addOption(
-      new Option(`-T, --translator <Translator>`, messages.cli.translator)
-        .choices(translatorsNames)
+      new Option(
+        `-T, --translator <Translator>`,
+        messages.cli.translator
+      ).choices(translatorsNames)
     )
-    .addOption(
-      new Option(`-f, --from <Language>`, messages.cli.from)
+    .addOption(new Option(`-f, --from <Language>`, messages.cli.from))
+    .addOption(new Option(`-t, --to <Languages...>`, messages.cli.to))
+    .addHelpText(
+      'after',
+      `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`
     )
-    .addOption(
-      new Option(`-t, --to <Languages...>`, messages.cli.to)
-    )
-    .addHelpText('after', `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`)
-    .addHelpText('afterAll', supportedLanguagesUrl)
+    .addHelpText('afterAll', supportedLanguagesUrl);
 
-  program.showSuggestionAfterError()
+  program.showSuggestionAfterError();
   program.exitOverride();
 
   try {
     program.parse();
   } catch (err) {
-
-    process.exit()
+    process.exit();
   }
 
-
-
   if (!process.argv.slice(2).length) {
-    program.outputHelp()
+    program.outputHelp();
     return;
   }
 
@@ -61,13 +64,11 @@ export async function initializeCli() {
     I've come to this temporary solution, which is if the proxy path does not end with .txt display error 'messages.cli.proxy_File_notValid_or_not_empty_options'
 */
   if (program.args[1] !== undefined && !program.args[1].includes('.txt')) {
-    error(messages.cli.proxy_File_notValid_or_not_empty_options)
-    process.exit(1)
+    error(messages.cli.proxy_File_notValid_or_not_empty_options);
+    process.exit(1);
   }
   translate();
-
 }
-
 
 async function translate() {
   const commandArguments = program.args;
@@ -81,7 +82,7 @@ async function translate() {
   let objectPath = commandArguments[0];
   if (objectPath === undefined || objectPath === '') {
     error(messages.file.no_path);
-    info(`([path] ${messages.cli.paths})`)
+    info(`([path] ${messages.cli.paths})`);
     return;
   }
 
@@ -92,43 +93,44 @@ async function translate() {
     return;
   }
 
-
-  let translatorInput = commandOptions.translator ? commandOptions.translator : undefined
+  let translatorInput = commandOptions.translator
+    ? commandOptions.translator
+    : undefined;
   if (translatorInput && translatorInput !== '') {
     if (translatorsNames.includes(translatorInput)) {
-      let translator = translatorsNames.find((el: string) => el.includes(translatorInput as string))
-      global.source = capitalize(translator as string) as Sources
-    }
-    else {
-      error(`${messages.cli.translator_not_available}`)
-      process.exit(1)
+      let translator = translatorsNames.find((el: string) =>
+        el.includes(translatorInput as string)
+      );
+      global.source = capitalize(translator as string) as Sources;
+    } else {
+      error(`${messages.cli.translator_not_available}`);
+      process.exit(1);
     }
   } else {
-    await promptTranslator()
+    await promptTranslator();
   }
 
-
-
-
-  const sourceLanguageInput: any = commandOptions.from ? commandOptions.from : undefined;
-  const targetLanguageInput: any = commandOptions.to ? commandOptions.to : undefined;
+  const sourceLanguageInput: any = commandOptions.from
+    ? commandOptions.from
+    : undefined;
+  const targetLanguageInput: any = commandOptions.to
+    ? commandOptions.to
+    : undefined;
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
-
 
   if (!sourceLanguageInput) {
     const { from } = await promptFrom();
     sourceLanguageISO = getCodeFromLanguage(from);
   } else {
-    if (listIOS.includes(sourceLanguageInput)) { 
+    if (listIOS.includes(sourceLanguageInput)) {
       sourceLanguageISO = sourceLanguageInput;
     } else {
       error(`[${sourceLanguageInput}]: ${messages.cli.from_not_available}`);
       process.exit(1);
     }
   }
-
 
   if (!targetLanguageInput) {
     const { to } = await promptTo();
@@ -139,9 +141,7 @@ async function translate() {
       const { to } = await promptTo();
       targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
     }
-
   } else {
-
     targetLanguageISOs = targetLanguageInput.map((lang: string) => {
       if (listIOS.includes(lang)) {
         return lang;
@@ -151,10 +151,6 @@ async function translate() {
       }
     });
   }
-
-
-
-
 
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
@@ -186,5 +182,3 @@ async function translate() {
 
   info(messages.cli.creation_done);
 }
-
-

@@ -1,5 +1,5 @@
-import { LanguageCodes, Sources, getLanguages } from "..";
-import { language_choices, messages } from "./console";
+import { LanguageCodes, Sources, getLanguages } from '..';
+import { language_choices, messages } from './console';
 
 var inquirer = require('inquirer');
 export async function promptTranslator() {
@@ -23,7 +23,6 @@ export async function promptTranslator() {
     .then((answers: any) => {
       global.source = answers.source;
     });
-
 }
 
 const { from_choices, to_choices } = getLanguageChoices();
@@ -49,7 +48,7 @@ export async function promptTo(default_languages?: any) {
       pageSize: 20,
       message: messages.cli.to_message,
       choices: to_choices,
-      default: default_languages ? default_languages : []
+      default: default_languages ? default_languages : [],
     },
   ]);
 

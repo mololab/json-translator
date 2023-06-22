@@ -184,14 +184,11 @@ async function translateWithGoogleByProxySupport(
   to: LanguageCode,
   options?: { agent: any; timeout: number }
 ) {
-  const { text } = await translate(
-    safeValueTransition(str),
-    {
-      from: from,
-      to: to,
-      fetchOptions: { agent: options !== undefined ? options.agent : undefined },
-    }
-  );
+  const { text } = await translate(safeValueTransition(str), {
+    from: from,
+    to: to,
+    fetchOptions: { agent: options !== undefined ? options.agent : undefined },
+  });
 
   return text;
 }
