@@ -43,8 +43,10 @@ export enum Sources {
 // default
 global.source = Sources.GoogleTranslate;
 
+// Use postfix just for compatability, when Sources enum values used somewhere else.
+export const TRANSLATE_POSTFIX = 'Translate'
 export const translatorsNames = Object.values(Sources).map(s =>
-  s.split('Translate')[0].toLowerCase()
+  s.split(TRANSLATE_POSTFIX)[0].toLowerCase()
 );
 // TYPES
 export interface translatedObject {

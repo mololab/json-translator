@@ -1,4 +1,4 @@
-import { listIOS, Sources, translatorsNames } from '..';
+import { listIOS, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,
@@ -101,7 +101,11 @@ async function translate() {
       let translator = translatorsNames.find((el: string) =>
         el.includes(translatorInput as string)
       );
-      global.source = capitalize(translator as string) as Sources;
+      // Restore source name after splitting it for "translatorsNames" variable
+      global.source = [
+        capitalize(translator as string), 
+        TRANSLATE_POSTFIX
+      ].join('') as Sources;
     } else {
       error(`${messages.cli.translator_not_available}`);
       process.exit(1);
