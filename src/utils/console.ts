@@ -70,7 +70,7 @@ export const messages = {
     - Please make sure to provide a valid path for the proxy list file at "<your/path/to/proxy_list.txt>".
     `,
     creation_done:
-      'All files are created! You can find them in the same folder as the original JSON file.',
+      'All files are created! You can find them in the same folder as the original file.',
   },
   object: {},
   file: {
