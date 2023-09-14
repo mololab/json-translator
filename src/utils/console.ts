@@ -45,7 +45,7 @@ export const messages = {
         'json-translator'
       )}\x1b[0m\n\t\t\t\t\t\t\t\tcli ${current_version}\n`,
     description:
-      'This package will provide you the ability to translate your JSON files or objects into different languages for free.',
+      'This package will provide you the ability to translate your JSON or YAML files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,
     usageWithProxy: `Usage with proxy list file: ${cli_name} <your/path/to/file.json> <your/path/to/proxy_list.txt>`,
     usageByOps: `Usage with options: ${cli_name} <your/path/to/file.json> --translator <TranslationService> --from <Language> --to <Languages...>`,
