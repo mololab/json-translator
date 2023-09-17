@@ -25,8 +25,8 @@ export async function promptTranslator() {
     });
 }
 
-const { from_choices, to_choices } = getLanguageChoices();
 export async function promptFrom() {
+  const { from_choices } = getLanguageChoices();
   const answers = await inquirer.prompt([
     {
       type: 'list',
@@ -41,6 +41,8 @@ export async function promptFrom() {
 }
 
 export async function promptTo(default_languages?: any) {
+  const { to_choices } = getLanguageChoices();
+
   const answers = await inquirer.prompt([
     {
       type: 'checkbox',
