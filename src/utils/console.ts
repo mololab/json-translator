@@ -41,9 +41,7 @@ export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https:
 export const messages = {
   cli: {
     welcome: `\nWelcome to the\n${success_color +
-      figlet.textSync(
-        'jsontt'
-      )}\x1b[0m\n\t\t\t\tcli ${current_version}\n`,
+      figlet.textSync('jsontt')}\x1b[0m\n\t\t\t\tcli ${current_version}\n`,
     description:
       'This package will provide you the ability to translate your JSON files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,
