@@ -44,7 +44,7 @@ export enum Sources {
 global.source = Sources.GoogleTranslate;
 
 // Use postfix just for compatability, when Sources enum values used somewhere else.
-export const TRANSLATE_POSTFIX = 'Translate'
+export const TRANSLATE_POSTFIX = 'Translate';
 export const translatorsNames = Object.values(Sources).map(s =>
   s.split(TRANSLATE_POSTFIX)[0].toLowerCase()
 );
@@ -344,5 +344,3 @@ enum BingTranslateLanguages {
 }
 
 export const languages = GoogleTranslateLanguages;
-
-export const listIOS = Object.values(getLanguages() as any);

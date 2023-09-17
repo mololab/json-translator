@@ -42,8 +42,8 @@ export const messages = {
   cli: {
     welcome: `\nWelcome to the\n${success_color +
       figlet.textSync(
-        'json-translator'
-      )}\x1b[0m\n\t\t\t\t\t\t\t\tcli ${current_version}\n`,
+        'jsontt'
+      )}\x1b[0m\n\t\t\t\tcli ${current_version}\n`,
     description:
       'This package will provide you the ability to translate your JSON files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,

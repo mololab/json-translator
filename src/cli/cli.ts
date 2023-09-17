@@ -1,4 +1,4 @@
-import { listIOS, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
+import { getLanguages, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,
@@ -25,6 +25,7 @@ export async function initializeCli() {
   global.totalTranslated = 0;
   global.proxyIndex = 0;
   global.proxyList = [];
+
   program
     .version(current_version)
     .addHelpText('beforeAll', messages.cli.welcome)
@@ -103,8 +104,8 @@ async function translate() {
       );
       // Restore source name after splitting it for "translatorsNames" variable
       global.source = [
-        capitalize(translator as string), 
-        TRANSLATE_POSTFIX
+        capitalize(translator as string),
+        TRANSLATE_POSTFIX,
       ].join('') as Sources;
     } else {
       error(`${messages.cli.translator_not_available}`);
@@ -123,6 +124,8 @@ async function translate() {
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
+
+  const listIOS = Object.values(getLanguages() as any); // get list after assigning global.source
 
   if (!sourceLanguageInput) {
     const { from } = await promptFrom();
