@@ -7,7 +7,8 @@ import { objectTranslator } from './json_object';
 export async function fileTranslator(
   objectPath: string,
   from: LanguageCode,
-  to: LanguageCode | LanguageCodes
+  to: LanguageCode | LanguageCodes,
+  newFileName: string
 ) {
   let file_from_path = await getFileFromPath(objectPath);
 
@@ -37,23 +38,23 @@ export async function fileTranslator(
       async (element, index) => {
         const current_json_obj = element.data;
 
-        let file_name = `/${to[index]}.json`;
+        let file_name = `/${newFileName}.${to[index]}.json`;
 
         await saveFilePublic(root_folder + file_name, current_json_obj);
 
         success(
-          `For ${getLanguageFromCode(to[index])} --> ${to[index]}.json created.`
+          `For ${getLanguageFromCode(to[index])} --> ${file_name} created.`
         );
       }
     );
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
-    let file_name = `/${to}.json`;
+    let file_name = `/${newFileName}.${to}.json`;
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
-    success(`For ${getLanguageFromCode(to as string)} --> ${to}.json created.`);
+    success(`For ${getLanguageFromCode(to as string)} --> ${file_name} created.`);
   }
 }
 

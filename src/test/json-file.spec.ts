@@ -22,6 +22,7 @@ describe(`JSON FILE`, () => {
     const mock_objectPath = 'mock_objectPath';
     const mock_from = languages.English;
     const mock_to = languages.Dutch;
+    const mock_newFileName = '';
 
     const mock_json_file = undefined;
 
@@ -29,7 +30,7 @@ describe(`JSON FILE`, () => {
     jest.spyOn(appConsole, 'error').mockReturnValue();
 
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to);
+    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
 
     // assert
     expect(appConsole.error).toHaveBeenCalled();
@@ -43,6 +44,7 @@ describe(`JSON FILE`, () => {
     const mock_objectPath = 'mock_objectPath';
     const mock_from = languages.English;
     const mock_to = languages.German;
+    const mock_newFileName = '';
     const mock_json_object = JSON.stringify({
       login: {
         title: 'Login',
@@ -70,7 +72,7 @@ describe(`JSON FILE`, () => {
     jest.spyOn(appConsole, 'success').mockReturnValue();
 
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to);
+    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
 
     // assert
     expect(core.saveFilePublic).toBeCalledTimes(1);
@@ -82,6 +84,7 @@ describe(`JSON FILE`, () => {
     const mock_objectPath = 'mock_objectPath';
     const mock_from = languages.English;
     const mock_to = [languages.German, languages.French];
+    const mock_newFileName = ''
     const mock_json_object = JSON.stringify({
       login: {
         title: 'Login',
@@ -120,7 +123,7 @@ describe(`JSON FILE`, () => {
     jest.spyOn(appConsole, 'success').mockReturnValue();
 
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to);
+    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
 
     // assert
     expect(core.saveFilePublic).toBeCalled();

@@ -65,6 +65,7 @@ jsontt <your/path/to/file.json>
   - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
   - -f, --from <Language>          the translate language from it, e.g., --from en
   - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
+  - -n, --name                     the new name of the file (optional), e.g., --name newFileName
   - -h, --help                     display help for command
 ## Examples
 
@@ -566,6 +567,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: CLI options for langs & source selection
 
+:heavy_check_mark: Define output file names on cli (optional command for cli)
+
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
@@ -579,8 +582,6 @@ Make sure your terminal has admin access while running these commands to prevent
 - [ ] Browser support
 
 - [ ] Translation Option for own LibreTranslate instance
-
-- [ ] Define output file names on cli (optional command for cli)
 
 ## License
 

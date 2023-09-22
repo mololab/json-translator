@@ -39,6 +39,7 @@ export async function initializeCli() {
     )
     .addOption(new Option(`-f, --from <Language>`, messages.cli.from))
     .addOption(new Option(`-t, --to <Languages...>`, messages.cli.to))
+    .addOption(new Option(`-n, --name <string>`, messages.cli.newFileName))
     .addHelpText(
       'after',
       `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`
@@ -124,6 +125,9 @@ async function translate() {
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
+  let newFileName: string = commandOptions.name 
+    ? commandOptions.name
+    : undefined;
 
   const listIOS = Object.values(getLanguages() as any); // get list after assigning global.source
 
@@ -177,7 +181,7 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs);
+  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs, newFileName);
 
   load.succeed(
     `DONE! ${translationStatistic(
