@@ -564,6 +564,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: Ignore URL translation on given string
 
+:heavy_check_mark: CLI options for langs & source selection
+
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
@@ -578,7 +580,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translation Option for own LibreTranslate instance
 
-- [ ] CLI options for langs & source selection
+- [ ] Define output file names on cli (optional command for cli)
 
 ## License
 
