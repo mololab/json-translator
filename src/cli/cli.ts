@@ -16,7 +16,7 @@ import {
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
 import { Command, Option } from 'commander';
-import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
+import { promptFrom, promptName, promptTo, promptTranslator } from '../utils/prompt';
 
 const program = new Command();
 
@@ -161,6 +161,13 @@ async function translate() {
         process.exit(1);
       }
     });
+  }
+
+  if (!newFileName) {
+    const { name } = await promptName();
+    newFileName = name;
+  }else{
+    newFileName = newFileName
   }
 
   const load = loading({

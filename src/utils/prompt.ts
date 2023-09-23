@@ -57,6 +57,20 @@ export async function promptTo(default_languages?: any) {
   return answers;
 }
 
+export async function promptName(default_name?: string) {
+
+  const newName = await inquirer.prompt([
+    {
+      type: 'string',
+      name: 'name',
+      message: messages.cli.newFileName,
+      default: default_name ? default_name : undefined,
+    },
+  ]);
+
+  return newName;
+}
+
 function getLanguageChoices(): {
   from_choices: LanguageCodes;
   to_choices: LanguageCodes;
