@@ -38,7 +38,7 @@ export async function fileTranslator(
       async (element, index) => {
         const current_json_obj = element.data;
 
-        let file_name = `/${newFileName}.${to[index]}.json`;
+        let file_name = newFileName ? `/${newFileName}.${to[index]}.json` : `/${to[index]}.json`;
 
         await saveFilePublic(root_folder + file_name, current_json_obj);
 
@@ -50,7 +50,7 @@ export async function fileTranslator(
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
-    let file_name = `/${newFileName}.${to}.json`;
+    let file_name = newFileName ? `/${newFileName}.${to}.json` : `/${to}.json`;
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
