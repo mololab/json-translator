@@ -65,7 +65,7 @@ jsontt <your/path/to/file.json>
   - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
   - -f, --from <Language>          the translate language from it, e.g., --from en
   - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
-  - -n, --name                     the new name of the file (optional), e.g., --name newFileName
+  - -n, --name                     the name of the output file (optional), e.g., --name newFileName
   - -h, --help                     display help for command
 ## Examples
 
@@ -73,6 +73,12 @@ Translate a JSON file using Google Translate:
 
 ```bash
 jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN
+```
+
+With output name
+
+```bash
+jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN --name myFiles
 ```
 
 # **2. 💥 Package Usage**

@@ -84,7 +84,7 @@ describe(`JSON FILE`, () => {
     const mock_objectPath = 'mock_objectPath';
     const mock_from = languages.English;
     const mock_to = [languages.German, languages.French];
-    const mock_newFileName = ''
+    const mock_newFileName = '';
     const mock_json_object = JSON.stringify({
       login: {
         title: 'Login',

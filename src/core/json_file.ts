@@ -38,7 +38,9 @@ export async function fileTranslator(
       async (element, index) => {
         const current_json_obj = element.data;
 
-        let file_name = newFileName ? `/${newFileName}.${to[index]}.json` : `/${to[index]}.json`;
+        let file_name = newFileName
+          ? `/${newFileName}.${to[index]}.json`
+          : `/${to[index]}.json`;
 
         await saveFilePublic(root_folder + file_name, current_json_obj);
 
@@ -54,7 +56,9 @@ export async function fileTranslator(
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
-    success(`For ${getLanguageFromCode(to as string)} --> ${file_name} created.`);
+    success(
+      `For ${getLanguageFromCode(to as string)} --> ${file_name} created.`
+    );
   }
 }
 

@@ -58,7 +58,6 @@ export async function promptTo(default_languages?: any) {
 }
 
 export async function promptName(default_name?: string) {
-
   const newName = await inquirer.prompt([
     {
       type: 'string',

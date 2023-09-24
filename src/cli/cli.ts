@@ -16,7 +16,12 @@ import {
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
 import { Command, Option } from 'commander';
-import { promptFrom, promptName, promptTo, promptTranslator } from '../utils/prompt';
+import {
+  promptFrom,
+  promptName,
+  promptTo,
+  promptTranslator,
+} from '../utils/prompt';
 
 const program = new Command();
 
@@ -125,7 +130,7 @@ async function translate() {
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
-  let newFileName: string = commandOptions.name 
+  let newFileName: string = commandOptions.name
     ? commandOptions.name
     : undefined;
 
@@ -166,8 +171,8 @@ async function translate() {
   if (!newFileName) {
     const { name } = await promptName();
     newFileName = name;
-  }else{
-    newFileName = newFileName
+  } else {
+    newFileName = newFileName;
   }
 
   const load = loading({
@@ -188,7 +193,12 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs, newFileName);
+  await fileTranslator(
+    objectPath,
+    sourceLanguageISO,
+    targetLanguageISOs,
+    newFileName
+  );
 
   load.succeed(
     `DONE! ${translationStatistic(
