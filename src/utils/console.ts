@@ -52,6 +52,7 @@ export const messages = {
     translator: 'specify translation service',
     from: 'the translate language from it, e.g., --from en',
     to: 'the Languages to translate into, e.g., --to ar fr zh-CN',
+    newFileName: 'the new file name (optional), e.g., --name newFileName',
     from_source: 'From which source?',
     from_message: 'From which language?',
     to_message:
@@ -65,6 +66,7 @@ export const messages = {
     - Please ensure that the value for the option "-T, --translator <Translation>" is compatible
     - Please ensure that the value for the option "-f, --from <Language>" is compatible
     - Please ensure that the value for the option "-t, --to <Languages...>" is compatible
+    - Please ensure that the value for the option "-n, --name <string>" is valid
     - Please make sure to provide a valid path for the proxy list file at "<your/path/to/proxy_list.txt>".
     `,
     creation_done:

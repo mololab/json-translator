@@ -24,9 +24,10 @@ export async function translateObject(
 export async function translateFile(
   objectPath: string,
   from: LanguageCode,
-  to: LanguageCode | LanguageCodes
+  to: LanguageCode | LanguageCodes,
+  newFileName: string
 ) {
-  return fileTranslator(objectPath, from, to);
+  return fileTranslator(objectPath, from, to, newFileName);
 }
 
 export async function runCli() {

@@ -16,7 +16,7 @@ import {
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
 import { Command, Option } from 'commander';
-import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
+import { promptFrom, promptName, promptTo, promptTranslator } from '../utils/prompt';
 
 const program = new Command();
 
@@ -39,6 +39,7 @@ export async function initializeCli() {
     )
     .addOption(new Option(`-f, --from <Language>`, messages.cli.from))
     .addOption(new Option(`-t, --to <Languages...>`, messages.cli.to))
+    .addOption(new Option(`-n, --name [string]`, messages.cli.newFileName))
     .addHelpText(
       'after',
       `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`
@@ -124,6 +125,9 @@ async function translate() {
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
+  let newFileName: string = commandOptions.name 
+    ? commandOptions.name
+    : undefined;
 
   const listIOS = Object.values(getLanguages() as any); // get list after assigning global.source
 
@@ -159,6 +163,13 @@ async function translate() {
     });
   }
 
+  if (!newFileName) {
+    const { name } = await promptName();
+    newFileName = name;
+  }else{
+    newFileName = newFileName
+  }
+
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
       global.totalTranslated,
@@ -177,7 +188,7 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs);
+  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs, newFileName);
 
   load.succeed(
     `DONE! ${translationStatistic(
