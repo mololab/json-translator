@@ -58,6 +58,8 @@ function translateSourceFunction(source: string) {
       return translateWithArgos;
     case Sources.BingTranslate:
       return translateWithBing;
+    case Sources.DeepLTranslate:
+      return translateWithDeepL;
     default:
       return translateWithGoogle;
   }
@@ -128,6 +130,36 @@ async function translateWithBing(
   );
 
   return translation;
+}
+
+async function translateWithDeepL(
+  str: string,
+  from: LanguageCode,
+  to: LanguageCode
+): Promise<string> {
+  const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+  if (!DEEPL_API_KEY)
+    throw new Error('process.env.DEEPL_API_KEY is not defined');
+  const body = {
+    text: [safeValueTransition(str)],
+    target_lang: to,
+    source_lang: from,
+  };
+
+  const { data } = await axios.post(
+    'https://api-free.deepl.com/v2/translate',
+    body,
+    {
+      headers: {
+        Authorization: `DeepL-Auth-Key ${DEEPL_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  return data?.translations[0]?.text
+    ? data?.translations[0]?.text
+    : default_value;
 }
 
 async function translateWithGoogle(

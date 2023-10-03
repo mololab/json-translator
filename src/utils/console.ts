@@ -36,6 +36,7 @@ export const language_choices: { [key: string]: string } = {
     'Bing Microsoft Translate (110 languages) \x1b[33m**NEW**\x1b[0m',
   LibreTranslate: `Libre Translate (29 languages)`,
   ArgosTranslate: `Argos Translate (17 languages)`,
+  DeepLTranslate: `DeepL Translate (29 languages)`,
 };
 export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https://github.com/mololab/json-translator/blob/master/docs/LANGUAGES.md\x1b[0m\n`;
 export const messages = {

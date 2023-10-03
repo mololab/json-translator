@@ -39,6 +39,7 @@ export enum Sources {
   LibreTranslate = 'LibreTranslate',
   ArgosTranslate = 'ArgosTranslate',
   BingTranslate = 'BingTranslate',
+  DeepLTranslate = 'DeepLTranslate',
 }
 
 // default
@@ -63,6 +64,8 @@ export function getLanguages() {
     return ArgosTranslateLanguages;
   } else if (global.source === Sources.BingTranslate) {
     return BingTranslateLanguages;
+  } else if (global.source === Sources.DeepLTranslate) {
+    return DeepLTranslateLanguages;
   }
 
   return GoogleTranslateLanguages;
@@ -342,6 +345,38 @@ enum BingTranslateLanguages {
   Welsh = 'cy',
   Yucatec_Maya = 'yua',
   Zulu = 'zu',
+}
+
+enum DeepLTranslateLanguages {
+  Bulgarian = 'BG',
+  Czech = 'CS',
+  Danish = 'DA',
+  German = 'DE',
+  Greek = 'EL',
+  English = 'EN',
+  Spanish = 'ES',
+  Estonian = 'ET',
+  Finnish = 'FI',
+  French = 'FR',
+  Hungarian = 'HU',
+  Indonesian = 'ID',
+  Italian = 'IT',
+  Japanese = 'JA',
+  Korean = 'KO',
+  Lithuanian = 'LT',
+  Latvian = 'LV',
+  Norwegian = 'NB',
+  Dutch = 'NL',
+  Polish = 'PL',
+  Portuguese = 'PT',
+  Romanian = 'RO',
+  Russian = 'RU',
+  Slovak = 'SK',
+  Slovenian = 'SL',
+  Swedish = 'SV',
+  Turkish = 'TR',
+  Ukrainian = 'UK',
+  Chinese = 'ZH',
 }
 
 export const languages = GoogleTranslateLanguages;
