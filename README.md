@@ -589,6 +589,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translation Option for own LibreTranslate instance
 
+- [ ] Make "--" dynamic adjustable (placeholder of not translated ones).
+
 ## License
 
 **_@parvineyvazov/json-translator_** will be available under the [MIT license](LICENSE).
