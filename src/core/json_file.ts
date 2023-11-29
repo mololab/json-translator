@@ -8,7 +8,8 @@ import { matchYamlExt } from "../utils/yaml";
 export async function fileTranslator(
   objectPath: string,
   from: LanguageCode,
-  to: LanguageCode | LanguageCodes
+  to: LanguageCode | LanguageCodes,
+  newFileName: string
 ) {
   let file_from_path = await getFileFromPath(objectPath);
 
@@ -44,7 +45,9 @@ export async function fileTranslator(
       async (element, index) => {
         const current_json_obj = element.data;
 
-        let file_name = `/${to[index]}.${file_ext}`;
+        let file_name = newFileName
+          ? `/${newFileName}.${to[index]}.${file_ext}`
+          : `/${to[index]}.${file_ext}`;
 
         await saveFilePublic(root_folder + file_name, current_json_obj);
 
@@ -56,11 +59,13 @@ export async function fileTranslator(
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
-    let file_name = `/${to}.${file_ext}`;
+    let file_name = newFileName ? `/${newFileName}.${to}.${file_ext}` : `/${to}.${file_ext}`;
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
-    success(`For ${getLanguageFromCode(to as string)} --> ${file_name} created.`);
+    success(
+      `For ${getLanguageFromCode(to as string)} --> ${file_name} created.`
+    );
   }
 }
 

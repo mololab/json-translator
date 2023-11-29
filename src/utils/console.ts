@@ -41,9 +41,7 @@ export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https:
 export const messages = {
   cli: {
     welcome: `\nWelcome to the\n${success_color +
-      figlet.textSync(
-        'json-translator'
-      )}\x1b[0m\n\t\t\t\t\t\t\t\tcli ${current_version}\n`,
+      figlet.textSync('jsontt')}\x1b[0m\n\t\t\t\tcli ${current_version}\n`,
     description:
       'This package will provide you the ability to translate your JSON or YAML files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,
@@ -54,6 +52,7 @@ export const messages = {
     translator: 'specify translation service',
     from: 'the translate language from it, e.g., --from en',
     to: 'the Languages to translate into, e.g., --to ar fr zh-CN',
+    newFileName: '(optional ↵) output filename, e.g., --name myApp',
     from_source: 'From which source?',
     from_message: 'From which language?',
     to_message:
@@ -67,6 +66,7 @@ export const messages = {
     - Please ensure that the value for the option "-T, --translator <Translation>" is compatible
     - Please ensure that the value for the option "-f, --from <Language>" is compatible
     - Please ensure that the value for the option "-t, --to <Languages...>" is compatible
+    - Please ensure that the value for the option "-n, --name <string>" is valid
     - Please make sure to provide a valid path for the proxy list file at "<your/path/to/proxy_list.txt>".
     `,
     creation_done:

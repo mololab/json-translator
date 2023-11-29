@@ -1,4 +1,4 @@
-import { listIOS, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
+import { listIOS, getLanguages, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,
@@ -16,7 +16,12 @@ import {
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
 import { Command, Option } from 'commander';
-import { promptFrom, promptTo, promptTranslator } from '../utils/prompt';
+import {
+  promptFrom,
+  promptName,
+  promptTo,
+  promptTranslator,
+} from '../utils/prompt';
 
 const program = new Command();
 
@@ -25,6 +30,7 @@ export async function initializeCli() {
   global.totalTranslated = 0;
   global.proxyIndex = 0;
   global.proxyList = [];
+
   program
     .version(current_version)
     .addHelpText('beforeAll', messages.cli.welcome)
@@ -38,6 +44,7 @@ export async function initializeCli() {
     )
     .addOption(new Option(`-f, --from <Language>`, messages.cli.from))
     .addOption(new Option(`-t, --to <Languages...>`, messages.cli.to))
+    .addOption(new Option(`-n, --name <string>`, messages.cli.newFileName))
     .addHelpText(
       'after',
       `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`
@@ -103,8 +110,8 @@ async function translate() {
       );
       // Restore source name after splitting it for "translatorsNames" variable
       global.source = [
-        capitalize(translator as string), 
-        TRANSLATE_POSTFIX
+        capitalize(translator as string),
+        TRANSLATE_POSTFIX,
       ].join('') as Sources;
     } else {
       error(`${messages.cli.translator_not_available}`);
@@ -123,6 +130,11 @@ async function translate() {
 
   let sourceLanguageISO: string;
   let targetLanguageISOs: string[];
+  let newFileName: string = commandOptions.name
+    ? commandOptions.name
+    : undefined;
+
+  const listIOS = Object.values(getLanguages() as any); // get list after assigning global.source
 
   if (!sourceLanguageInput) {
     const { from } = await promptFrom();
@@ -156,6 +168,13 @@ async function translate() {
     });
   }
 
+  if (!newFileName) {
+    const { name } = await promptName();
+    newFileName = name;
+  } else {
+    newFileName = newFileName;
+  }
+
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
       global.totalTranslated,
@@ -174,7 +193,12 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(objectPath, sourceLanguageISO, targetLanguageISOs);
+  await fileTranslator(
+    objectPath,
+    sourceLanguageISO,
+    targetLanguageISOs,
+    newFileName
+  );
 
   load.succeed(
     `DONE! ${translationStatistic(

@@ -24,9 +24,10 @@ export async function translateObject(
 export async function translateFile(
   objectPath: string,
   from: LanguageCode,
-  to: LanguageCode | LanguageCodes
+  to: LanguageCode | LanguageCodes,
+  newFileName: string
 ) {
-  return fileTranslator(objectPath, from, to);
+  return fileTranslator(objectPath, from, to, newFileName);
 }
 
 export async function runCli() {
@@ -44,7 +45,7 @@ export enum Sources {
 global.source = Sources.GoogleTranslate;
 
 // Use postfix just for compatability, when Sources enum values used somewhere else.
-export const TRANSLATE_POSTFIX = 'Translate'
+export const TRANSLATE_POSTFIX = 'Translate';
 export const translatorsNames = Object.values(Sources).map(s =>
   s.split(TRANSLATE_POSTFIX)[0].toLowerCase()
 );
@@ -344,5 +345,3 @@ enum BingTranslateLanguages {
 }
 
 export const languages = GoogleTranslateLanguages;
-
-export const listIOS = Object.values(getLanguages() as any);

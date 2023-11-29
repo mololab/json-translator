@@ -65,6 +65,7 @@ jsontt <your/path/to/file.json>
   - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
   - -f, --from <Language>          the translate language from it, e.g., --from en
   - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
+  - -n, --name                     the name of the output file (optional), e.g., --name newFileName
   - -h, --help                     display help for command
 ## Examples
 
@@ -72,6 +73,12 @@ Translate a JSON file using Google Translate:
 
 ```bash
 jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN
+```
+
+With output name
+
+```bash
+jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN --name myFiles
 ```
 
 # **2. 💥 Package Usage**
@@ -564,6 +571,10 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: Ignore URL translation on given string
 
+:heavy_check_mark: CLI options for langs & source selection
+
+:heavy_check_mark: Define output file names on cli (optional command for cli)
+
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
@@ -578,7 +589,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translation Option for own LibreTranslate instance
 
-- [ ] CLI options for langs & source selection
+- [ ] Make "--" dynamic adjustable (placeholder of not translated ones).
 
 ## License
 
