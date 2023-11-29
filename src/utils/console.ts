@@ -43,7 +43,7 @@ export const messages = {
     welcome: `\nWelcome to the\n${success_color +
       figlet.textSync('jsontt')}\x1b[0m\n\t\t\t\tcli ${current_version}\n`,
     description:
-      'This package will provide you the ability to translate your JSON files or objects into different languages for free.',
+      'This package will provide you the ability to translate your JSON or YAML files or objects into different languages for free.',
     usage: ` <your/path/to/file.json>`,
     usageWithProxy: `Usage with proxy list file: ${cli_name} <your/path/to/file.json> <your/path/to/proxy_list.txt>`,
     usageByOps: `Usage with options: ${cli_name} <your/path/to/file.json> --translator <TranslationService> --from <Language> --to <Languages...>`,
@@ -70,7 +70,7 @@ export const messages = {
     - Please make sure to provide a valid path for the proxy list file at "<your/path/to/proxy_list.txt>".
     `,
     creation_done:
-      'All files are created! You can find them in the same folder as the original JSON file.',
+      'All files are created! You can find them in the same folder as the original file.',
   },
   object: {},
   file: {
