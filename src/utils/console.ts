@@ -52,7 +52,7 @@ export const messages = {
     translator: 'specify translation service',
     from: 'the translate language from it, e.g., --from en',
     to: 'the Languages to translate into, e.g., --to ar fr zh-CN',
-    newFileName: 'the new file name (optional), e.g., --name newFileName',
+    newFileName: '(optional ↵) output filename, e.g., --name myApp',
     from_source: 'From which source?',
     from_message: 'From which language?',
     to_message:

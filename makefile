@@ -28,3 +28,6 @@ run-cli-mac:
 	sudo tsdx build
 	sudo npm link
 	jsontt
+
+link:
+	sudo npm link
