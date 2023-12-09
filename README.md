@@ -2,7 +2,7 @@
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
 
-# <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
+# <p align="center"> **🚀 FREE JSON/YAML TRANSLATOR 🆓** </p>
 
 <p align="center">
   <a href="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads">
@@ -20,7 +20,7 @@
   </a>
 </p>
 
-This package will provide you to translate your JSON files or objects into different languages FREE.
+This package will provide you to translate your JSON/YAML files or JSON objects into different languages FREE.
 
 ### Types of usages 👀
 
@@ -48,6 +48,8 @@ npm i -g @parvineyvazov/json-translator
 
 ```bash
 jsontt <your/path/to/file.json>
+or
+jsontt <your/path/to/file.yaml/yml>
 ```
 
 <p align="center" >
@@ -56,17 +58,18 @@ jsontt <your/path/to/file.json>
 
 ## Arguments
 
-- `[path]`: Required JSON file path `<your/path/to/file.json>`
+- `[path]`: Required JSON/YAML file path `<your/path/to/file.json>`
 - `[path]`: optional proxy list txt file path `<your/path/to/proxy_list.txt>`
 
 ## Options
 
-  - -V, --version                  output the version number
-  - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
-  - -f, --from <Language>          the translate language from it, e.g., --from en
-  - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
-  - -n, --name                     the name of the output file (optional), e.g., --name newFileName
-  - -h, --help                     display help for command
+- -V, --version output the version number
+- -T, --translator <Translator> specify translation service (choices: "google", "libre", "argos", "bing")
+- -f, --from <Language> the translate language from it, e.g., --from en
+- -t, --to <Languages...> the Languages to translate into, e.g., --to ar fr zh-CN
+- -n, --name the name of the output file (optional), e.g., --name newFileName
+- -h, --help display help for command
+
 ## Examples
 
 Translate a JSON file using Google Translate:
@@ -431,7 +434,7 @@ To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 
 ## **7. CLI commands**
 
-- translate
+- translate (json/yaml)
 
 ```bash
 jsontt file.json
@@ -455,7 +458,7 @@ jsontt "C:\folder1\folder\en.json"
 jsontt file.json proxy.txt
 ```
 
-Result will be in the same folder as the original JSON file.
+Result will be in the same folder as the original JSON/YAML file.
 
 <br>
 
@@ -574,6 +577,8 @@ Make sure your terminal has admin access while running these commands to prevent
 :heavy_check_mark: CLI options for langs & source selection
 
 :heavy_check_mark: Define output file names on cli (optional command for cli)
+
+:heavy_check_mark: YAML file Translate
 
 - [ ] Libre Translate option (in code package)
 
