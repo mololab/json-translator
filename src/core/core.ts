@@ -1,5 +1,5 @@
 import * as fs from 'fs/promises';
-import * as YAML from "yaml"
+import * as YAML from 'yaml';
 import { matchYamlExt } from '../utils/yaml';
 import { error, messages } from '../utils/console';
 import { default_value, translation_value_limit } from '../utils/micro';
@@ -11,9 +11,11 @@ export async function getFile(objectPath: string) {
     .readFile(objectPath, 'utf8')
     .then(data => {
       // This function should return a string with JSON-encoded data.
-      // To preserve the contract, YAML files should be parsed to object 
+      // To preserve the contract, YAML files should be parsed to object
       // and then stringified to JSON string.
-      json_file = matchYamlExt(objectPath) ? JSON.stringify(YAML.parse(data)) : data;
+      json_file = matchYamlExt(objectPath)
+        ? JSON.stringify(YAML.parse(data))
+        : data;
     })
     .catch(_ => {
       json_file = undefined;
@@ -36,7 +38,7 @@ export function getRootFolder(path: string) {
 }
 
 export async function saveFilePublic(path: string, data: any) {
-  // When path extension is for YAML file, then stringify with YAML encoder. 
+  // When path extension is for YAML file, then stringify with YAML encoder.
   // Otherwise, default JSON encoder is used.
   var json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
 

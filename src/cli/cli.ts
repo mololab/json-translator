@@ -1,4 +1,4 @@
-import { listIOS, getLanguages, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
+import { getLanguages, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,

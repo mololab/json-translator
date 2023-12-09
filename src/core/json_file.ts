@@ -3,7 +3,7 @@ import { error, messages, success } from '../utils/console';
 import { getLanguageFromCode } from '../utils/micro';
 import { getFile, getRootFolder, saveFilePublic } from './core';
 import { objectTranslator } from './json_object';
-import { matchYamlExt } from "../utils/yaml";
+import { matchYamlExt } from '../utils/yaml';
 
 export async function fileTranslator(
   objectPath: string,
@@ -34,10 +34,10 @@ export async function fileTranslator(
   let root_folder = getRootFolder(latest_path);
 
   // Check if source file has YAML extension and return the extension ("yml" or "yaml").
-  const source_file_match_yaml_ext = matchYamlExt(latest_path)
-  // When source file has "yml" or "yaml" extension, use the same in output file path. 
+  const source_file_match_yaml_ext = matchYamlExt(latest_path);
+  // When source file has "yml" or "yaml" extension, use the same in output file path.
   // Otherwise, default "json" extension used.
-  const file_ext = source_file_match_yaml_ext || "json";
+  const file_ext = source_file_match_yaml_ext || 'json';
 
   if (Array.isArray(new_json_obj) === true && Array.isArray(to) === true) {
     // multiple file saving
@@ -59,7 +59,9 @@ export async function fileTranslator(
   } else {
     new_json_obj = (new_json_obj as translatedObject).data;
 
-    let file_name = newFileName ? `/${newFileName}.${to}.${file_ext}` : `/${to}.${file_ext}`;
+    let file_name = newFileName
+      ? `/${newFileName}.${to}.${file_ext}`
+      : `/${to}.${file_ext}`;
 
     await saveFilePublic(root_folder + file_name, new_json_obj);
 
