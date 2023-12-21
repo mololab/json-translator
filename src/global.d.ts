@@ -1,5 +1,3 @@
-import { Sources } from '.';
-
 export {};
 
 declare global {
@@ -7,5 +5,4 @@ declare global {
   var totalTranslated: number;
   var proxyIndex: number;
   var proxyList: string[];
-  var source: Sources;
 }

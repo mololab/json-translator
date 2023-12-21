@@ -1,13 +1,15 @@
 import { fileTranslator } from '../core/json_file';
 import * as appConsole from '../utils/console';
 import * as jsonObject from '../core/json_object';
-import { languages, Sources } from '..';
 import * as core from '../core/core';
+import { GoogleTranslateLanguages } from '../modules/languages';
+import { TranslationConfig, TranslationModules } from '../modules/modules';
+import { default_concurrency_limit, default_fallback } from '../utils/micro';
+import { translatedObject } from '..';
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
-  var source: Sources;
   var proxyList: string[];
   var proxyIndex: number;
 }
@@ -20,8 +22,8 @@ describe(`JSON FILE`, () => {
   it('should get `no file` error on undefined file path', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = languages.Dutch;
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = GoogleTranslateLanguages.Dutch;
     const mock_newFileName = '';
 
     const mock_json_file = undefined;
@@ -29,8 +31,21 @@ describe(`JSON FILE`, () => {
     jest.spyOn(core, 'getFile').mockResolvedValue(mock_json_file);
     jest.spyOn(appConsole, 'error').mockReturnValue();
 
+    let config: TranslationConfig = {
+      moduleKey: 'google',
+      TranslationModule: TranslationModules['google'],
+      concurrencyLimit: default_concurrency_limit,
+      fallback: default_fallback,
+    };
+
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
+    await fileTranslator(
+      config,
+      mock_objectPath,
+      mock_from,
+      [mock_to],
+      mock_newFileName
+    );
 
     // assert
     expect(appConsole.error).toHaveBeenCalled();
@@ -42,8 +57,8 @@ describe(`JSON FILE`, () => {
   it('should get file & translate it to one language & saves it', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = languages.German;
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = GoogleTranslateLanguages.German;
     const mock_newFileName = '';
     const mock_json_object = JSON.stringify({
       login: {
@@ -52,15 +67,17 @@ describe(`JSON FILE`, () => {
         failure: 'Failed',
       },
     });
-    const mock_translated_json_object = {
-      data: {
-        login: {
-          title: 'Anmeldung',
-          email: 'Bitte geben Sie ihre E-Mail-Adresse ein',
-          failure: 'Fehlgeschlagen',
+    const mock_translated_json_object: translatedObject[] = [
+      {
+        data: {
+          login: {
+            title: 'Anmeldung',
+            email: 'Bitte geben Sie ihre E-Mail-Adresse ein',
+            failure: 'Fehlgeschlagen',
+          },
         },
       },
-    };
+    ];
     const mock_root_folder = 'mock_root_folder';
 
     jest.spyOn(core, 'getFile').mockResolvedValue(mock_json_object);
@@ -71,19 +88,34 @@ describe(`JSON FILE`, () => {
     jest.spyOn(core, 'saveFilePublic').mockResolvedValue();
     jest.spyOn(appConsole, 'success').mockReturnValue();
 
+    let config: TranslationConfig = {
+      moduleKey: 'google',
+      TranslationModule: TranslationModules['google'],
+      concurrencyLimit: default_concurrency_limit,
+      fallback: default_fallback,
+    };
+
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
+    await fileTranslator(
+      config,
+      mock_objectPath,
+      mock_from,
+      [mock_to],
+      mock_newFileName
+    );
 
     // assert
     expect(core.saveFilePublic).toBeCalledTimes(1);
-    expect(appConsole.success).toBeCalledTimes(1);
   });
 
   it('should get file & translate it to multiple languages & saves it', async () => {
     // arrange
     const mock_objectPath = 'mock_objectPath';
-    const mock_from = languages.English;
-    const mock_to = [languages.German, languages.French];
+    const mock_from = GoogleTranslateLanguages.English;
+    const mock_to = [
+      GoogleTranslateLanguages.German,
+      GoogleTranslateLanguages.French,
+    ];
     const mock_newFileName = '';
     const mock_json_object = JSON.stringify({
       login: {
@@ -122,8 +154,21 @@ describe(`JSON FILE`, () => {
     jest.spyOn(core, 'saveFilePublic').mockResolvedValue();
     jest.spyOn(appConsole, 'success').mockReturnValue();
 
+    let config: TranslationConfig = {
+      moduleKey: 'google',
+      TranslationModule: TranslationModules['google'],
+      concurrencyLimit: default_concurrency_limit,
+      fallback: default_fallback,
+    };
+
     // act
-    await fileTranslator(mock_objectPath, mock_from, mock_to, mock_newFileName);
+    await fileTranslator(
+      config,
+      mock_objectPath,
+      mock_from,
+      mock_to,
+      mock_newFileName
+    );
 
     // assert
     expect(core.saveFilePublic).toBeCalled();

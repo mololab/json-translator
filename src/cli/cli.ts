@@ -1,4 +1,7 @@
-import { getLanguages, Sources, TRANSLATE_POSTFIX, translatorsNames } from '..';
+import {
+  translationModuleKeys,
+  getTranslationModuleByKey,
+} from '../modules/helpers';
 import { fileTranslator, getFileFromPath } from '../core/json_file';
 import {
   error,
@@ -9,19 +12,23 @@ import {
 } from '../utils/console';
 import loading from 'loading-cli';
 import {
-  capitalize,
   current_version,
-  getCodeFromLanguage,
   translationStatistic,
+  default_concurrency_limit,
+  default_fallback,
+  fallbacks,
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
-import { Command, Option } from 'commander';
+import { Command, Option, OptionValues } from 'commander';
 import {
   promptFrom,
   promptName,
   promptTo,
-  promptTranslator,
-} from '../utils/prompt';
+  promptModuleKey,
+  promptFallback,
+  promptConcurrencyLimit,
+} from './prompt';
+import { TranslationConfig, TranslationModule } from '../modules/modules';
 
 const program = new Command();
 
@@ -37,17 +44,27 @@ export async function initializeCli() {
     .description(messages.cli.description)
     .usage(messages.cli.usage)
     .addOption(
-      new Option(
-        `-T, --translator <Translator>`,
-        messages.cli.translator
-      ).choices(translatorsNames)
+      new Option(`-m, --module <Module>`, messages.cli.module).choices(
+        translationModuleKeys()
+      )
     )
     .addOption(new Option(`-f, --from <Language>`, messages.cli.from))
     .addOption(new Option(`-t, --to <Languages...>`, messages.cli.to))
-    .addOption(new Option(`-n, --name <string>`, messages.cli.newFileName))
+    .addOption(new Option(`-n, --name <string>`, messages.cli.new_file_name))
+    .addOption(
+      new Option(`-fb, --fallback <string>`, messages.cli.fallback).choices(
+        Object.keys(fallbacks)
+      )
+    )
+    .addOption(
+      new Option(
+        `-cl, --concurrencylimit <number>`,
+        messages.cli.concurrency_limit
+      )
+    )
     .addHelpText(
       'after',
-      `\n${messages.cli.usageWithProxy}\n${messages.cli.usageByOps}`
+      `\n${messages.cli.usage_with_proxy}\n${messages.cli.usage_by_ops}`
     )
     .addHelpText('afterAll', supportedLanguagesUrl);
 
@@ -71,7 +88,7 @@ export async function initializeCli() {
     I've come to this temporary solution, which is if the proxy path does not end with .txt display error 'messages.cli.proxy_File_notValid_or_not_empty_options'
 */
   if (program.args[1] !== undefined && !program.args[1].includes('.txt')) {
-    error(messages.cli.proxy_File_notValid_or_not_empty_options);
+    error(messages.cli.proxy_file_notValid_or_not_empty_options);
     process.exit(1);
   }
   translate();
@@ -80,6 +97,7 @@ export async function initializeCli() {
 async function translate() {
   const commandArguments = program.args;
   const commandOptions = program.opts();
+
   if (commandArguments[1] && typeof commandArguments[1] === 'string') {
     const file_path = commandArguments[1];
     await readProxyFile(file_path);
@@ -94,72 +112,140 @@ async function translate() {
   }
 
   // no file in the path condition
-  let { json_obj } = await getFileFromPath(objectPath);
-  if (json_obj === undefined) {
+  let { jsonObj } = await getFileFromPath(objectPath);
+  if (jsonObj === undefined) {
     error(messages.file.no_file_in_path);
     return;
   }
 
-  let translatorInput = commandOptions.translator
-    ? commandOptions.translator
-    : undefined;
-  if (translatorInput && translatorInput !== '') {
-    if (translatorsNames.includes(translatorInput)) {
-      let translator = translatorsNames.find((el: string) =>
-        el.includes(translatorInput as string)
-      );
-      // Restore source name after splitting it for "translatorsNames" variable
-      global.source = [
-        capitalize(translator as string),
-        TRANSLATE_POSTFIX,
-      ].join('') as Sources;
-    } else {
-      error(`${messages.cli.translator_not_available}`);
-      process.exit(1);
-    }
+  // get Translation Module
+  const TranslationConfig = await translationConfig(commandOptions);
+
+  // get from language
+  const fromLanguageValue = await fromLanguage(
+    commandOptions,
+    TranslationConfig.TranslationModule
+  );
+
+  // get to languages
+  const toLanguageValues = await toLanguages(
+    commandOptions,
+    TranslationConfig.TranslationModule
+  );
+
+  // get filename
+  const fileNameValue = await fileName(commandOptions);
+
+  // get fallback
+  const fallbackValue = await fallback(commandOptions);
+  TranslationConfig.fallback = fallbackValue;
+
+  // get concurrency limit
+  const concurrencyLimitValue = await concurrencyLimit(commandOptions);
+  TranslationConfig.concurrencyLimit = concurrencyLimitValue;
+
+  // set loading
+  const { load, refreshInterval } = setLoading();
+
+  await fileTranslator(
+    TranslationConfig,
+    objectPath,
+    fromLanguageValue,
+    toLanguageValues,
+    fileNameValue
+  );
+
+  load.succeed(
+    `DONE! ${translationStatistic(
+      global.totalTranslation,
+      global.totalTranslation
+    )}`
+  );
+  clearInterval(refreshInterval);
+
+  info(messages.cli.creation_done);
+}
+
+// getting input from user
+async function translationConfig(
+  commandOptions: OptionValues
+): Promise<TranslationConfig> {
+  let moduleKey = commandOptions.module ?? undefined;
+  let TranslationModule: TranslationModule;
+
+  if (moduleKey && translationModuleKeys().includes(moduleKey)) {
+    // valid module key
+    TranslationModule = getTranslationModuleByKey(moduleKey);
+  } else if (moduleKey) {
+    // invalid module key
+    error(`${messages.cli.module_not_available}`);
+    process.exit(1);
   } else {
-    await promptTranslator();
+    // no module key
+    moduleKey = await promptModuleKey();
+    TranslationModule = getTranslationModuleByKey(moduleKey);
   }
 
-  const sourceLanguageInput: any = commandOptions.from
-    ? commandOptions.from
-    : undefined;
-  const targetLanguageInput: any = commandOptions.to
-    ? commandOptions.to
-    : undefined;
+  let translationConfig: TranslationConfig = {
+    moduleKey,
+    TranslationModule,
+    concurrencyLimit: default_concurrency_limit,
+    fallback: default_fallback,
+  };
 
-  let sourceLanguageISO: string;
-  let targetLanguageISOs: string[];
-  let newFileName: string = commandOptions.name
-    ? commandOptions.name
-    : undefined;
+  return translationConfig;
+}
 
-  const listIOS = Object.values(getLanguages() as any); // get list after assigning global.source
+async function fromLanguage(
+  commandOptions: OptionValues,
+  TranslationModule: TranslationModule
+): Promise<string> {
+  const fromLanguageInput: any = commandOptions.from ?? undefined;
+  let fromLanguageValue: string;
 
-  if (!sourceLanguageInput) {
-    const { from } = await promptFrom();
-    sourceLanguageISO = getCodeFromLanguage(from);
+  const supportedLanguageValues = Object.values(TranslationModule.languages);
+
+  if (!fromLanguageInput) {
+    const fromLanguageInput = await promptFrom(TranslationModule.languages);
+    fromLanguageValue = TranslationModule.languages[fromLanguageInput];
   } else {
-    if (listIOS.includes(sourceLanguageInput)) {
-      sourceLanguageISO = sourceLanguageInput;
+    if (supportedLanguageValues.includes(fromLanguageInput)) {
+      fromLanguageValue = fromLanguageInput;
     } else {
-      error(`[${sourceLanguageInput}]: ${messages.cli.from_not_available}`);
+      error(`[${fromLanguageInput}]: ${messages.cli.from_not_available}`);
       process.exit(1);
     }
   }
 
-  if (!targetLanguageInput) {
-    const { to } = await promptTo();
-    targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+  return fromLanguageValue;
+}
 
-    if (targetLanguageISOs.length === 0 || targetLanguageISOs === undefined) {
+async function toLanguages(
+  commandOptions: OptionValues,
+  TranslationModule: TranslationModule
+): Promise<string[]> {
+  const toLanguageInputs: any = commandOptions.to ?? undefined;
+  let toLanguageValues: string[];
+
+  const supportedLanguageValues = Object.values(TranslationModule.languages);
+
+  if (!toLanguageInputs) {
+    const toLanguageKeys = await promptTo(TranslationModule.languages);
+    toLanguageValues = toLanguageKeys.map(
+      (key: string) => TranslationModule.languages[key]
+    );
+
+    // second chance to select languages
+    if (toLanguageValues.length === 0 || toLanguageValues === undefined) {
       warn(messages.cli.no_selected_language);
-      const { to } = await promptTo();
-      targetLanguageISOs = to.map((lang: string) => getCodeFromLanguage(lang));
+      const toLanguageKeys = await promptTo(TranslationModule.languages);
+      toLanguageValues = toLanguageKeys.map(
+        (key: string) => TranslationModule.languages[key]
+      );
     }
   } else {
-    targetLanguageISOs = targetLanguageInput.map((lang: string) => {
-      if (listIOS.includes(lang)) {
+    toLanguageValues = toLanguageInputs.map((lang: string) => {
+      if (supportedLanguageValues.includes(lang)) {
         return lang;
       } else {
         error(`[${lang}]: ${messages.cli.to_not_available}`);
@@ -168,13 +254,58 @@ async function translate() {
     });
   }
 
+  return toLanguageValues;
+}
+
+async function fileName(commandOptions: OptionValues): Promise<string> {
+  let newFileName: string = commandOptions.name ?? undefined;
+
   if (!newFileName) {
-    const { name } = await promptName();
+    const name = await promptName();
     newFileName = name;
-  } else {
-    newFileName = newFileName;
   }
 
+  return newFileName;
+}
+
+async function fallback(commandOptions: OptionValues): Promise<boolean> {
+  let fallbackStr: string = commandOptions.fallback ?? undefined;
+  let fallback: boolean = false;
+
+  if (!fallbackStr) {
+    fallbackStr = await promptFallback();
+
+    if (!Object.keys(fallbacks).includes(fallbackStr)) {
+      error(`[${fallbackStr}]: ${messages.cli.fallback_not_available}`);
+      process.exit(1);
+    }
+  }
+
+  if (fallbackStr === 'yes') {
+    fallback = fallbacks.yes;
+  } else {
+    fallback = fallbacks.no;
+  }
+
+  return fallback;
+}
+
+async function concurrencyLimit(commandOptions: OptionValues): Promise<number> {
+  let concurrencyLimitInput: number =
+    commandOptions.concurrencylimit ?? undefined;
+
+  if (!concurrencyLimitInput) {
+    concurrencyLimitInput = await promptConcurrencyLimit();
+  }
+
+  let concurrencyLimit: number = Number(concurrencyLimitInput);
+
+  return Number.isNaN(concurrencyLimit)
+    ? default_concurrency_limit
+    : Number(concurrencyLimit);
+}
+
+function setLoading() {
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
       global.totalTranslated,
@@ -193,20 +324,5 @@ async function translate() {
     )}`;
   }, 200);
 
-  await fileTranslator(
-    objectPath,
-    sourceLanguageISO,
-    targetLanguageISOs,
-    newFileName
-  );
-
-  load.succeed(
-    `DONE! ${translationStatistic(
-      global.totalTranslation,
-      global.totalTranslation
-    )}`
-  );
-  clearInterval(refreshInterval);
-
-  info(messages.cli.creation_done);
+  return { load, refreshInterval };
 }
