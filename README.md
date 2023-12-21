@@ -1,3 +1,13 @@
+<p align="center">
+    <span align="center">✨ Sponsored by Moniesto - Bridge between Traders and Investors in Crypto ✨</span>
+</p>
+
+<p align="center">
+    <span align="center">✨ https://moniesto.com ✨</span>
+</p>
+
+    
+
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
@@ -93,7 +103,7 @@ jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --nam
 - with fallback logic (try other possible translation modules on fail)
 
 ```bash
-jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --name myFiles -fb yes
+jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --name myFiles --fallback yes
 ```
 
 - set concurrency limit (higher faster, but easy to get banned | default: 3)
