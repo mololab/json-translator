@@ -54,6 +54,8 @@ npm i @parvineyvazov/json-translator
 npm i -g @parvineyvazov/json-translator
 ```
 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
+
 # **1. 💫 CLI Usage**
 
 ```bash
@@ -151,6 +153,8 @@ jsontt -h
 ```bash
 jsontt --help
 ```
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
 # **2. 💥 Package Usage**
 
@@ -498,6 +502,9 @@ To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 }
 ```
 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
+
+
 ## How to contribute?
 
 - Clone it
@@ -549,6 +556,8 @@ make run-only-cli
 ```
 
 Make sure your terminal has admin access while running these commands to prevent any access issues.
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
 ## **🏞 Roadmap🏁**
 
