@@ -1,19 +1,13 @@
-import {
-  getFile,
-  getRootFolder,
-  saveFilePublic,
-  safeValueTransition,
-} from '../core/core';
+import { getFile, getRootFolder, saveFilePublic } from '../core/core';
 import * as fs from 'fs/promises';
 import * as appConsole from '../utils/console';
-import { Sources } from '..';
+import { safeValueTransition } from '../modules/helpers';
 
 jest.mock('fs/promises');
 
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
-  var source: Sources;
   var proxyList: string[];
   var proxyIndex: number;
 }

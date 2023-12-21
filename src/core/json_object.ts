@@ -1,40 +1,38 @@
-import { LanguageCode, LanguageCodes, translatedObject } from '..';
+import { translatedObject } from '..';
 import { plaintranslate } from './translator';
 import { TaskQueue } from 'cwait';
 import { Promise as bluebirdPromise } from 'bluebird';
-const MAX_SIMULTANEOUS_REQUEST = 3;
+import { TranslationConfig } from '../modules/modules';
+import { default_concurrency_limit } from '../utils/micro';
 
-var queue = new TaskQueue(bluebirdPromise, MAX_SIMULTANEOUS_REQUEST);
+var queue = new TaskQueue(bluebirdPromise, default_concurrency_limit);
 
 export async function objectTranslator(
+  TranslationConfig: TranslationConfig,
   object: translatedObject,
-  from: LanguageCode,
-  to: LanguageCode | LanguageCodes
-): Promise<translatedObject | translatedObject[]> {
+  from: string,
+  to: string[]
+): Promise<translatedObject[]> {
+  queue.concurrency = TranslationConfig.concurrencyLimit;
+
   if (object && from && to) {
-    // need to translate to more than 1 languages
-    if (typeof to === 'object') {
-      let general_object: translatedObject[] | null[] = [];
+    let generalObject: translatedObject[] | null[] = [];
 
-      await Promise.all(
-        Object.keys(to as LanguageCodes).map(async function(index) {
-          const index_as_num = Number(index);
-          const copy_object = JSON.parse(JSON.stringify(object));
+    await Promise.all(
+      Object.keys(to).map(async function(index) {
+        const indexAsNum = Number(index);
+        const copyObject = JSON.parse(JSON.stringify(object));
 
-          general_object[index_as_num] = await deepDiver(
-            copy_object,
-            from,
-            to[index_as_num]
-          );
-        })
-      );
+        generalObject[indexAsNum] = await deepDiver(
+          TranslationConfig,
+          copyObject,
+          from,
+          to[indexAsNum]
+        );
+      })
+    );
 
-      return general_object as translatedObject[];
-    } else {
-      await deepDiver(object, from, to);
-
-      return object as translatedObject;
-    }
+    return generalObject as translatedObject[];
   } else {
     throw new Error(
       `Undefined values detected. Available ones: object: ${!!object}, from: ${!!from}, to: ${!!to}`
@@ -43,9 +41,10 @@ export async function objectTranslator(
 }
 
 export async function deepDiver(
+  TranslationConfig: TranslationConfig,
   object: translatedObject,
-  from: LanguageCode,
-  to: LanguageCode
+  from: string,
+  to: string
 ): Promise<translatedObject | null> {
   var has = Object.prototype.hasOwnProperty.bind(object);
 
@@ -58,13 +57,19 @@ export async function deepDiver(
       if (has(k)) {
         switch (typeof object[k]) {
           case 'object':
-            await deepDiver(object[k], from, to);
+            await deepDiver(TranslationConfig, object[k], from, to);
             break;
           case 'string':
             global.totalTranslation = global.totalTranslation + 1;
 
             return queue.add(async () => {
-              return await plaintranslate(object[k], from, to)
+              return await plaintranslate(
+                TranslationConfig,
+                object[k],
+                from,
+                to,
+                []
+              )
                 .then(data => {
                   object[k] = data;
                 })
