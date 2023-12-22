@@ -1,11 +1,21 @@
+<p align="center">
+    <span align="center">✨ Sponsored by Moniesto - Bridge between Traders and Investors in Crypto ✨</span>
+</p>
+
+<p align="center">
+    <span align="center">✨ https://moniesto.com ✨</span>
+</p>
+
+    
+
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
 
-# <p align="center"> **🚀 FREE JSON TRANSLATOR 🆓** </p>
+# <p align="center"> **🚀 FREE JSON/YAML TRANSLATOR 🆓** </p>
 
 <p align="center">
-  <a href="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads">
+  <a href="https://npmcharts.com/compare/@parvineyvazov/json-translator?minimal=true">
     <img src="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads" alt="npm downloads">
   </a> 
   <br>
@@ -20,7 +30,7 @@
   </a>
 </p>
 
-This package will provide you to translate your JSON files or objects into different languages FREE.
+This package will provide you to translate your JSON/YAML files or JSON objects into different languages FREE.
 
 ### Types of usages 👀
 
@@ -44,10 +54,14 @@ npm i @parvineyvazov/json-translator
 npm i -g @parvineyvazov/json-translator
 ```
 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
+
 # **1. 💫 CLI Usage**
 
 ```bash
 jsontt <your/path/to/file.json>
+or
+jsontt <your/path/to/file.yaml/yml>
 ```
 
 <p align="center" >
@@ -56,30 +70,91 @@ jsontt <your/path/to/file.json>
 
 ## Arguments
 
-- `[path]`: Required JSON file path `<your/path/to/file.json>`
+- `[path]`: Required JSON/YAML file path `<your/path/to/file.json>`
 - `[path]`: optional proxy list txt file path `<your/path/to/proxy_list.txt>`
 
 ## Options
 
-  - -V, --version                  output the version number
-  - -T, --translator <Translator>  specify translation service (choices: "google", "libre", "argos", "bing")
-  - -f, --from <Language>          the translate language from it, e.g., --from en
-  - -t, --to <Languages...>        the Languages to translate into, e.g., --to ar fr zh-CN
-  - -n, --name                     the name of the output file (optional), e.g., --name newFileName
-  - -h, --help                     display help for command
+```
+  -V, --version                     output the version number
+  -m, --module <Module>             specify translation module
+  -f, --from <Language>             from language
+  -t, --to <Languages...>           to translates
+  -n, --name <string>               optional ↵ | output filename
+  -fb, --fallback <string>          optional ↵ | fallback logic,
+                                    try other translation modules on fail | yes, no | default: no
+  -cl, --concurrencylimit <number>  optional ↵ | set max concurrency limit
+                                    (higher faster, but easy to get banned) | default: 3
+  -h, --help                        display help for command
+```
+
 ## Examples
 
 Translate a JSON file using Google Translate:
 
 ```bash
-jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN
+jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN
 ```
 
-With output name
+- with output name
 
 ```bash
-jsontt <your/path/to/file.json> --translator google --from en --to ar fr zh-CN --name myFiles
+jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --name myFiles
 ```
+
+- with fallback logic (try other possible translation modules on fail)
+
+```bash
+jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --name myFiles --fallback yes
+```
+
+- set concurrency limit (higher faster, but easy to get banned | default: 3)
+
+```bash
+jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --name myFiles --fallback yes --concurrencylimit 10
+```
+
+### other usage examples
+
+- translate (json/yaml)
+
+```bash
+jsontt file.json
+```
+
+```bash
+jsontt folder/file.json
+```
+
+```bash
+jsontt "folder\file.json"
+```
+
+```bash
+jsontt "C:\folder1\folder\en.json"
+```
+
+- with proxy (only Google Translate module)
+
+```bash
+jsontt file.json proxy.txt
+```
+
+Result will be in the same folder as the original JSON/YAML file.
+
+<br>
+
+- help
+
+```bash
+jsontt -h
+```
+
+```bash
+jsontt --help
+```
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
 # **2. 💥 Package Usage**
 
@@ -336,11 +411,9 @@ Let`s translate our json file into another language and save it into the same fo
 
 let path = 'C:/files/en.json'; // PATH OF YOUR JSON FILE (includes file name)
 
-await translator.translateFile(
-  path,
-  translator.languages.English,
-  translator.languages.German
-);
+await translator.translateFile(path, translator.languages.English, [
+  translator.languages.German,
+]);
 ```
 
 ```bash
@@ -429,45 +502,8 @@ To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 }
 ```
 
-## **7. CLI commands**
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
-- translate
-
-```bash
-jsontt file.json
-```
-
-```bash
-jsontt folder/file.json
-```
-
-```bash
-jsontt "folder\file.json"
-```
-
-```bash
-jsontt "C:\folder1\folder\en.json"
-```
-
-- with proxy
-
-```bash
-jsontt file.json proxy.txt
-```
-
-Result will be in the same folder as the original JSON file.
-
-<br>
-
-- help
-
-```bash
-jsontt -h
-```
-
-```bash
-jsontt --help
-```
 
 ## How to contribute?
 
@@ -491,7 +527,7 @@ yarn
 
   - Update translation
 
-    Go to file `src/core/core.ts`
+    Go to file `src/modules/functions.ts`
 
   - Update JSON operations(deep dive, send translation request)
 
@@ -520,6 +556,8 @@ make run-only-cli
 ```
 
 Make sure your terminal has admin access while running these commands to prevent any access issues.
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
 ## **🏞 Roadmap🏁**
 
@@ -575,6 +613,12 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: Define output file names on cli (optional command for cli)
 
+:heavy_check_mark: YAML file Translate
+
+:heavy_check_mark: Fallback Translation (try new module on fail)
+
+:heavy_check_mark: Can set concurrency limit manually
+
 - [ ] Libre Translate option (in code package)
 
 - [ ] Argos Translate option (in code package)
@@ -588,6 +632,8 @@ Make sure your terminal has admin access while running these commands to prevent
 - [ ] Browser support
 
 - [ ] Translation Option for own LibreTranslate instance
+
+- [ ] Make "--" dynamic adjustable (placeholder of not translated ones).
 
 ## License
 

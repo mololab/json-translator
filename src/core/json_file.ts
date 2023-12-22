@@ -1,77 +1,79 @@
-import { LanguageCode, LanguageCodes, translatedObject } from '..';
+import { translatedObject } from '..';
 import { error, messages, success } from '../utils/console';
-import { getLanguageFromCode } from '../utils/micro';
 import { getFile, getRootFolder, saveFilePublic } from './core';
 import { objectTranslator } from './json_object';
+import { matchYamlExt } from '../utils/yaml';
+import { TranslationConfig } from '../modules/modules';
+import { getLanguageKeyFromValue } from '../modules/helpers';
 
 export async function fileTranslator(
-  objectPath: string,
-  from: LanguageCode,
-  to: LanguageCode | LanguageCodes,
+  TranslationConfig: TranslationConfig,
+  tempObjectPath: string,
+  from: string,
+  to: string[],
   newFileName: string
 ) {
-  let file_from_path = await getFileFromPath(objectPath);
-
-  let { json_obj } = file_from_path;
-  objectPath = file_from_path.objectPath;
-
-  if (json_obj === undefined) {
+  // step: get file details -> data, path
+  let { jsonObj, objectPath } = await getFileFromPath(tempObjectPath);
+  if (jsonObj === undefined) {
     error(messages.file.no_file_in_path);
     return;
   }
 
-  json_obj = { data: JSON.parse(json_obj) };
+  jsonObj = { data: JSON.parse(jsonObj) };
 
-  let new_json_obj = await objectTranslator(json_obj, from, to);
-
-  if (new_json_obj === undefined) {
+  // step: translate object
+  let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to);
+  if (newJsonObj === undefined) {
     error(messages.file.cannot_translate);
     return;
   }
 
-  let latest_path = objectPath.replace(/\\/g, '/');
-  let root_folder = getRootFolder(latest_path);
+  // step: save translated data
+  let latestPath = objectPath.replace(/\\/g, '/');
+  const fileExt = getFileExt(latestPath);
 
-  if (Array.isArray(new_json_obj) === true && Array.isArray(to) === true) {
-    // multiple file saving
-    (new_json_obj as Array<translatedObject>).forEach(
-      async (element, index) => {
-        const current_json_obj = element.data;
+  let rootFolder = getRootFolder(latestPath);
 
-        let file_name = newFileName
-          ? `/${newFileName}.${to[index]}.json`
-          : `/${to[index]}.json`;
+  (newJsonObj as Array<translatedObject>).forEach(async (element, index) => {
+    const currentJsonObj = element.data;
 
-        await saveFilePublic(root_folder + file_name, current_json_obj);
+    let fileName = newFileName
+      ? `/${newFileName}.${to[index]}.${fileExt}`
+      : `/${to[index]}.${fileExt}`;
 
-        success(
-          `For ${getLanguageFromCode(to[index])} --> ${file_name} created.`
-        );
-      }
-    );
-  } else {
-    new_json_obj = (new_json_obj as translatedObject).data;
-
-    let file_name = newFileName ? `/${newFileName}.${to}.json` : `/${to}.json`;
-
-    await saveFilePublic(root_folder + file_name, new_json_obj);
+    await saveFilePublic(rootFolder + fileName, currentJsonObj);
 
     success(
-      `For ${getLanguageFromCode(to as string)} --> ${file_name} created.`
+      `For ${getLanguageKeyFromValue(
+        to[index],
+        TranslationConfig.TranslationModule.languages
+      )} --> ${fileName} created.`
     );
-  }
+  });
 }
 
 export async function getFileFromPath(
   objectPath: string
-): Promise<{ json_obj: any; objectPath: string }> {
-  let json_obj: any = await getFile(objectPath);
+): Promise<{ jsonObj: any; objectPath: string }> {
+  let jsonObj: any = await getFile(objectPath);
 
-  if (json_obj === undefined) {
+  if (jsonObj === undefined) {
     objectPath = __dirname + '\\' + objectPath;
 
-    json_obj = await getFile(objectPath);
+    jsonObj = await getFile(objectPath);
   }
 
-  return { json_obj, objectPath };
+  return { jsonObj, objectPath };
+}
+
+function getFileExt(latestPath: string): string {
+  // Check if source file has YAML extension and return the extension ("yml" or "yaml").
+  const sourceFileMatchYamlExt = matchYamlExt(latestPath);
+
+  // When source file has "yml" or "yaml" extension, use the same in output file path.
+  // Otherwise, default "json" extension used.
+  const fileExt = sourceFileMatchYamlExt || 'json';
+
+  return fileExt;
 }
