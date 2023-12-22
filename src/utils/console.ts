@@ -32,6 +32,7 @@ export const commands = {
 };
 
 export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https://github.com/mololab/json-translator/blob/master/docs/LANGUAGES.md${default_color}\n`;
+
 export const messages = {
   cli: {
     // cli general messages
