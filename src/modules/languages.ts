@@ -274,6 +274,38 @@ export const BingTranslateLanguages: Record<string, string> = {
   Zulu: 'zu',
 };
 
+export const DeepLTranslateLanguages: Record<string, string> = {
+  Bulgarian: 'BG',
+  Chinese: 'ZH',
+  Czech: 'CS',
+  Danish: 'DA',
+  Dutch: 'NL',
+  English: 'EN',
+  Estonian: 'ET',
+  Finnish: 'FI',
+  French: 'FR',
+  German: 'DE',
+  Greek: 'EL',
+  Hungarian: 'HU',
+  Indonesian: 'ID',
+  Italian: 'IT',
+  Japanese: 'JA',
+  Korean: 'KO',
+  Latvian: 'LV',
+  Lithuanian: 'LT',
+  Norwegian: 'NB',
+  Polish: 'PL',
+  Portuguese: 'PT',
+  Romanian: 'RO',
+  Russian: 'RU',
+  Slovak: 'SK',
+  Slovenian: 'SL',
+  Spanish: 'ES',
+  Swedish: 'SV',
+  Turkish: 'TR',
+  Ukrainian: 'UK',
+};
+
 export const LanguageMapping: Record<string, Record<string, string>> = {
   Automatic: {
     google: GoogleTranslateLanguages.Automatic,
@@ -332,6 +364,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   Bulgarian: {
     google: GoogleTranslateLanguages.Bulgarian,
     bing: BingTranslateLanguages.Bulgarian,
+    deepl: DeepLTranslateLanguages.Bulgarian,
   },
   Cantonese_Traditional: {
     bing: BingTranslateLanguages.Cantonese_Traditional,
@@ -354,6 +387,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Chinese_Simplified,
     libre: LibreTranslateLanguages.Chinese,
     argos: ArgosTranslateLanguages.Chinese,
+    deepl: DeepLTranslateLanguages.Chinese,
   },
   Chinese_Traditional: {
     google: GoogleTranslateLanguages.Chinese_Traditional,
@@ -370,11 +404,13 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Czech,
     bing: BingTranslateLanguages.Czech,
     libre: LibreTranslateLanguages.Czech,
+    deepl: DeepLTranslateLanguages.Czech,
   },
   Danish: {
     google: GoogleTranslateLanguages.Danish,
     bing: BingTranslateLanguages.Danish,
     libre: LibreTranslateLanguages.Danish,
+    deepl: DeepLTranslateLanguages.Danish,
   },
   Dari: {
     bing: BingTranslateLanguages.Dari,
@@ -386,12 +422,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Dutch,
     bing: BingTranslateLanguages.Dutch,
     libre: LibreTranslateLanguages.Dutch,
+    deepl: DeepLTranslateLanguages.Dutch,
   },
   English: {
     google: GoogleTranslateLanguages.English,
     bing: BingTranslateLanguages.English,
     libre: LibreTranslateLanguages.English,
     argos: ArgosTranslateLanguages.English,
+    deepl: DeepLTranslateLanguages.English,
   },
   Esperanto: {
     google: GoogleTranslateLanguages.Esperanto,
@@ -400,6 +438,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   Estonian: {
     google: GoogleTranslateLanguages.Estonian,
     bing: BingTranslateLanguages.Estonian,
+    deepl: DeepLTranslateLanguages.Estonian,
   },
   Faroese: {
     bing: BingTranslateLanguages.Faroese,
@@ -415,12 +454,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Finnish,
     bing: BingTranslateLanguages.Finnish,
     libre: LibreTranslateLanguages.Finnish,
+    deepl: DeepLTranslateLanguages.Finnish,
   },
   French: {
     google: GoogleTranslateLanguages.French,
     bing: BingTranslateLanguages.French,
     libre: LibreTranslateLanguages.French,
     argos: ArgosTranslateLanguages.French,
+    deepl: DeepLTranslateLanguages.French,
   },
   French_Canada: {
     bing: BingTranslateLanguages.French_Canada,
@@ -441,11 +482,13 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.German,
     libre: LibreTranslateLanguages.German,
     argos: ArgosTranslateLanguages.German,
+    deepl: DeepLTranslateLanguages.German,
   },
   Greek: {
     google: GoogleTranslateLanguages.Greek,
     bing: BingTranslateLanguages.Greek,
     libre: LibreTranslateLanguages.Greek,
+    deepl: DeepLTranslateLanguages.Greek,
   },
   Gujarati: {
     google: GoogleTranslateLanguages.Gujarati,
@@ -480,6 +523,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Hungarian,
     bing: BingTranslateLanguages.Hungarian,
     libre: LibreTranslateLanguages.Hungarian,
+    deepl: DeepLTranslateLanguages.Hungarian,
   },
   Icelandic: {
     google: GoogleTranslateLanguages.Icelandic,
@@ -493,6 +537,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Indonesian,
     libre: LibreTranslateLanguages.Indonesian,
     argos: ArgosTranslateLanguages.Indonesian,
+    deepl: DeepLTranslateLanguages.Indonesian,
   },
   Inuinnaqtun: {
     bing: BingTranslateLanguages.Inuinnaqtun,
@@ -514,12 +559,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Italian,
     libre: LibreTranslateLanguages.Italian,
     argos: ArgosTranslateLanguages.Italian,
+    deepl: DeepLTranslateLanguages.Italian,
   },
   Japanese: {
     google: GoogleTranslateLanguages.Japanese,
     bing: BingTranslateLanguages.Japanese,
     libre: LibreTranslateLanguages.Japanese,
     argos: ArgosTranslateLanguages.Japanese,
+    deepl: DeepLTranslateLanguages.Japanese,
   },
   Javanese: {
     google: GoogleTranslateLanguages.Javanese,
@@ -544,6 +591,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Korean,
     libre: LibreTranslateLanguages.Korean,
     argos: ArgosTranslateLanguages.Korean,
+    deepl: DeepLTranslateLanguages.Korean,
   },
   Kurdish_Kurmanji: {
     google: GoogleTranslateLanguages.Kurdish_Kurmanji,
@@ -566,10 +614,12 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   Latvian: {
     google: GoogleTranslateLanguages.Latvian,
     bing: BingTranslateLanguages.Latvian,
+    deepl: DeepLTranslateLanguages.Latvian,
   },
   Lithuanian: {
     google: GoogleTranslateLanguages.Lithuanian,
     bing: BingTranslateLanguages.Lithuanian,
+    deepl: DeepLTranslateLanguages.Lithuanian,
   },
   Luxembourgish: {
     google: GoogleTranslateLanguages.Luxembourgish,
@@ -620,6 +670,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   Norwegian: {
     google: GoogleTranslateLanguages.Norwegian,
     bing: BingTranslateLanguages.Norwegian,
+    deepl: DeepLTranslateLanguages.Norwegian,
   },
   Odia: {
     bing: BingTranslateLanguages.Odia,
@@ -638,12 +689,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Polish,
     libre: LibreTranslateLanguages.Polish,
     argos: ArgosTranslateLanguages.Polish,
+    deepl: DeepLTranslateLanguages.Polish,
   },
   Portuguese: {
     google: GoogleTranslateLanguages.Portuguese,
     bing: BingTranslateLanguages.Portuguese_Portugal,
     libre: LibreTranslateLanguages.Portuguese,
     argos: ArgosTranslateLanguages.Portuguese,
+    deepl: DeepLTranslateLanguages.Portuguese,
   },
   Portuguese_Brazil: {
     bing: BingTranslateLanguages.Portuguese_Brazil,
@@ -658,12 +711,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   Romanian: {
     google: GoogleTranslateLanguages.Romanian,
     bing: BingTranslateLanguages.Romanian,
+    deepl: DeepLTranslateLanguages.Romanian,
   },
   Russian: {
     google: GoogleTranslateLanguages.Russian,
     bing: BingTranslateLanguages.Russian,
     libre: LibreTranslateLanguages.Russian,
     argos: ArgosTranslateLanguages.Russian,
+    deepl: DeepLTranslateLanguages.Russian,
   },
   Samoan: {
     google: GoogleTranslateLanguages.Samoan,
@@ -695,10 +750,12 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Slovak,
     bing: BingTranslateLanguages.Slovak,
     libre: LibreTranslateLanguages.Slovak,
+    deepl: DeepLTranslateLanguages.Slovak,
   },
   Slovenian: {
     google: GoogleTranslateLanguages.Slovenian,
     bing: BingTranslateLanguages.Slovenian,
+    deepl: DeepLTranslateLanguages.Slovenian,
   },
   Somali: {
     google: GoogleTranslateLanguages.Somali,
@@ -709,6 +766,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Spanish,
     libre: LibreTranslateLanguages.Spanish,
     argos: ArgosTranslateLanguages.Spanish,
+    deepl: DeepLTranslateLanguages.Spanish,
   },
   Sundanese: {
     google: GoogleTranslateLanguages.Sundanese,
@@ -721,6 +779,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Swedish,
     bing: BingTranslateLanguages.Swedish,
     libre: LibreTranslateLanguages.Swedish,
+    deepl: DeepLTranslateLanguages.Swedish,
   },
   Tahitian: {
     bing: BingTranslateLanguages.Tahitian,
@@ -757,6 +816,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     bing: BingTranslateLanguages.Turkish,
     libre: LibreTranslateLanguages.Turkish,
     argos: ArgosTranslateLanguages.Turkish,
+    deepl: DeepLTranslateLanguages.Turkish,
   },
   Turkmen: {
     bing: BingTranslateLanguages.Turkmen,
@@ -765,6 +825,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
     google: GoogleTranslateLanguages.Ukrainian,
     bing: BingTranslateLanguages.Ukrainian,
     libre: LibreTranslateLanguages.Ukrainian,
+    deepl: DeepLTranslateLanguages.Ukrainian,
   },
   Upper_Sorbian: {
     bing: BingTranslateLanguages.Upper_Sorbian,

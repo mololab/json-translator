@@ -58,35 +58,3 @@ export async function runCli() {
 export interface translatedObject {
   [key: string]: any;
 }
-
-enum DeepLTranslateLanguages {
-  Bulgarian = 'BG',
-  Czech = 'CS',
-  Danish = 'DA',
-  German = 'DE',
-  Greek = 'EL',
-  English = 'EN',
-  Spanish = 'ES',
-  Estonian = 'ET',
-  Finnish = 'FI',
-  French = 'FR',
-  Hungarian = 'HU',
-  Indonesian = 'ID',
-  Italian = 'IT',
-  Japanese = 'JA',
-  Korean = 'KO',
-  Lithuanian = 'LT',
-  Latvian = 'LV',
-  Norwegian = 'NB',
-  Dutch = 'NL',
-  Polish = 'PL',
-  Portuguese = 'PT',
-  Romanian = 'RO',
-  Russian = 'RU',
-  Slovak = 'SK',
-  Slovenian = 'SL',
-  Swedish = 'SV',
-  Turkish = 'TR',
-  Ukrainian = 'UK',
-  Chinese = 'ZH',
-}

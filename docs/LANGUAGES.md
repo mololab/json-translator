@@ -328,4 +328,5 @@
 |     | Swedish    | 'SV' |
 | T   | Turkish    | 'TR' |
 | U   | Ukrainian  | 'UK' |
+
 </details>

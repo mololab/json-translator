@@ -9,7 +9,14 @@ var inquirer = require('inquirer');
 export async function promptModuleKey(): Promise<string> {
   const module_key_choices = translationModuleKeys().map(key => {
     return {
-      name: getTranslationModuleByKey(key).altName,
+      name:
+        getTranslationModuleByKey(key).altName +
+        (getTranslationModuleByKey(key).requirements
+          ? ' | requirements: ' +
+            (getTranslationModuleByKey(key).requirements as string[]).join(
+              ' | '
+            )
+          : ''),
       value: key,
       short: key,
     };
