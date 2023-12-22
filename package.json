@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Translate your JSON file or object into another languages with Google Translate API",
