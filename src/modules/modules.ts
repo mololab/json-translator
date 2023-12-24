@@ -4,6 +4,7 @@ import {
   translateWithLibre,
   translateWithArgos,
   translateWithDeepL,
+  translateWithGoogle2,
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -11,6 +12,7 @@ import {
   LibreTranslateLanguages,
   ArgosTranslateLanguages,
   DeepLTranslateLanguages,
+  GoogleTranslate2Languages,
 } from './languages';
 
 export type TranslationModules = {
@@ -40,6 +42,12 @@ export const TranslationModules: TranslationModules = {
     altName: `[FREE] Google Translate (104 languages)`,
     languages: GoogleTranslateLanguages,
     translate: translateWithGoogle,
+  },
+  google2: {
+    name: 'Google Translate 2',
+    altName: `[FREE] Google Translate 2 (104 languages)`,
+    languages: GoogleTranslate2Languages,
+    translate: translateWithGoogle2,
   },
   bing: {
     name: 'Bing Translate',

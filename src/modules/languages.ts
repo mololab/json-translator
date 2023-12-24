@@ -106,6 +106,114 @@ export const GoogleTranslateLanguages: Record<string, string> = {
   Zulu: 'zu',
 };
 
+export const GoogleTranslate2Languages: Record<string, string> = {
+  Automatic: 'auto',
+  Afrikaans: 'af',
+  Albanian: 'sq',
+  Amharic: 'am',
+  Arabic: 'ar',
+  Armenian: 'hy',
+  Azerbaijani: 'az',
+  Basque: 'eu',
+  Belarusian: 'be',
+  Bengali: 'bn',
+  Bosnian: 'bs',
+  Bulgarian: 'bg',
+  Catalan: 'ca',
+  Cebuano: 'ceb',
+  Chichewa: 'ny',
+  Chinese_Simplified: 'zh-CN',
+  Chinese_Traditional: 'zh-TW',
+  Corsican: 'co',
+  Croatian: 'hr',
+  Czech: 'cs',
+  Danish: 'da',
+  Dutch: 'nl',
+  English: 'en',
+  Esperanto: 'eo',
+  Estonian: 'et',
+  Filipino: 'tl',
+  Finnish: 'fi',
+  French: 'fr',
+  Frisian: 'fy',
+  Galician: 'gl',
+  Georgian: 'ka',
+  German: 'de',
+  Greek: 'el',
+  Gujarati: 'gu',
+  Haitian_Creole: 'ht',
+  Hausa: 'ha',
+  Hawaiian: 'haw',
+  Hebrew: 'iw',
+  Hindi: 'hi',
+  Hmong: 'hmn',
+  Hungarian: 'hu',
+  Icelandic: 'is',
+  Igbo: 'ig',
+  Indonesian: 'id',
+  Irish: 'ga',
+  Italian: 'it',
+  Japanese: 'ja',
+  Javanese: 'jw',
+  Kannada: 'kn',
+  Kazakh: 'kk',
+  Khmer: 'km',
+  Korean: 'ko',
+  Kurdish_Kurmanji: 'ku',
+  Kyrgyz: 'ky',
+  Lao: 'lo',
+  Latin: 'la',
+  Latvian: 'lv',
+  Lithuanian: 'lt',
+  Luxembourgish: 'lb',
+  Macedonian: 'mk',
+  Malagasy: 'mg',
+  Malay: 'ms',
+  Malayalam: 'ml',
+  Maltese: 'mt',
+  Maori: 'mi',
+  Marathi: 'mr',
+  Mongolian: 'mn',
+  Myanmar_Burmese: 'my',
+  Nepali: 'ne',
+  Norwegian: 'no',
+  Pashto: 'ps',
+  Persian: 'fa',
+  Polish: 'pl',
+  Portuguese: 'pt',
+  Punjabi: 'pa',
+  Romanian: 'ro',
+  Russian: 'ru',
+  Samoan: 'sm',
+  Scots_Gaelic: 'gd',
+  Serbian: 'sr',
+  Sesotho: 'st',
+  Shona: 'sn',
+  Sindhi: 'sd',
+  Sinhala: 'si',
+  Slovak: 'sk',
+  Slovenian: 'sl',
+  Somali: 'so',
+  Spanish: 'es',
+  Sundanese: 'su',
+  Swahili: 'sw',
+  Swedish: 'sv',
+  Tajik: 'tg',
+  Tamil: 'ta',
+  Telugu: 'te',
+  Thai: 'th',
+  Turkish: 'tr',
+  Ukrainian: 'uk',
+  Urdu: 'ur',
+  Uzbek: 'uz',
+  Vietnamese: 'vi',
+  Welsh: 'cy',
+  Xhosa: 'xh',
+  Yiddish: 'yi',
+  Yoruba: 'yo',
+  Zulu: 'zu',
+};
+
 export const LibreTranslateLanguages: Record<string, string> = {
   Automatic: 'auto',
   English: 'en',
@@ -309,24 +417,29 @@ export const DeepLTranslateLanguages: Record<string, string> = {
 export const LanguageMapping: Record<string, Record<string, string>> = {
   Automatic: {
     google: GoogleTranslateLanguages.Automatic,
+    google2: GoogleTranslate2Languages.Automatic,
     libre: LibreTranslateLanguages.Automatic,
     argos: ArgosTranslateLanguages.Automatic,
     bing: BingTranslateLanguages.Automatic,
   },
   Afrikaans: {
     google: GoogleTranslateLanguages.Afrikaans,
+    google2: GoogleTranslateLanguages.Afrikaans,
     bing: BingTranslateLanguages.Afrikaans,
   },
   Albanian: {
     google: GoogleTranslateLanguages.Albanian,
+    google2: GoogleTranslate2Languages.Albanian,
     bing: BingTranslateLanguages.Albanian,
   },
   Amharic: {
     google: GoogleTranslateLanguages.Amharic,
+    google2: GoogleTranslate2Languages.Amharic,
     bing: BingTranslateLanguages.Amharic,
   },
   Arabic: {
     google: GoogleTranslateLanguages.Arabic,
+    google2: GoogleTranslate2Languages.Arabic,
     libre: LibreTranslateLanguages.Arabic,
     argos: ArgosTranslateLanguages.Arabic,
     bing: BingTranslateLanguages.Arabic,
@@ -336,10 +449,12 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Armenian: {
     google: GoogleTranslateLanguages.Armenian,
+    google2: GoogleTranslate2Languages.Armenian,
     bing: BingTranslateLanguages.Armenian,
   },
   Azerbaijani: {
     google: GoogleTranslateLanguages.Azerbaijani,
+    google2: GoogleTranslate2Languages.Azerbaijani,
     libre: LibreTranslateLanguages.Azerbaijani,
     bing: BingTranslateLanguages.Azerbaijani,
   },
@@ -348,21 +463,26 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Basque: {
     google: GoogleTranslateLanguages.Basque,
+    google2: GoogleTranslate2Languages.Basque,
     bing: BingTranslateLanguages.Basque,
   },
   Belarusian: {
     google: GoogleTranslateLanguages.Belarusian,
+    google2: GoogleTranslate2Languages.Belarusian,
   },
   Bengali: {
     google: GoogleTranslateLanguages.Bengali,
+    google2: GoogleTranslate2Languages.Bengali,
     bing: BingTranslateLanguages.Bangla,
   },
   Bosnian: {
     google: GoogleTranslateLanguages.Bosnian,
+    google2: GoogleTranslate2Languages.Bosnian,
     bing: BingTranslateLanguages.Bosnian,
   },
   Bulgarian: {
     google: GoogleTranslateLanguages.Bulgarian,
+    google2: GoogleTranslate2Languages.Bulgarian,
     bing: BingTranslateLanguages.Bulgarian,
     deepl: DeepLTranslateLanguages.Bulgarian,
   },
@@ -371,19 +491,23 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Catalan: {
     google: GoogleTranslateLanguages.Catalan,
+    google2: GoogleTranslate2Languages.Catalan,
     bing: BingTranslateLanguages.Catalan,
   },
   Cebuano: {
     google: GoogleTranslateLanguages.Cebuano,
+    google2: GoogleTranslate2Languages.Cebuano,
   },
   Chichewa: {
     google: GoogleTranslateLanguages.Chichewa,
+    google2: GoogleTranslate2Languages.Chichewa,
   },
   Chinese_Literary: {
     bing: BingTranslateLanguages.Chinese_Literary,
   },
   Chinese_Simplified: {
     google: GoogleTranslateLanguages.Chinese_Simplified,
+    google2: GoogleTranslate2Languages.Chinese_Simplified,
     bing: BingTranslateLanguages.Chinese_Simplified,
     libre: LibreTranslateLanguages.Chinese,
     argos: ArgosTranslateLanguages.Chinese,
@@ -391,23 +515,28 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Chinese_Traditional: {
     google: GoogleTranslateLanguages.Chinese_Traditional,
+    google2: GoogleTranslate2Languages.Chinese_Traditional,
     bing: BingTranslateLanguages.Chinese_Traditional,
   },
   Corsican: {
     google: GoogleTranslateLanguages.Corsican,
+    google2: GoogleTranslate2Languages.Corsican,
   },
   Croatian: {
     google: GoogleTranslateLanguages.Croatian,
+    google2: GoogleTranslate2Languages.Croatian,
     bing: BingTranslateLanguages.Croatian,
   },
   Czech: {
     google: GoogleTranslateLanguages.Czech,
+    google2: GoogleTranslate2Languages.Czech,
     bing: BingTranslateLanguages.Czech,
     libre: LibreTranslateLanguages.Czech,
     deepl: DeepLTranslateLanguages.Czech,
   },
   Danish: {
     google: GoogleTranslateLanguages.Danish,
+    google2: GoogleTranslate2Languages.Danish,
     bing: BingTranslateLanguages.Danish,
     libre: LibreTranslateLanguages.Danish,
     deepl: DeepLTranslateLanguages.Danish,
@@ -420,12 +549,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Dutch: {
     google: GoogleTranslateLanguages.Dutch,
+    google2: GoogleTranslate2Languages.Dutch,
     bing: BingTranslateLanguages.Dutch,
     libre: LibreTranslateLanguages.Dutch,
     deepl: DeepLTranslateLanguages.Dutch,
   },
   English: {
     google: GoogleTranslateLanguages.English,
+    google2: GoogleTranslate2Languages.English,
     bing: BingTranslateLanguages.English,
     libre: LibreTranslateLanguages.English,
     argos: ArgosTranslateLanguages.English,
@@ -433,10 +564,12 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Esperanto: {
     google: GoogleTranslateLanguages.Esperanto,
+    google2: GoogleTranslate2Languages.Esperanto,
     libre: LibreTranslateLanguages.Esperanto,
   },
   Estonian: {
     google: GoogleTranslateLanguages.Estonian,
+    google2: GoogleTranslate2Languages.Estonian,
     bing: BingTranslateLanguages.Estonian,
     deepl: DeepLTranslateLanguages.Estonian,
   },
@@ -448,16 +581,19 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Filipino: {
     google: GoogleTranslateLanguages.Filipino,
+    google2: GoogleTranslate2Languages.Filipino,
     bing: BingTranslateLanguages.Filipino,
   },
   Finnish: {
     google: GoogleTranslateLanguages.Finnish,
+    google2: GoogleTranslate2Languages.Finnish,
     bing: BingTranslateLanguages.Finnish,
     libre: LibreTranslateLanguages.Finnish,
     deepl: DeepLTranslateLanguages.Finnish,
   },
   French: {
     google: GoogleTranslateLanguages.French,
+    google2: GoogleTranslate2Languages.French,
     bing: BingTranslateLanguages.French,
     libre: LibreTranslateLanguages.French,
     argos: ArgosTranslateLanguages.French,
@@ -468,17 +604,21 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Frisian: {
     google: GoogleTranslateLanguages.Frisian,
+    google2: GoogleTranslate2Languages.Frisian,
   },
   Galician: {
     google: GoogleTranslateLanguages.Galician,
+    google2: GoogleTranslate2Languages.Galician,
     bing: BingTranslateLanguages.Galician,
   },
   Georgian: {
     google: GoogleTranslateLanguages.Georgian,
+    google2: GoogleTranslate2Languages.Georgian,
     bing: BingTranslateLanguages.Georgian,
   },
   German: {
     google: GoogleTranslateLanguages.German,
+    google2: GoogleTranslate2Languages.German,
     bing: BingTranslateLanguages.German,
     libre: LibreTranslateLanguages.German,
     argos: ArgosTranslateLanguages.German,
@@ -486,54 +626,66 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Greek: {
     google: GoogleTranslateLanguages.Greek,
+    google2: GoogleTranslate2Languages.Greek,
     bing: BingTranslateLanguages.Greek,
     libre: LibreTranslateLanguages.Greek,
     deepl: DeepLTranslateLanguages.Greek,
   },
   Gujarati: {
     google: GoogleTranslateLanguages.Gujarati,
+    google2: GoogleTranslate2Languages.Gujarati,
     bing: BingTranslateLanguages.Gujarati,
   },
   Haitian_Creole: {
     google: GoogleTranslateLanguages.Haitian_Creole,
+    google2: GoogleTranslate2Languages.Haitian_Creole,
     bing: BingTranslateLanguages.Haitian_Creole,
   },
   Hausa: {
     google: GoogleTranslateLanguages.Hausa,
+    google2: GoogleTranslate2Languages.Hausa,
   },
   Hawaiian: {
     google: GoogleTranslateLanguages.Hawaiian,
+    google2: GoogleTranslate2Languages.Hawaiian,
   },
   Hebrew: {
     google: GoogleTranslateLanguages.Hebrew,
+    google2: GoogleTranslate2Languages.Hebrew,
     bing: BingTranslateLanguages.Hebrew,
     libre: LibreTranslateLanguages.Hebrew,
   },
   Hindi: {
     google: GoogleTranslateLanguages.Hindi,
+    google2: GoogleTranslate2Languages.Hindi,
     bing: BingTranslateLanguages.Hindi,
     libre: LibreTranslateLanguages.Hindi,
     argos: ArgosTranslateLanguages.Hindi,
   },
   Hmong: {
     google: GoogleTranslateLanguages.Hmong,
+    google2: GoogleTranslate2Languages.Hmong,
     bing: BingTranslateLanguages.Hmong_Daw,
   },
   Hungarian: {
     google: GoogleTranslateLanguages.Hungarian,
+    google2: GoogleTranslate2Languages.Hungarian,
     bing: BingTranslateLanguages.Hungarian,
     libre: LibreTranslateLanguages.Hungarian,
     deepl: DeepLTranslateLanguages.Hungarian,
   },
   Icelandic: {
     google: GoogleTranslateLanguages.Icelandic,
+    google2: GoogleTranslate2Languages.Icelandic,
     bing: BingTranslateLanguages.Icelandic,
   },
   Igbo: {
     google: GoogleTranslateLanguages.Igbo,
+    google2: GoogleTranslate2Languages.Igbo,
   },
   Indonesian: {
     google: GoogleTranslateLanguages.Indonesian,
+    google2: GoogleTranslate2Languages.Indonesian,
     bing: BingTranslateLanguages.Indonesian,
     libre: LibreTranslateLanguages.Indonesian,
     argos: ArgosTranslateLanguages.Indonesian,
@@ -550,12 +702,14 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Irish: {
     google: GoogleTranslateLanguages.Irish,
+    google2: GoogleTranslate2Languages.Irish,
     bing: BingTranslateLanguages.Irish,
     libre: LibreTranslateLanguages.Irish,
     argos: ArgosTranslateLanguages.Irish,
   },
   Italian: {
     google: GoogleTranslateLanguages.Italian,
+    google2: GoogleTranslate2Languages.Italian,
     bing: BingTranslateLanguages.Italian,
     libre: LibreTranslateLanguages.Italian,
     argos: ArgosTranslateLanguages.Italian,
@@ -563,6 +717,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Japanese: {
     google: GoogleTranslateLanguages.Japanese,
+    google2: GoogleTranslate2Languages.Japanese,
     bing: BingTranslateLanguages.Japanese,
     libre: LibreTranslateLanguages.Japanese,
     argos: ArgosTranslateLanguages.Japanese,
@@ -570,17 +725,21 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Javanese: {
     google: GoogleTranslateLanguages.Javanese,
+    google2: GoogleTranslate2Languages.Javanese,
   },
   Kannada: {
     google: GoogleTranslateLanguages.Kannada,
+    google2: GoogleTranslate2Languages.Kannada,
     bing: BingTranslateLanguages.Kannada,
   },
   Kazakh: {
     google: GoogleTranslateLanguages.Kazakh,
+    google2: GoogleTranslate2Languages.Kazakh,
     bing: BingTranslateLanguages.Kazakh,
   },
   Khmer: {
     google: GoogleTranslateLanguages.Khmer,
+    google2: GoogleTranslate2Languages.Khmer,
     bing: BingTranslateLanguages.Khmer,
   },
   Klingon_Latin: {
@@ -588,6 +747,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Korean: {
     google: GoogleTranslateLanguages.Korean,
+    google2: GoogleTranslate2Languages.Korean,
     bing: BingTranslateLanguages.Korean,
     libre: LibreTranslateLanguages.Korean,
     argos: ArgosTranslateLanguages.Korean,
@@ -595,6 +755,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Kurdish_Kurmanji: {
     google: GoogleTranslateLanguages.Kurdish_Kurmanji,
+    google2: GoogleTranslate2Languages.Kurdish_Kurmanji,
     bing: BingTranslateLanguages.Kurdish_Kurmanji,
   },
   Kurdish_Northern: {
@@ -602,58 +763,72 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Kyrgyz: {
     google: GoogleTranslateLanguages.Kyrgyz,
+    google2: GoogleTranslate2Languages.Kyrgyz,
     bing: BingTranslateLanguages.Kyrgyz,
   },
   Lao: {
     google: GoogleTranslateLanguages.Lao,
+    google2: GoogleTranslate2Languages.Lao,
     bing: BingTranslateLanguages.Lao,
   },
   Latin: {
     google: GoogleTranslateLanguages.Latin,
+    google2: GoogleTranslate2Languages.Latin,
   },
   Latvian: {
     google: GoogleTranslateLanguages.Latvian,
+    google2: GoogleTranslate2Languages.Latvian,
     bing: BingTranslateLanguages.Latvian,
     deepl: DeepLTranslateLanguages.Latvian,
   },
   Lithuanian: {
     google: GoogleTranslateLanguages.Lithuanian,
+    google2: GoogleTranslate2Languages.Lithuanian,
     bing: BingTranslateLanguages.Lithuanian,
     deepl: DeepLTranslateLanguages.Lithuanian,
   },
   Luxembourgish: {
     google: GoogleTranslateLanguages.Luxembourgish,
+    google2: GoogleTranslate2Languages.Luxembourgish,
   },
   Macedonian: {
     google: GoogleTranslateLanguages.Macedonian,
+    google2: GoogleTranslate2Languages.Macedonian,
     bing: BingTranslateLanguages.Macedonian,
   },
   Malagasy: {
     google: GoogleTranslateLanguages.Malagasy,
+    google2: GoogleTranslate2Languages.Malagasy,
     bing: BingTranslateLanguages.Malagasy,
   },
   Malay: {
     google: GoogleTranslateLanguages.Malay,
+    google2: GoogleTranslate2Languages.Malay,
     bing: BingTranslateLanguages.Malay,
   },
   Malayalam: {
     google: GoogleTranslateLanguages.Malayalam,
+    google2: GoogleTranslate2Languages.Malayalam,
     bing: BingTranslateLanguages.Malayalam,
   },
   Maltese: {
     google: GoogleTranslateLanguages.Maltese,
+    google2: GoogleTranslate2Languages.Maltese,
     bing: BingTranslateLanguages.Maltese,
   },
   Maori: {
     google: GoogleTranslateLanguages.Maori,
+    google2: GoogleTranslate2Languages.Maori,
     bing: BingTranslateLanguages.Māori,
   },
   Marathi: {
     google: GoogleTranslateLanguages.Marathi,
+    google2: GoogleTranslate2Languages.Marathi,
     bing: BingTranslateLanguages.Marathi,
   },
   Mongolian: {
     google: GoogleTranslateLanguages.Marathi,
+    google2: GoogleTranslate2Languages.Marathi,
     bing: BingTranslateLanguages.Mongolian_Traditional,
   },
   Mongolian_Cyrillic: {
@@ -661,14 +836,17 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Myanmar_Burmese: {
     google: GoogleTranslateLanguages.Myanmar_Burmese,
+    google2: GoogleTranslate2Languages.Myanmar_Burmese,
     bing: BingTranslateLanguages.Myanmar_Burmese,
   },
   Nepali: {
     google: GoogleTranslateLanguages.Nepali,
+    google2: GoogleTranslate2Languages.Nepali,
     bing: BingTranslateLanguages.Nepali,
   },
   Norwegian: {
     google: GoogleTranslateLanguages.Norwegian,
+    google2: GoogleTranslate2Languages.Norwegian,
     bing: BingTranslateLanguages.Norwegian,
     deepl: DeepLTranslateLanguages.Norwegian,
   },
@@ -677,15 +855,18 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Pashto: {
     google: GoogleTranslateLanguages.Pashto,
+    google2: GoogleTranslate2Languages.Pashto,
     bing: BingTranslateLanguages.Pashto,
   },
   Persian: {
     google: GoogleTranslateLanguages.Persian,
+    google2: GoogleTranslate2Languages.Persian,
     bing: BingTranslateLanguages.Persian,
     libre: LibreTranslateLanguages.Persian,
   },
   Polish: {
     google: GoogleTranslateLanguages.Polish,
+    google2: GoogleTranslate2Languages.Polish,
     bing: BingTranslateLanguages.Polish,
     libre: LibreTranslateLanguages.Polish,
     argos: ArgosTranslateLanguages.Polish,
@@ -693,6 +874,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Portuguese: {
     google: GoogleTranslateLanguages.Portuguese,
+    google2: GoogleTranslate2Languages.Portuguese,
     bing: BingTranslateLanguages.Portuguese_Portugal,
     libre: LibreTranslateLanguages.Portuguese,
     argos: ArgosTranslateLanguages.Portuguese,
@@ -703,6 +885,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Punjabi: {
     google: GoogleTranslateLanguages.Punjabi,
+    google2: GoogleTranslate2Languages.Punjabi,
     bing: BingTranslateLanguages.Punjabi,
   },
   Querétaro_Otomi: {
@@ -710,11 +893,13 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Romanian: {
     google: GoogleTranslateLanguages.Romanian,
+    google2: GoogleTranslate2Languages.Romanian,
     bing: BingTranslateLanguages.Romanian,
     deepl: DeepLTranslateLanguages.Romanian,
   },
   Russian: {
     google: GoogleTranslateLanguages.Russian,
+    google2: GoogleTranslate2Languages.Russian,
     bing: BingTranslateLanguages.Russian,
     libre: LibreTranslateLanguages.Russian,
     argos: ArgosTranslateLanguages.Russian,
@@ -722,13 +907,16 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Samoan: {
     google: GoogleTranslateLanguages.Samoan,
+    google2: GoogleTranslate2Languages.Samoan,
     bing: BingTranslateLanguages.Samoan,
   },
   Scots_Gaelic: {
     google: GoogleTranslateLanguages.Scots_Gaelic,
+    google2: GoogleTranslate2Languages.Scots_Gaelic,
   },
   Serbian: {
     google: GoogleTranslateLanguages.Serbian,
+    google2: GoogleTranslate2Languages.Serbian,
     bing: BingTranslateLanguages.Serbian_Latin,
   },
   Serbian_Cyrillic: {
@@ -736,33 +924,41 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Sesotho: {
     google: GoogleTranslateLanguages.Sesotho,
+    google2: GoogleTranslate2Languages.Sesotho,
   },
   Shona: {
     google: GoogleTranslateLanguages.Shona,
+    google2: GoogleTranslate2Languages.Shona,
   },
   Sindhi: {
     google: GoogleTranslateLanguages.Sindhi,
+    google2: GoogleTranslate2Languages.Sindhi,
   },
   Sinhala: {
     google: GoogleTranslateLanguages.Sinhala,
+    google2: GoogleTranslate2Languages.Sinhala,
   },
   Slovak: {
     google: GoogleTranslateLanguages.Slovak,
+    google2: GoogleTranslate2Languages.Slovak,
     bing: BingTranslateLanguages.Slovak,
     libre: LibreTranslateLanguages.Slovak,
     deepl: DeepLTranslateLanguages.Slovak,
   },
   Slovenian: {
     google: GoogleTranslateLanguages.Slovenian,
+    google2: GoogleTranslate2Languages.Slovenian,
     bing: BingTranslateLanguages.Slovenian,
     deepl: DeepLTranslateLanguages.Slovenian,
   },
   Somali: {
     google: GoogleTranslateLanguages.Somali,
+    google2: GoogleTranslate2Languages.Somali,
     bing: BingTranslateLanguages.Somali,
   },
   Spanish: {
     google: GoogleTranslateLanguages.Spanish,
+    google2: GoogleTranslate2Languages.Spanish,
     bing: BingTranslateLanguages.Spanish,
     libre: LibreTranslateLanguages.Spanish,
     argos: ArgosTranslateLanguages.Spanish,
@@ -770,13 +966,16 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Sundanese: {
     google: GoogleTranslateLanguages.Sundanese,
+    google2: GoogleTranslate2Languages.Sundanese,
   },
   Swahili: {
     google: GoogleTranslateLanguages.Swahili,
+    google2: GoogleTranslate2Languages.Swahili,
     bing: BingTranslateLanguages.Swahili,
   },
   Swedish: {
     google: GoogleTranslateLanguages.Swedish,
+    google2: GoogleTranslate2Languages.Swedish,
     bing: BingTranslateLanguages.Swedish,
     libre: LibreTranslateLanguages.Swedish,
     deepl: DeepLTranslateLanguages.Swedish,
@@ -786,9 +985,11 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Tajik: {
     google: GoogleTranslateLanguages.Tajik,
+    google2: GoogleTranslate2Languages.Tajik,
   },
   Tamil: {
     google: GoogleTranslateLanguages.Tamil,
+    google2: GoogleTranslate2Languages.Tamil,
     bing: BingTranslateLanguages.Tamil,
   },
   Tatar: {
@@ -796,10 +997,12 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Telugu: {
     google: GoogleTranslateLanguages.Telugu,
+    google2: GoogleTranslate2Languages.Telugu,
     bing: BingTranslateLanguages.Telugu,
   },
   Thai: {
     google: GoogleTranslateLanguages.Thai,
+    google2: GoogleTranslate2Languages.Thai,
     bing: BingTranslateLanguages.Thai,
   },
   Tibetan: {
@@ -813,6 +1016,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Turkish: {
     google: GoogleTranslateLanguages.Turkish,
+    google2: GoogleTranslate2Languages.Turkish,
     bing: BingTranslateLanguages.Turkish,
     libre: LibreTranslateLanguages.Turkish,
     argos: ArgosTranslateLanguages.Turkish,
@@ -823,6 +1027,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Ukrainian: {
     google: GoogleTranslateLanguages.Ukrainian,
+    google2: GoogleTranslate2Languages.Ukrainian,
     bing: BingTranslateLanguages.Ukrainian,
     libre: LibreTranslateLanguages.Ukrainian,
     deepl: DeepLTranslateLanguages.Ukrainian,
@@ -832,6 +1037,7 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Urdu: {
     google: GoogleTranslateLanguages.Urdu,
+    google2: GoogleTranslate2Languages.Urdu,
     bing: BingTranslateLanguages.Urdu,
   },
   Uyghur: {
@@ -839,31 +1045,38 @@ export const LanguageMapping: Record<string, Record<string, string>> = {
   },
   Uzbek: {
     google: GoogleTranslateLanguages.Uzbek,
+    google2: GoogleTranslate2Languages.Uzbek,
     bing: BingTranslateLanguages.Uzbek_Latin,
   },
   Vietnamese: {
     google: GoogleTranslateLanguages.Vietnamese,
+    google2: GoogleTranslate2Languages.Vietnamese,
     bing: BingTranslateLanguages.Vietnamese,
     argos: ArgosTranslateLanguages.Vietnamese,
   },
   Welsh: {
     google: GoogleTranslateLanguages.Welsh,
+    google2: GoogleTranslate2Languages.Welsh,
     bing: BingTranslateLanguages.Welsh,
   },
   Xhosa: {
     google: GoogleTranslateLanguages.Xhosa,
+    google2: GoogleTranslate2Languages.Xhosa,
   },
   Yiddish: {
     google: GoogleTranslateLanguages.Yiddish,
+    google2: GoogleTranslate2Languages.Yiddish,
   },
   Yoruba: {
     google: GoogleTranslateLanguages.Yoruba,
+    google2: GoogleTranslate2Languages.Yoruba,
   },
   Yucatec_Maya: {
     bing: BingTranslateLanguages.Yucatec_Maya,
   },
   Zulu: {
     google: GoogleTranslateLanguages.Zulu,
+    google2: GoogleTranslate2Languages.Zulu,
     bing: BingTranslateLanguages.Zulu,
   },
 };

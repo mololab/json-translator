@@ -116,6 +116,117 @@
 </details>
 
 <details>
+  <summary>Google Translate 2</summary>
+  
+  | ABC | Language              | Code |
+  |-----|-----------------------|------|
+  | A   | Afrikaans             | af   |
+  |     | Albanian              | sq   |
+  |     | Amharic               | am   |
+  |     | Arabic                | ar   |
+  |     | Armenian              | hy   |
+  |     | Azerbaijani           | az   |
+  | B   | Basque                | eu   |
+  |     | Belarusian            | be   |
+  |     | Bengali               | bn   |
+  |     | Bosnian               | bs   |
+  |     | Bulgarian             | bg   |
+  | C   | Catalan               | ca   |
+  |     | Cebuano               | ceb  |
+  |     | Chichewa              | ny   |
+  |     | Chinese_Simplified    | zh-CN|
+  |     | Chinese_Traditional   | zh-TW|
+  |     | Corsican              | co   |
+  |     | Croatian              | hr   |
+  |     | Czech                 | cs   |
+  | D   | Danish                | da   |
+  |     | Dutch                 | nl   |
+  | E   | English               | en   |
+  |     | Esperanto             | eo   |
+  |     | Estonian              | et   |
+  | F   | Filipino              | tl   |
+  |     | Finnish               | fi   |
+  |     | French                | fr   |
+  |     | Frisian               | fy   |
+  | G   | Galician              | gl   |
+  |     | Georgian              | ka   |
+  |     | German                | de   |
+  |     | Greek                 | el   |
+  |     | Gujarati              | gu   |
+  | H   | Haitian_Creole        | ht   |
+  |     | Hausa                 | ha   |
+  |     | Hawaiian              | haw  |
+  |     | Hebrew                | iw   |
+  |     | Hindi                 | hi   |
+  |     | Hmong                 | hmn  |
+  |     | Hungarian             | hu   |
+  | I   | Icelandic             | is   |
+  |     | Igbo                  | ig   |
+  |     | Indonesian            | id   |
+  |     | Irish                 | ga   |
+  |     | Italian               | it   |
+  | J   | Japanese              | ja   |
+  |     | Javanese              | jw   |
+  | K   | Kannada               | kn   |
+  |     | Kazakh                | kk   |
+  |     | Khmer                 | km   |
+  |     | Korean                | ko   |
+  |     | Kurdish_Kurmanji      | ku   |
+  |     | Kyrgyz                | ky   |
+  | L   | Lao                   | lo   |
+  |     | Latin                 | la   |
+  |     | Latvian               | lv   |
+  |     | Lithuanian            | lt   |
+  |     | Luxembourgish         | lb   |
+  | M   | Macedonian            | mk   |
+  |     | Malagasy              | mg   |
+  |     | Malay                 | ms   |
+  |     | Malayalam             | ml   |
+  |     | Maltese               | mt   |
+  |     | Maori                 | mi   |
+  |     | Marathi               | mr   |
+  |     | Mongolian             | mn   |
+  |     | Myanmar_Burmese       | my   |
+  | N   | Nepali                | ne   |
+  |     | Norwegian             | no   |
+  | P   | Pashto                | ps   |
+  |     | Persian               | fa   |
+  |     | Polish                | pl   |
+  |     | Portuguese            | pt   |
+  |     | Punjabi               | pa   |
+  | R   | Romanian              | ro   |
+  |     | Russian               | ru   |
+  | S   | Samoan                | sm   |
+  |     | Scots_Gaelic          | gd   |
+  |     | Serbian               | sr   |
+  |     | Sesotho               | st   |
+  |     | Shona                 | sn   |
+  |     | Sindhi                | sd   |
+  |     | Sinhala               | si   |
+  |     | Slovak                | sk   |
+  |     | Slovenian             | sl   |
+  |     | Somali                | so   |
+  |     | Spanish               | es   |
+  |     | Sundanese             | su   |
+  |     | Swahili               | sw   |
+  |     | Swedish               | sv   |
+  | T   | Tajik                 | tg   |
+  |     | Tamil                 | ta   |
+  |     | Telugu                | te   |
+  |     | Thai                  | th   |
+  |     | Turkish               | tr   |
+  | U   | Ukrainian             | uk   |
+  |     | Urdu                  | ur   |
+  |     | Uzbek                 | uz   |
+  | V   | Vietnamese            | vi   |
+  | W   | Welsh                 | cy   |
+  | X   | Xhosa                 | xh   |
+  | Y   | Yiddish               | yi   |
+  |     | Yoruba                | yo   |
+  | Z   | Zulu                  | zu   |
+</details>
+
+<details>
   <summary>Bing Microsoft  Translate</summary>
 
 | ABC | Language              | Code     |

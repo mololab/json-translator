@@ -6,8 +6,6 @@
     <span align="center">✨ https://moniesto.com ✨</span>
 </p>
 
-    
-
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
@@ -34,7 +32,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 
 ### Types of usages 👀
 
-- CLI (Supports Google Translate, Bing Microsoft Translate, Libre Translate, Argos Translate, DeepL Translate)
+- CLI (Supports Google Translate, Google Translate 2 (Other way), Bing Microsoft Translate, Libre Translate, Argos Translate, DeepL Translate)
 
 - In code (Node.js) as a package (Supports only Google Translate)
 
@@ -503,7 +501,6 @@ To ignore words on translation use `{{word}}` OR `{word}` style on your object.
 ```
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
-
 
 ## How to contribute?
 

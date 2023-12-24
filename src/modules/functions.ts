@@ -4,6 +4,7 @@ import createHttpProxyAgent from 'http-proxy-agent';
 import axios from 'axios';
 import { safeValueTransition } from './helpers';
 import { warn } from '../utils/console';
+import translate2 from '@iamtraction/google-translate';
 
 export async function translateWithLibre(
   str: string,
@@ -161,4 +162,14 @@ export async function translateWithDeepL(
   );
 
   return data.translations[0].text;
+}
+
+export async function translateWithGoogle2(
+  str: string,
+  from: string,
+  to: string
+) {
+  const response = await translate2(str, { from: from, to: to });
+
+  return response.text;
 }
