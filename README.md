@@ -1,3 +1,5 @@
+- [Contact with me on Twitter](https://twitter.com/messages/compose?recipient_id=1035556159023927297) to advertise your app on jsontt cli
+
 <p align="center">
     <span align="center">✨ Sponsored by Moniesto - Bridge between Traders and Investors in Crypto ✨</span>
 </p>
