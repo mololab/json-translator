@@ -56,9 +56,9 @@ or
 jsontt <your/path/to/file.yaml/yml>
 ```
 
-<p align="center" >
-    <img src="https://s3.gifyu.com/images/jsonttgif.gif" alt="jsontt logo" />
-</p>
+## How to use it? (video below)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/A_12HaEj35Q/0.jpg)](https://www.youtube.com/watch?v=A_12HaEj35Q)
 
 ## Arguments
 
