@@ -260,9 +260,9 @@ async function toLanguages(
 async function fileName(commandOptions: OptionValues): Promise<string> {
   let newFileName: string = commandOptions.name ?? undefined;
 
-  if (!newFileName) {
-    const name = await promptName();
-    newFileName = name;
+  if (newFileName == undefined) {
+    newFileName = await promptName();
+    return newFileName;
   }
 
   return newFileName;
