@@ -4,7 +4,7 @@
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
 
-# <p align="center"> **🚀 FREE JSON/YAML TRANSLATOR 🆓** </p>
+# <p align="center"> **🚀 FREE JSON/YAML/PROPERTIES TRANSLATOR 🆓** </p>
 
 <p align="center">
   <a href="https://npmcharts.com/compare/@parvineyvazov/json-translator?minimal=true">
@@ -22,7 +22,7 @@
   </a>
 </p>
 
-This package will provide you to translate your JSON/YAML files or JSON objects into different languages FREE.
+This package will provide you to translate your JSON/YAML/PROPERTIES files or JSON objects into different languages FREE.
 
 ### Types of usages 👀
 
@@ -54,6 +54,8 @@ npm i -g @parvineyvazov/json-translator
 jsontt <your/path/to/file.json>
 or
 jsontt <your/path/to/file.yaml/yml>
+or
+jsontt <your/path/to/file.properties>
 ```
 
 ## How to use it? (video below)
@@ -62,7 +64,7 @@ jsontt <your/path/to/file.yaml/yml>
 
 ## Arguments
 
-- `[path]`: Required JSON/YAML file path `<your/path/to/file.json>`
+- `[path]`: Required JSON/YAML/PROPERTIES file path `<your/path/to/file.json>`
 - `[path]`: optional proxy list txt file path `<your/path/to/proxy_list.txt>`
 
 ## Options
@@ -108,7 +110,7 @@ jsontt <your/path/to/file.json> --module google --from en --to ar fr zh-CN --nam
 
 ### other usage examples
 
-- translate (json/yaml)
+- translate (json/yaml/properties)
 
 ```bash
 jsontt file.json
@@ -132,7 +134,7 @@ jsontt "C:\folder1\folder\en.json"
 jsontt file.json proxy.txt
 ```
 
-Result will be in the same folder as the original JSON/YAML file.
+Result will be in the same folder as the original JSON/YAML/PROPERTIES file.
 
 <br>
 
