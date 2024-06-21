@@ -16,7 +16,7 @@ export async function plaintranslate(
   skipModuleKeys: string[]
 ): Promise<string> {
   // Check for empty strings and return immediately if empty
-  if (str.trim() === '') return str;
+  if (str === '') return str;
 
   // step: map the subset of string need to be ignored
   let {
