@@ -1,5 +1,13 @@
 - [Contact with me on Twitter](https://twitter.com/messages/compose?recipient_id=1035556159023927297) to advertise your app on jsontt cli
 
+<p align="center">
+    <span align="center">✨ Sponsored by vow.fm - Your mood radio for free ✨</span>
+</p>
+
+<p align="center">
+    <span align="center">✨ https://vow.fm ✨</span>
+</p>
+
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>

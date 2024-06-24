@@ -36,7 +36,7 @@ export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https:
 export const messages = {
   cli: {
     // cli general messages
-    welcome: `\n${warn_color}Sponsored by Moniesto - Bridge between Traders and Investors in Crypto \nhttps://moniesto.com  \n\n${default_color}Welcome to the\n${success_color +
+    welcome: `\n${warn_color}Sponsored by vow.fm - Your mood radio for free \nhttps://vow.fm  \n\n${default_color}Welcome to the\n${success_color +
       figlet.textSync(
         'jsontt'
       )}${default_color}\n\t\t\t\tcli ${current_version}\n`,
