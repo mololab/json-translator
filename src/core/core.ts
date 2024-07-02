@@ -1,7 +1,9 @@
 import * as fs from 'fs/promises';
 import * as YAML from 'yaml';
 import { matchYamlExt } from '../utils/yaml';
+import { isPropertiesExt } from '../utils/properties';
 import { error, messages } from '../utils/console';
+import * as properties from 'properties';
 
 export async function getFile(objectPath: string) {
   let json_file: any = undefined;
@@ -14,7 +16,7 @@ export async function getFile(objectPath: string) {
       // and then stringified to JSON string.
       json_file = matchYamlExt(objectPath)
         ? JSON.stringify(YAML.parse(data))
-        : data;
+          : (isPropertiesExt(objectPath) ? JSON.stringify(properties.parse(data,null,null)) : data);
     })
     .catch(_ => {
       json_file = undefined;
@@ -39,7 +41,7 @@ export function getRootFolder(path: string) {
 export async function saveFilePublic(path: string, data: any) {
   // When path extension is for YAML file, then stringify with YAML encoder.
   // Otherwise, default JSON encoder is used.
-  var json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
+    var json = matchYamlExt(path) ? YAML.stringify(data) : (isPropertiesExt(path) ? properties.stringify(data,null,null) : JSON.stringify(data));
 
   await fs
     .writeFile(path, json, 'utf8')

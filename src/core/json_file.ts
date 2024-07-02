@@ -5,6 +5,7 @@ import { objectTranslator } from './json_object';
 import { matchYamlExt } from '../utils/yaml';
 import { TranslationConfig } from '../modules/modules';
 import { getLanguageKeyFromValue } from '../modules/helpers';
+import {isPropertiesExt} from "../utils/properties";
 
 export async function fileTranslator(
   TranslationConfig: TranslationConfig,
@@ -68,6 +69,8 @@ export async function getFileFromPath(
 }
 
 function getFileExt(latestPath: string): string {
+  // We also check properties here.
+  if(isPropertiesExt(latestPath)) return 'properties';
   // Check if source file has YAML extension and return the extension ("yml" or "yaml").
   const sourceFileMatchYamlExt = matchYamlExt(latestPath);
 
