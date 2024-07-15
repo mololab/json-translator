@@ -1,3 +1,4 @@
+import 'openai/shims/node'
 import { getFile, getRootFolder, saveFilePublic } from '../core/core';
 import * as fs from 'fs/promises';
 import * as appConsole from '../utils/console';

@@ -1,3 +1,4 @@
+import 'openai/shims/node'
 import { error, info, success, warn } from '../src/utils/console';
 
 declare global {
