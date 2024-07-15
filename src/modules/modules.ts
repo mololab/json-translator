@@ -5,6 +5,7 @@ import {
   translateWithArgos,
   translateWithDeepL,
   translateWithGoogle2,
+  translateWithGPT4o,
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -13,6 +14,7 @@ import {
   ArgosTranslateLanguages,
   DeepLTranslateLanguages,
   GoogleTranslate2Languages,
+  GTPTranslateLanguages,
 } from './languages';
 
 export type TranslationModules = {
@@ -69,9 +71,16 @@ export const TranslationModules: TranslationModules = {
   },
   deepl: {
     name: 'DeepL Translate',
-    altName: 'DeepL Translate (29 languages) \x1b[33m**NEW**\x1b[0m',
+    altName: 'DeepL Translate (29 languages)',
     requirements: ['"DEEPL_API_KEY" as env'],
     languages: DeepLTranslateLanguages,
     translate: translateWithDeepL,
+  },
+  gpt4o: {
+    name: 'AI model: gpt-4o model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: gpt-4o model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT4o,
   },
 };

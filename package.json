@@ -1,5 +1,5 @@
 {
-  "version": "2.2.5",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Translate your JSON file or object into another languages with Google Translate API",
@@ -89,6 +89,7 @@
     "http-proxy-agent": "^5.0.0",
     "inquirer": "^7.0.0",
     "loading-cli": "^1.1.0",
+    "openai": "^4.52.3",
     "yaml": "^2.3.2"
   }
 }

@@ -2,9 +2,11 @@ import { translate } from '@vitalets/google-translate-api';
 import * as bingTranslator from 'bing-translate-api';
 import createHttpProxyAgent from 'http-proxy-agent';
 import axios from 'axios';
-import { safeValueTransition } from './helpers';
+import { getLanguageKeyFromValue, safeValueTransition } from './helpers';
 import { warn } from '../utils/console';
 import translate2 from '@iamtraction/google-translate';
+import OpenAI from 'openai';
+import { GTPTranslateLanguages } from './languages';
 
 export async function translateWithLibre(
   str: string,
@@ -142,8 +144,10 @@ export async function translateWithDeepL(
   to: string
 ): Promise<string> {
   const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
-  if (!DEEPL_API_KEY)
-    throw new Error('process.env.DEEPL_API_KEY is not defined');
+  if (!DEEPL_API_KEY) {
+    warn('process.env.DEEPL_API_KEY is not defined');
+  }
+
   const body = {
     text: [safeValueTransition(str)],
     target_lang: to,
@@ -172,4 +176,63 @@ export async function translateWithGoogle2(
   const response = await translate2(str, { from: from, to: to });
 
   return response.text;
+}
+
+export async function translateWithGPT4o(
+  str: string,
+  from: string,
+  to: string
+) {
+  type ChatCompletionRequestMessage = {
+    role: 'system' | 'user' | 'assistant';
+    content: string;
+  };
+
+  let fromKey = getLanguageKeyFromValue(from, GTPTranslateLanguages);
+  let toKey = getLanguageKeyFromValue(to, GTPTranslateLanguages);
+
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!OPENAI_API_KEY) {
+    warn('process.env.OPENAI_API_KEY is not defined');
+  }
+
+  const openai = new OpenAI({
+    apiKey: OPENAI_API_KEY,
+  });
+
+  try {
+    let conversationHistory: ChatCompletionRequestMessage[] = [
+      {
+        role: 'system',
+        content:
+          'You are a translation assistant. Translate any text given to you into the specified language. Do not return anything else.',
+      },
+      {
+        role: 'user',
+        content: `${fromKey} to ${toKey}: "${str}"`,
+      },
+    ];
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: conversationHistory,
+      max_tokens: 1000,
+    });
+
+    let translation = response?.choices?.[0].message?.content?.trim() || '';
+
+    // remove first " if exist
+    translation =
+      translation[0] == '"' ? translation.substring(1) : translation;
+
+    // remove last " if exist
+    translation =
+      translation[translation.length - 1] == '"'
+        ? translation.substring(0, translation.length - 1)
+        : translation;
+
+    return translation || 'Translation failed';
+  } catch (error) {
+    throw new Error(`Failed to translate text with GPT: ${error}`);
+  }
 }

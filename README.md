@@ -34,7 +34,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 
 ### Types of usages 👀
 
-- CLI (Supports Google Translate, Google Translate 2 (Other way), Bing Microsoft Translate, Libre Translate, Argos Translate, DeepL Translate)
+- CLI (Supports GTP4o, Google Translate, Google Translate 2 (Other way), Bing Microsoft Translate, Libre Translate, Argos Translate, DeepL Translate)
 
 - In code (Node.js) as a package (Supports only Google Translate)
 
