@@ -1,5 +1,5 @@
 /// <reference types="../global" />
-import 'openai/shims/node'
+import 'openai/shims/node';
 import nock from 'nock';
 import { plaintranslate } from '../core/translator';
 import { DeepLTranslateLanguages } from '../modules/languages';
