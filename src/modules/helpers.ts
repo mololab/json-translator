@@ -100,11 +100,11 @@ export function getLanguageVariant(
 
   for (let key of Object.keys(LanguageMapping)) {
     if (
-      LanguageMapping[key][source] !== undefined &&
-      LanguageMapping[key][source] === sourceValue &&
-      LanguageMapping[key][destination] !== undefined
+      LanguageMapping[key].includes(source) &&
+      getTranslationModuleByKey(source).languages[key] === sourceValue &&
+      LanguageMapping[key].includes(destination)
     ) {
-      destinationValue = LanguageMapping[key][destination];
+      destinationValue = getTranslationModuleByKey(destination).languages[key];
       break;
     }
   }

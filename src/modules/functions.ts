@@ -183,6 +183,15 @@ export async function translateWithGPT4o(
   from: string,
   to: string
 ) {
+  return translateWithGPT('gpt-4o', str, from, to);
+}
+
+export async function translateWithGPT(
+  model: string,
+  str: string,
+  from: string,
+  to: string
+) {
   type ChatCompletionRequestMessage = {
     role: 'system' | 'user' | 'assistant';
     content: string;
@@ -214,7 +223,7 @@ export async function translateWithGPT4o(
     ];
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4',
+      model: model,
       messages: conversationHistory,
       max_tokens: 1000,
     });
