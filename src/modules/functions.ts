@@ -178,12 +178,32 @@ export async function translateWithGoogle2(
   return response.text;
 }
 
+export async function translateWithGPT35Turbo(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gpt-3.5-turbo', str, from, to);
+}
+
+export async function translateWithGPT4(str: string, from: string, to: string) {
+  return translateWithGPT('gpt-4', str, from, to);
+}
+
 export async function translateWithGPT4o(
   str: string,
   from: string,
   to: string
 ) {
   return translateWithGPT('gpt-4o', str, from, to);
+}
+
+export async function translateWithGPT4oMini(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gpt-4o-mini', str, from, to);
 }
 
 export async function translateWithGPT(

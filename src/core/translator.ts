@@ -51,12 +51,22 @@ export async function plaintranslate(
 
     clonedSkipModuleKeys.push(clonedTranslationConfig.moduleKey);
 
-    const { newModuleKey, newFrom, newTo } = newTranslationModule(
+    const {
+      newModuleKey,
+      newFrom,
+      newTo,
+      skippedModuleKeys,
+    } = newTranslationModule(
       clonedTranslationConfig.moduleKey,
       clonedSkipModuleKeys,
       from,
       to
     );
+
+    // add skippedModuleKeys to general skipModuleKeys
+    skippedModuleKeys.forEach(skippedModuleKey => {
+      clonedSkipModuleKeys.push(skippedModuleKey);
+    });
 
     let stop: boolean =
       !clonedTranslationConfig.fallback || newModuleKey === undefined;
@@ -101,31 +111,41 @@ function newTranslationModule(
     newModuleKey: undefined,
     newFrom: undefined,
     newTo: undefined,
+    skippedModuleKeys: [],
   };
+  const skippedModuleKeys: string[] = [];
 
   const allModuleKeys: string[] = translationModuleKeys();
-
   const result: string[] = allModuleKeys.filter(
     item => !skipModuleKeys.includes(item)
   );
 
-  let newModuleKey = result[0];
-
-  if (!newModuleKey) {
-    return default_data; // default
+  if (result.length == 0) {
+    return default_data;
   }
 
-  let newFrom = getLanguageVariant(sourceModuleKeys, from, newModuleKey);
-  let newTo = getLanguageVariant(sourceModuleKeys, to, newModuleKey);
+  for (let i = 0; i < result.length; i++) {
+    let newModuleKey = result[i];
 
-  if (!newFrom || !newTo) {
-    return default_data; // default
+    let newFrom = getLanguageVariant(sourceModuleKeys, from, newModuleKey);
+    let newTo = getLanguageVariant(sourceModuleKeys, to, newModuleKey);
+
+    // if found valid newFrom & newTo, return
+    if (newFrom && newTo) {
+      return {
+        newModuleKey,
+        newFrom,
+        newTo,
+        skippedModuleKeys,
+      };
+    }
+    // otherwise skip to next module, add key to skippedModuleKeys
+    else {
+      skippedModuleKeys.push(newModuleKey);
+    }
   }
 
   // has valid newModuleKey & from & to
-  return {
-    newModuleKey,
-    newFrom,
-    newTo,
-  };
+  default_data.skippedModuleKeys = skippedModuleKeys as any;
+  return default_data;
 }

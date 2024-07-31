@@ -5,7 +5,10 @@ import {
   translateWithArgos,
   translateWithDeepL,
   translateWithGoogle2,
+  translateWithGPT35Turbo,
   translateWithGPT4o,
+  translateWithGPT4,
+  translateWithGPT4oMini,
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -76,11 +79,34 @@ export const TranslationModules: TranslationModules = {
     languages: DeepLTranslateLanguages,
     translate: translateWithDeepL,
   },
-  gpt4o: {
-    name: 'AI model: gpt-4o model',
-    altName: '\x1b[33m**NEW**\x1b[0m AI model: gpt-4o model (104 languages)',
+  'gpt-4o': {
+    name: 'gpt-4o model',
+    altName: 'AI model: gpt-4o model (104 languages)',
     requirements: ['"OPENAI_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithGPT4o,
+  },
+  'gpt-3.5-turbo': {
+    name: 'gpt-3.5-turbo model',
+    altName:
+      '\x1b[33m**NEW**\x1b[0m AI model: gpt-3.5-turbo model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT35Turbo,
+  },
+  'gpt-4': {
+    name: 'gpt-4 model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: gpt-4 model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT4,
+  },
+  'gpt-4o-mini': {
+    name: 'gpt-4o-mini model',
+    altName:
+      '\x1b[33m**NEW**\x1b[0m AI model: gpt-4o-mini model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT4oMini,
   },
 };
