@@ -1,18 +1,18 @@
-- [Contact with me on Twitter](https://twitter.com/messages/compose?recipient_id=1035556159023927297) to advertise your app on jsontt cli
+- [Contact with me on Twitter](https://twitter.com/messages/compose?recipient_id=1035556159023927297) to advertise your project on jsontt cli
 
-<p align="center">
+<!-- <p align="center">
     <span align="center">✨ Sponsored by vow.fm - Your mood radio for free ✨</span>
 </p>
 
 <p align="center">
     <span align="center">✨ https://vow.fm ✨</span>
-</p>
+</p> -->
 
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
 </p>
 
-# <p align="center"> **🚀 FREE JSON/YAML TRANSLATOR 🆓** </p>
+# <p align="center"> **🚀 AI / FREE JSON & YAML TRANSLATOR 🆓** </p>
 
 <p align="center">
   <a href="https://npmcharts.com/compare/@parvineyvazov/json-translator?minimal=true">
@@ -32,11 +32,41 @@
 
 This package will provide you to translate your JSON/YAML files or JSON objects into different languages FREE.
 
-### Types of usages 👀
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
-- CLI (Supports GTP4o, Google Translate, Google Translate 2 (Other way), Bing Microsoft Translate, Libre Translate, Argos Translate, DeepL Translate)
 
-- In code (Node.js) as a package (Supports only Google Translate)
+### 🥷 CLI Support:
+
+|    Translation Module    | Support |                   FREE                    |
+| :----------------------: | :-----: | :---------------------------------------: |
+|     Google Translate     |   ✅    |                 `✅ FREE`                 |
+|    Google Translate 2    |   ✅    |                 `✅ FREE`                 |
+| Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
+|     Libre Translate      |   ✅    |                 `✅ FREE`                 |
+|     Argos Translate      |   ✅    |                 `✅ FREE`                 |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)`  |
+|          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|       gpt-4o-mini        |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+    
+
+### ⏳ Package Support:
+
+|    Translation Module    | Support |   FREE    |
+| :----------------------: | :-----: | :-------: |
+|     Google Translate     |   ✅    | `✅ FREE` |
+|    Google Translate 2    |   ❌    |    ❌     |
+| Microsoft Bing Translate |   ❌    |    ❌     |
+|     Libre Translate      |   ❌    |    ❌     |
+|     Argos Translate      |   ❌    |    ❌     |
+|     DeepL Translate      |   ❌    |    ❌     |
+|          gpt-4o          |   ❌    |    ❌     |
+|      gpt-3.5-turbo       |   ❌    |    ❌     |
+|          gpt-4           |   ❌    |    ❌     |
+|       gpt-4o-mini        |   ❌    |    ❌     |
+
+
 
 `Browser support will come soon...`
 
@@ -66,7 +96,7 @@ jsontt <your/path/to/file.yaml/yml>
 
 ## How to use it? (video below)
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/A_12HaEj35Q/0.jpg)](https://www.youtube.com/watch?v=A_12HaEj35Q)
+[![how to use jsontt](https://img.youtube.com/vi/A_12HaEj35Q/0.jpg)](https://www.youtube.com/watch?v=A_12HaEj35Q)
 
 ## Arguments
 
@@ -624,7 +654,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Bing Translate option (in code package)
 
-- [ ] ChatGPT support
+:heavy_check_mark: ChatGPT support
 
 - [ ] Sync translation
 
