@@ -2,13 +2,13 @@
 
 - [Contact with me on Twitter](https://twitter.com/messages/compose?recipient_id=1035556159023927297) to advertise your project on jsontt cli
 
-<!-- <p align="center">
-    <span align="center">✨ Sponsored by vow.fm - Your mood radio for free ✨</span>
+<p align="center">
+    <span align="center">✨ Sponsored by fotogram.ai - Transform Your Selfies into Masterpieces with AI ✨</span>
 </p>
 
 <p align="center">
-    <span align="center">✨ https://vow.fm ✨</span>
-</p> -->
+    <span align="center">✨ https://fotogram.ai ✨</span>
+</p>
 
 <p align="center" >
     <img src="https://i.hizliresim.com/stgrebn.png" alt="jsontt logo" width="150" />
@@ -36,7 +36,6 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#table-of-contents)
 
-
 ### 🥷 CLI Support:
 
 |    Translation Module    | Support |                   FREE                    |
@@ -51,7 +50,6 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |       gpt-4o-mini        |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-    
 
 ### ⏳ Package Support:
 
@@ -67,8 +65,6 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      gpt-3.5-turbo       |   ❌    |    ❌     |
 |          gpt-4           |   ❌    |    ❌     |
 |       gpt-4o-mini        |   ❌    |    ❌     |
-
-
 
 `Browser support will come soon...`
 
