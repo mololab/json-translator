@@ -53,18 +53,18 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 
 ### ⏳ Package Support:
 
-|    Translation Module    | Support |   FREE    |
-| :----------------------: | :-----: | :-------: |
-|     Google Translate     |   ✅    | `✅ FREE` |
-|    Google Translate 2    |   ❌    |    ❌     |
-| Microsoft Bing Translate |   ❌    |    ❌     |
-|     Libre Translate      |   ❌    |    ❌     |
-|     Argos Translate      |   ❌    |    ❌     |
-|     DeepL Translate      |   ❌    |    ❌     |
-|          gpt-4o          |   ❌    |    ❌     |
-|      gpt-3.5-turbo       |   ❌    |    ❌     |
-|          gpt-4           |   ❌    |    ❌     |
-|       gpt-4o-mini        |   ❌    |    ❌     |
+|    Translation Module    | Support |                   FREE                    |
+| :----------------------: | :-----: | :---------------------------------------: |
+|     Google Translate     |   ✅    |                 `✅ FREE`                 |
+|    Google Translate 2    |   ✅    |                 `✅ FREE`                 |
+| Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
+|     Libre Translate      |   ✅    |                 `✅ FREE`                 |
+|     Argos Translate      |   ✅    |                 `✅ FREE`                 |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)`  |
+|          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|       gpt-4o-mini        |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 
 `Browser support will come soon...`
 
