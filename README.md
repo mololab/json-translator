@@ -652,6 +652,19 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Bing Translate option (in code package)
 
+
+- [ ] Openrouter Translate module
+
+- [ ] Cohere Translate module
+
+- [ ] Anthropic/Claude Translate module
+
+- [ ] Together ai Translate module
+
+- [ ] llamacpp Translate module
+
+- [ ] Google Gemini Api Translate module
+
 :heavy_check_mark: ChatGPT support
 
 - [ ] Sync translation
