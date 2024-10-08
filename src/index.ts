@@ -2,7 +2,11 @@ import { initializeCli } from './cli/cli';
 import { plaintranslate } from './core/translator';
 import { fileTranslator } from './core/json_file';
 import { objectTranslator } from './core/json_object';
-import { TranslationConfig, TranslationModules } from './modules/modules';
+import {
+  TranslationConfig,
+  TranslationModules,
+  TranslationModule,
+} from './modules/modules';
 import { default_concurrency_limit, default_fallback } from './utils/micro';
 
 const defaults: TranslationConfig = {
@@ -48,3 +52,7 @@ export async function runCli() {
 export interface translatedObject {
   [key: string]: any;
 }
+
+export { TranslationModules };
+
+export type { TranslationConfig, TranslationModule };
