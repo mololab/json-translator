@@ -3,15 +3,15 @@ import { plaintranslate } from './core/translator';
 import { fileTranslator } from './core/json_file';
 import { objectTranslator } from './core/json_object';
 import {
-  TranslationConfig,
-  TranslationModules,
+  TranslationConfig as TranslationConfigTemp,
+  TranslationModules as TranslationModulesTemp,
   TranslationModule,
 } from './modules/modules';
 import { default_concurrency_limit, default_fallback } from './utils/micro';
 
-const defaults: TranslationConfig = {
+const defaults: TranslationConfigTemp = {
   moduleKey: 'google',
-  TranslationModule: TranslationModules['google'],
+  TranslationModule: TranslationModulesTemp['google'],
   concurrencyLimit: default_concurrency_limit,
   fallback: default_fallback,
 };
@@ -20,15 +20,16 @@ export async function translateWord(
   word: string,
   from: string,
   to: string,
-  config: TranslationConfig = defaults
+  config: TranslationConfigTemp = defaults
 ) {
   return await plaintranslate(config, word, from, to, []);
 }
+
 export async function translateObject(
   object: translatedObject,
   from: string,
   to: string[],
-  config: TranslationConfig = defaults
+  config: TranslationConfigTemp = defaults
 ): Promise<translatedObject | translatedObject[]> {
   let hard_copy = JSON.parse(JSON.stringify(object));
   return objectTranslator(config, hard_copy, from, to);
@@ -39,7 +40,7 @@ export async function translateFile(
   from: string,
   to: string[],
   newFileName: string,
-  config: TranslationConfig = defaults
+  config: TranslationConfigTemp = defaults
 ) {
   return fileTranslator(config, objectPath, from, to, newFileName);
 }
@@ -53,6 +54,6 @@ export interface translatedObject {
   [key: string]: any;
 }
 
-export { TranslationModules };
-
-export type { TranslationConfig, TranslationModule };
+export { TranslationModule };
+export type TranslationModules = TranslationModulesTemp;
+export type TranslationConfig = TranslationConfigTemp;
