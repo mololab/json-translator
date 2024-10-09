@@ -20,7 +20,7 @@ import {
   GTPTranslateLanguages,
 } from './languages';
 
-export type TranslationModules = {
+export type TranslationModulesType = {
   [key: string]: TranslationModule;
 };
 
@@ -41,7 +41,7 @@ export interface TranslationModule {
   onComplete?: Function;
 }
 
-export const TranslationModules: TranslationModules = {
+export const TranslationModules: TranslationModulesType = {
   google: {
     name: 'Google Translate',
     altName: `[FREE] Google Translate (104 languages)`,

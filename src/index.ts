@@ -55,5 +55,5 @@ export interface translatedObject {
 }
 
 export { TranslationModule };
-export type TranslationModules = TranslationModulesTemp;
+export { TranslationModules } from './modules/modules';
 export type TranslationConfig = TranslationConfigTemp;
