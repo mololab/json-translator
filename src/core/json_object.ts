@@ -38,8 +38,6 @@ export async function objectTranslator(
       })
     );
 
-    console.log(generalObject)
-
     return generalObject as translatedObject[];
   } else {
     throw new Error(

@@ -22,9 +22,6 @@ export async function fileTranslator(
 
   jsonObj = { data: JSON.parse(jsonObj) };
 
-  console.log(jsonObj)
-  console.log("original FIle" + tempObjectPath)
-
   // step: check if translation file already exists, if exists save content of it in oldTranslations
   let oldTranslations = JSON.parse("{}")
   let latestPath = objectPath.replace(/\\/g, '/');
@@ -36,8 +33,6 @@ export async function fileTranslator(
     let fileName = newFileName
       ? `.\\${newFileName}.${lang}.${fileExt}`
       : `.\\${lang}.${fileExt}`;
-
-    console.log(fileName)
 
     let response = await getFileFromPath(fileName);
     let oldTranslation = response?.jsonObj
@@ -55,8 +50,6 @@ export async function fileTranslator(
     }
     
   }
-  console.log(oldTranslations)
-
 
   // step: translate object
   let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to, oldTranslations);
