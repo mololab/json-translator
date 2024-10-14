@@ -636,15 +636,15 @@ Make sure your terminal has admin access while running these commands to prevent
 
 :heavy_check_mark: Ignore URL translation on given string
 
-:heavy_check_mark: CLI options for langs & source selection
+:heavy_check_mark: CLI options for languages & source selection
 
-:heavy_check_mark: Define output file names on cli (optional command for cli)
+:heavy_check_mark: Define output file names on CLI (optional command for CLI)
 
 :heavy_check_mark: YAML file Translate
 
 :heavy_check_mark: Fallback Translation (try new module on fail)
 
-:heavy_check_mark: Can set concurrency limit manually
+:heavy_check_mark: Can set the concurrency limit manually
 
 - [ ] Libre Translate option (in code package)
 
@@ -659,11 +659,11 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Anthropic/Claude Translate module
 
-- [ ] Together ai Translate module
+- [ ] Together AI Translate module
 
 - [ ] llamacpp Translate module
 
-- [ ] Google Gemini Api Translate module
+- [ ] Google Gemini API Translate module
 
 :heavy_check_mark: ChatGPT support
 
@@ -673,7 +673,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Translation Option for own LibreTranslate instance
 
-- [ ] Make "--" dynamic adjustable (placeholder of not translated ones).
+- [ ] Make "--" dynamically adjustable (placeholder of not translated ones).
 
 ## License
 
