@@ -678,3 +678,10 @@ Make sure your terminal has admin access while running these commands to prevent
 ## License
 
 **_@parvineyvazov/json-translator_** will be available under the [MIT license](LICENSE).
+
+
+<p align="center">
+  <a href="#summary" target="_blank">
+  <bold>Back To Top </bold>
+  </a>
+</p>
