@@ -9,6 +9,11 @@ import {
   translateWithGPT4o,
   translateWithGPT4,
   translateWithGPT4oMini,
+  translateWithGemma7B,
+  translateWithGemma9B,
+  translateWithMixtral8x7B,
+  translateWithLlama8B,
+  translateWithLlama70B
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -108,5 +113,40 @@ export const TranslationModules: TranslationModulesType = {
     requirements: ['"OPENAI_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithGPT4oMini,
+  },
+  'gemma-7b': {
+    name: 'gemma-7b model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: gemma-7b model',
+    requirements: ['"GROQ_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGemma7B,
+  },
+  'gemma2-9b': {
+    name: 'gemma2-9b model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: gemma2-9b model',
+    requirements: ['"GROQ_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGemma9B,
+  },
+  'mixtral-8x7b': {
+    name: 'mixtral-8x7b model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: mixtral-8x7b model',
+    requirements: ['"GROQ_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithMixtral8x7B,
+  },
+  'llama3-8b': {
+    name: 'llama3-8b model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: llama3-8b model',
+    requirements: ['"GROQ_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithLlama8B,
+  },
+  'llama3-70b': {
+    name: 'llama3-70b model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: llama3-70b model',
+    requirements: ['"GROQ_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithLlama70B,
   },
 };

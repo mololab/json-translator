@@ -210,7 +210,66 @@ export async function translateWithGPT(
   model: string,
   str: string,
   from: string,
+  to: string,
+) {
+  return translateWithLLM(model, str, from, to, 'openai');
+}
+
+export async function translateWithGemma7B(
+  str: string,
+  from: string,
   to: string
+) {
+  return translateWithGPT('gemma-7b-it', str, from, to);
+}
+
+export async function translateWithGemma9B(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gemma2-9b-it', str, from, to);
+}
+
+export async function translateWithMixtral8x7B(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('mixtral-8x7b-32768', str, from, to);
+}
+
+export async function translateWithLlama8B(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('llama3-8b-8192', str, from, to);
+}
+
+export async function translateWithLlama70B(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('llama3-70b-8192', str, from, to);
+}
+
+export async function translateWithGroq(
+  model: string,
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithLLM(model, str, from, to, 'groq');
+}
+
+export async function translateWithLLM(
+  model: string,
+  str: string,
+  from: string,
+  to: string,
+  provider: 'openai' | 'groq'
 ) {
   type ChatCompletionRequestMessage = {
     role: 'system' | 'user' | 'assistant';
@@ -220,14 +279,30 @@ export async function translateWithGPT(
   let fromKey = getLanguageKeyFromValue(from, GTPTranslateLanguages);
   let toKey = getLanguageKeyFromValue(to, GTPTranslateLanguages);
 
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-  if (!OPENAI_API_KEY) {
-    warn('process.env.OPENAI_API_KEY is not defined');
-  }
+  let openai: OpenAI;
 
-  const openai = new OpenAI({
-    apiKey: OPENAI_API_KEY,
-  });
+  if (provider === 'openai') {
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+    if (!OPENAI_API_KEY) {
+      warn('process.env.OPENAI_API_KEY is not defined');
+    }
+
+    openai = new OpenAI({
+      apiKey: OPENAI_API_KEY,
+    });
+  } else if (provider === 'groq') {
+    const GROQ_API_KEY = process.env.GROQ_API_KEY;
+    if (!GROQ_API_KEY) {
+      warn('process.env.GROQ_API_KEY is not defined');
+    }
+
+    openai = new OpenAI({
+      baseURL: 'https://api.groq.com/openai/v1',
+      apiKey: GROQ_API_KEY,
+    });
+  } else {
+    throw new Error(`Unsupported provider: ${provider}`);
+  }
 
   try {
     let conversationHistory: ChatCompletionRequestMessage[] = [
