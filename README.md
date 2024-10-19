@@ -665,6 +665,8 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Google Gemini API Translate module
 
+- [ ] Groq support - [Full list](https://console.groq.com/docs/models) as new Translate modules
+
 :heavy_check_mark: ChatGPT support
 
 - [ ] Sync translation
