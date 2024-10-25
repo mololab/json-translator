@@ -26,6 +26,7 @@ export async function objectTranslator(
         // Remove the keys which are already translated
         const copyObject = removeKeys(JSON.parse(JSON.stringify(object)), oldTranslations[to[indexAsNum]]);
 
+        console.log(JSON.stringify(copyObject, null, 2))
         const newTranslations = await deepDiver(
           TranslationConfig,
           copyObject,
@@ -33,8 +34,14 @@ export async function objectTranslator(
           to[indexAsNum]
         );
 
+        console.log(JSON.stringify(newTranslations, null, 2))
+
+
         // Insert old translations that we removed into the generalObject
-        generalObject[indexAsNum] = mergeKeys(newTranslations, oldTranslations[to[indexAsNum]])
+        generalObject[indexAsNum] = mergeKeys(oldTranslations[to[indexAsNum]], newTranslations)
+
+        console.log(JSON.stringify(generalObject[indexAsNum], null, 2))
+
       })
     );
 

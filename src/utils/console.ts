@@ -104,12 +104,10 @@ export const messages = {
 
 export function removeKeys(fromDict: any, toDict: any): any {
   if (Array.isArray(fromDict) && Array.isArray(toDict)) {
-    return fromDict.map((item, index) => {
-      if (index < toDict.length && typeof item === 'object' && item !== null) {
-        return removeKeys(item, toDict[index]);
-      }
-      return item;
-    });
+    if (fromDict.length === toDict.length) {
+      return null;
+    }
+    return fromDict;
   }
 
   if (typeof fromDict !== 'object' || fromDict === null) {
@@ -133,33 +131,35 @@ export function removeKeys(fromDict: any, toDict: any): any {
 export function mergeKeys(base: any, insert: any): any {
   // If base is not an object or is null, return insert
   if (typeof base !== 'object' || base === null) {
-    return insert;
+      return insert;
   }
 
   // If insert is not an object or is null, return base
   if (typeof insert !== 'object' || insert === null) {
-    return base;
+      return base;
   }
 
   // Handle arrays
   if (Array.isArray(base) && Array.isArray(insert)) {
-    return [...base, ...insert.filter(item => !base.includes(item))];
+      console.log("base", base)
+      console.log("insert", insert)
+      return insert;
   }
 
   // Handle objects
   const result = { ...base };
 
   for (const key in insert) {
-    if (Object.prototype.hasOwnProperty.call(insert, key)) {
-      if (key in result && typeof result[key] === 'object' && typeof insert[key] === 'object') {
-        // Recursively merge nested objects or arrays
-        result[key] = mergeKeys(result[key], insert[key]);
-      } else if (!(key in result)) {
-        // Add new key-value pair from insert if it doesn't exist in base
-        result[key] = insert[key];
+      if (Object.prototype.hasOwnProperty.call(insert, key)) {
+          if (key in result && typeof result[key] === 'object' && typeof insert[key] === 'object') {
+              // Recursively merge nested objects or arrays
+              result[key] = mergeKeys(result[key], insert[key]);
+          } else if (!(key in result)) {
+              // Add new key-value pair from insert if it doesn't exist in base
+              result[key] = insert[key];
+          }
+          // If the key exists in both and is not an object, keep the base value
       }
-      // If the key exists in both and is not an object, keep the base value
-    }
   }
 
   return result;
