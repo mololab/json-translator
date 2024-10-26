@@ -34,7 +34,8 @@ export async function objectTranslator(
         );
 
         // Insert old translations that we removed into the generalObject
-        generalObject[indexAsNum] = mergeKeys(newTranslations, oldTranslations[to[indexAsNum]])
+        generalObject[indexAsNum] = mergeKeys(oldTranslations[to[indexAsNum]], newTranslations)
+
       })
     );
 

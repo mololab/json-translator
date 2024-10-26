@@ -104,12 +104,10 @@ export const messages = {
 
 export function removeKeys(fromDict: any, toDict: any): any {
   if (Array.isArray(fromDict) && Array.isArray(toDict)) {
-    return fromDict.map((item, index) => {
-      if (index < toDict.length && typeof item === 'object' && item !== null) {
-        return removeKeys(item, toDict[index]);
-      }
-      return item;
-    });
+    if (fromDict.length === toDict.length) {
+      return null;
+    }
+    return fromDict;
   }
 
   if (typeof fromDict !== 'object' || fromDict === null) {
@@ -143,7 +141,7 @@ export function mergeKeys(base: any, insert: any): any {
 
   // Handle arrays
   if (Array.isArray(base) && Array.isArray(insert)) {
-    return [...base, ...insert.filter(item => !base.includes(item))];
+    return insert;
   }
 
   // Handle objects
@@ -157,8 +155,10 @@ export function mergeKeys(base: any, insert: any): any {
       } else if (!(key in result)) {
         // Add new key-value pair from insert if it doesn't exist in base
         result[key] = insert[key];
+      } else if (key in result && typeof result[key] === 'string' && typeof insert[key] === 'string') {
+        // If key value is string take insert value
+        result[key] = insert[key];
       }
-      // If the key exists in both and is not an object, keep the base value
     }
   }
 
