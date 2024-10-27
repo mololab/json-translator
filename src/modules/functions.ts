@@ -158,7 +158,6 @@ export async function translateWithDeepL(
     source_lang: from,
   };
 
-  console.log(DEEPL_API_URL)
   const { data } = await axios.post(
     `https://${DEEPL_API_URL}/v2/translate`,
     body,
