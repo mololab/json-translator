@@ -144,8 +144,12 @@ export async function translateWithDeepL(
   to: string
 ): Promise<string> {
   const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+  const DEEPL_API_URL = process.env.DEEPL_API_URL || "api-free.deepl.com";
   if (!DEEPL_API_KEY) {
     warn('process.env.DEEPL_API_KEY is not defined');
+  }
+  if (!process.env.DEEPL_API_URL) {
+    warn('process.env.DEEPL_API_URL is not defined, using api-free.deepl.com as default');
   }
 
   const body = {
@@ -154,8 +158,9 @@ export async function translateWithDeepL(
     source_lang: from,
   };
 
+  console.log(DEEPL_API_URL)
   const { data } = await axios.post(
-    'https://api-free.deepl.com/v2/translate',
+    `https://${DEEPL_API_URL}/v2/translate`,
     body,
     {
       headers: {
