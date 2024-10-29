@@ -80,7 +80,7 @@ export const TranslationModules: TranslationModulesType = {
   deepl: {
     name: 'DeepL Translate',
     altName: 'DeepL Translate (29 languages)',
-    requirements: ['"DEEPL_API_KEY" as env'],
+    requirements: ['"DEEPL_API_KEY" and "DEEPL_API_URL" as env'],
     languages: DeepLTranslateLanguages,
     translate: translateWithDeepL,
   },

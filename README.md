@@ -45,7 +45,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 | Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
 |     Libre Translate      |   ✅    |                 `✅ FREE`                 |
 |     Argos Translate      |   ✅    |                 `✅ FREE`                 |
-|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)`  |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)`  |
 |          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
@@ -60,7 +60,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 | Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
 |     Libre Translate      |   ✅    |                 `✅ FREE`                 |
 |     Argos Translate      |   ✅    |                 `✅ FREE`                 |
-|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)`  |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)`  |
 |          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
 |          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
