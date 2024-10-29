@@ -17,14 +17,14 @@ export async function getFile(objectPath: string) {
         : data;
     })
     .catch(_ => {
-      json_file = undefined;
+      // no-op
     });
 
   return json_file;
 }
 
 export function getRootFolder(path: string) {
-  let arr = path.split('/');
+  const arr = path.split('/');
   arr.pop();
 
   let root = arr.join('/');
@@ -39,11 +39,10 @@ export function getRootFolder(path: string) {
 export async function saveFilePublic(path: string, data: any) {
   // When path extension is for YAML file, then stringify with YAML encoder.
   // Otherwise, default JSON encoder is used.
-  var json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
+  const json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
 
   await fs
     .writeFile(path, json, 'utf8')
-    .then(_ => {})
     .catch(_ => {
       error(messages.file.cannot_save_file);
     });
