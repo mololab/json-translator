@@ -2,6 +2,7 @@ import * as fs from 'fs/promises';
 import * as YAML from 'yaml';
 import { matchYamlExt } from '../utils/yaml';
 import { error, messages } from '../utils/console';
+import { getFileExt } from './json_file';
 
 export async function getFile(objectPath: string) {
   let json_file: any = undefined;
@@ -37,9 +38,15 @@ export function getRootFolder(path: string) {
 }
 
 export async function saveFilePublic(path: string, data: any) {
-  // When path extension is for YAML file, then stringify with YAML encoder.
-  // Otherwise, default JSON encoder is used.
-  var json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
+  let json = ""
+  if (getFileExt(path) === "jsonl") {
+    // If the file extension is `.jsonl`, the data is serialized as JSON Lines (JSONL) format.
+    json = data.map((item: any) => JSON.stringify(item)).join('\n');
+  } else {
+    // When path extension is for YAML file, then stringify with YAML encoder.
+    // Otherwise, default JSON encoder is used.
+    json = matchYamlExt(path) ? YAML.stringify(data) : JSON.stringify(data);
+  }
 
   await fs
     .writeFile(path, json, 'utf8')

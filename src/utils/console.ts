@@ -110,6 +110,10 @@ export function removeKeys(fromDict: any, toDict: any): any {
     return fromDict;
   }
 
+  if (Array.isArray(fromDict)) {
+    return fromDict;
+  }
+
   if (typeof fromDict !== 'object' || fromDict === null) {
     return fromDict;
   }
@@ -141,6 +145,11 @@ export function mergeKeys(base: any, insert: any): any {
 
   // Handle arrays
   if (Array.isArray(base) && Array.isArray(insert)) {
+    return insert;
+  }
+
+  // Handle only insert is array
+  if (Array.isArray(insert)) {
     return insert;
   }
 
