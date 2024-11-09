@@ -20,7 +20,12 @@ export async function fileTranslator(
     return;
   }
 
-  jsonObj = { data: JSON.parse(jsonObj) };
+  // if file extension is .jsonl convert the readed file to json with array of each line of the json file
+  if (getFileExt(objectPath) === "jsonl") {
+    jsonObj = { data: jsonObj.split('\n').map((line: string) => JSON.parse(line)) };
+  } else {
+    jsonObj = { data: JSON.parse(jsonObj) };
+  }
 
   // step: check if translation file already exists, if exists save content of it in oldTranslations
   let oldTranslations = JSON.parse("{}")
@@ -36,7 +41,7 @@ export async function fileTranslator(
 
     let response = await getFileFromPath(fileName);
     let oldTranslation = response?.jsonObj
-    try{
+    try {
       if (oldTranslation === undefined) {
         // Old Translation not found
         oldTranslations[lang] = { data: {} };
@@ -44,15 +49,18 @@ export async function fileTranslator(
         oldTranslation = { data: JSON.parse(oldTranslation) };
         oldTranslations[lang] = oldTranslation;
       }
-    } catch{
+    } catch {
       // If error in parsing json skip it
       oldTranslations[lang] = { data: {} };
     }
-    
+
   }
 
+  // if jsonl file force to translate all keys
+  const reTraslateOldTranslations = getFileExt(objectPath) === "jsonl";
+
   // step: translate object
-  let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to, oldTranslations);
+  let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to, oldTranslations, reTraslateOldTranslations);
   if (newJsonObj === undefined) {
     error(messages.file.cannot_translate);
     return;
@@ -91,13 +99,18 @@ export async function getFileFromPath(
   return { jsonObj, objectPath };
 }
 
-function getFileExt(latestPath: string): string {
+export function getFileExt(latestPath: string): string {
   // Check if source file has YAML extension and return the extension ("yml" or "yaml").
   const sourceFileMatchYamlExt = matchYamlExt(latestPath);
 
-  // When source file has "yml" or "yaml" extension, use the same in output file path.
-  // Otherwise, default "json" extension used.
-  const fileExt = sourceFileMatchYamlExt || 'json';
-
+  let fileExt = "";
+  if (latestPath.toLowerCase().endsWith('.jsonl')) {
+    // If the latestPath file extension is jsonl, keep fileExt jsonl
+    fileExt = "jsonl";
+  } else {
+    // When source file has "yml" or "yaml" extension, use the same in output file path.
+    // Otherwise, default "json" extension used.
+    fileExt = sourceFileMatchYamlExt || 'json';
+  }
   return fileExt;
 }
