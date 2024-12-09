@@ -677,6 +677,10 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Make "--" dynamically adjustable (placeholder of not translated ones).
 
+- [ ] Update name -> prefix in CLI / Ability to pass empty to prefix in CLI (better for autonomous tasks)
+
+- [ ] `--prettyPrint` to CLI which will print json in a pretty way 
+
 ## License
 
 **_@parvineyvazov/json-translator_** will be available under the [MIT license](LICENSE).
