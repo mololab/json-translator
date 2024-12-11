@@ -12,6 +12,7 @@ export async function translateWord(word: string, from: string, to: string) {
     TranslationModule: TranslationModules['google'],
     concurrencyLimit: default_concurrency_limit,
     fallback: default_fallback,
+    cacheEnabled: false,
   };
 
   return await plaintranslate(config, word, from, to, []);
@@ -29,6 +30,7 @@ export async function translateObject(
     TranslationModule: TranslationModules['google'],
     concurrencyLimit: default_concurrency_limit,
     fallback: default_fallback,
+    cacheEnabled: false,
   };
 
   return objectTranslator(config, hard_copy, from, to);
@@ -45,6 +47,7 @@ export async function translateFile(
     TranslationModule: TranslationModules['google'],
     concurrencyLimit: default_concurrency_limit,
     fallback: default_fallback,
+    cacheEnabled: false,
   };
 
   return fileTranslator(config, objectPath, from, to, newFileName);

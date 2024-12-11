@@ -43,7 +43,7 @@ export async function objectTranslator(
   }
 }
 
-const CACHE_FILE_NAME = "./cache.json"
+
 export async function deepDiver(
   TranslationConfig: TranslationConfig,
   object: translatedObject,
@@ -56,6 +56,7 @@ export async function deepDiver(
     return null;
   }
 
+  const CACHE_FILE_NAME = `./cache_${from}_${to}.json`
   let originalObject:any = JSON.parse(JSON.stringify(object));
   var cacheObject: Record<string, any> = {};
   if (TranslationConfig.cacheEnabled) {
