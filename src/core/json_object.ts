@@ -1,11 +1,14 @@
 import { translatedObject } from '..';
-import { plaintranslate } from './translator';
+import { getKey, plaintranslate} from './translator';
 import { TaskQueue } from 'cwait';
 import { Promise as bluebirdPromise } from 'bluebird';
 import { TranslationConfig } from '../modules/modules';
 import { default_concurrency_limit } from '../utils/micro';
+import {checkFile, getFile, saveFilePublic} from "./core";
+import {flatten} from "../utils/json";
 
 var queue = new TaskQueue(bluebirdPromise, default_concurrency_limit);
+
 
 export async function objectTranslator(
   TranslationConfig: TranslationConfig,
@@ -40,6 +43,7 @@ export async function objectTranslator(
   }
 }
 
+const CACHE_FILE_NAME = "./cache.json"
 export async function deepDiver(
   TranslationConfig: TranslationConfig,
   object: translatedObject,
@@ -50,6 +54,16 @@ export async function deepDiver(
 
   if (object === null) {
     return null;
+  }
+
+  let originalObject:any = JSON.parse(JSON.stringify(object));
+  var cacheObject: Record<string, any> = {};
+  if (TranslationConfig.cacheEnabled) {
+    if (!await checkFile(CACHE_FILE_NAME)) {
+      await saveFilePublic(CACHE_FILE_NAME, {});
+    }
+    const cacheDataFile = await getFile(CACHE_FILE_NAME);
+    cacheObject = JSON.parse(cacheDataFile);
   }
 
   await Promise.all(
@@ -68,7 +82,8 @@ export async function deepDiver(
                 object[k],
                 from,
                 to,
-                []
+                [],
+                cacheObject
               )
                 .then(data => {
                   object[k] = data;
@@ -82,6 +97,19 @@ export async function deepDiver(
       }
     })
   );
+
+  if (TranslationConfig.cacheEnabled) {
+    let originalStructure:Record<string, string> = flatten(originalObject)
+    let translatedStructure:Record<string, string> = flatten(object)
+
+    Object.keys(originalStructure).forEach(key => {
+      let value = originalStructure[key]
+      let cacheKey = getKey(value, from, to)
+      cacheObject[cacheKey] = translatedStructure[key]
+    })
+
+    await saveFilePublic(CACHE_FILE_NAME, cacheObject);
+  }
 
   return object;
 }

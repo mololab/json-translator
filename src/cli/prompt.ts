@@ -108,6 +108,23 @@ export async function promptFallback() {
   return answers.fallback;
 }
 
+export async function promptCacheEnabled() {
+  const answers = await inquirer.prompt([
+    {
+      type: 'string',
+      name: 'cache_enabled',
+      message: messages.cli.cache_enabled,
+      default: 'no',
+    },
+  ]);
+
+  if (answers.fallback === '') {
+    return 'no';
+  }
+
+  return answers.cache_enabled;
+}
+
 export async function promptConcurrencyLimit() {
   const answers = await inquirer.prompt([
     {

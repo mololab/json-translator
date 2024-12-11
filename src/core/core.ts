@@ -3,6 +3,14 @@ import * as YAML from 'yaml';
 import { matchYamlExt } from '../utils/yaml';
 import { error, messages } from '../utils/console';
 
+export async function checkFile(objectPath: string):Promise<boolean> {
+  try {
+    await fs.access(objectPath);
+    return Promise.resolve(true)
+  } catch {
+    return Promise.resolve(false)
+  }
+}
 export async function getFile(objectPath: string) {
   let json_file: any = undefined;
 

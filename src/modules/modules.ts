@@ -26,6 +26,7 @@ export type TranslationConfig = {
   TranslationModule: TranslationModule;
   concurrencyLimit: number;
   fallback: boolean;
+  cacheEnabled: boolean;
 };
 
 export interface TranslationModule {
