@@ -18,11 +18,11 @@ export function getKey(str: string, from: string, to: string):string {
 export function translateCacheModule(fallbackFn: Function, cacheObject: Record<string, any>, onSuccess: Function){
   return async (str: string, from: string, to: string): Promise<string> => {
     let key =  getKey(str, from, to)
-    if (cacheObject[key] !== undefined) {
+    if (cacheObject[key] !== undefined && cacheObject[key] !== default_value) {
       onSuccess(true)
       return Promise.resolve(cacheObject[key]);
     } else {
-      return await fallbackFn(str, from, to);
+      return fallbackFn(str, from, to);
     }
   };
 }
