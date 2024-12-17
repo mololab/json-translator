@@ -36,7 +36,7 @@ export const supportedLanguagesUrl = `\nsupported Languages: ${info_color}https:
 export const messages = {
   cli: {
     // cli general messages
-    welcome: `\n${warn_color}Sponsored by vow.fm - Your mood radio for free \nhttps://vow.fm  \n\n${default_color}Welcome to the\n${success_color +
+    welcome: `\n${warn_color}Sponsored by fotogram.ai - Transform Your Selfies into Masterpieces with AI \nhttps://fotogram.ai  \n\n${default_color}Welcome to the\n${success_color +
       figlet.textSync(
         'jsontt'
       )}${default_color}\n\t\t\t\tcli ${current_version}\n`,
@@ -101,3 +101,67 @@ export const messages = {
     cannot_save_file: `Could not save the file.`,
   },
 };
+
+
+export function removeKeys(fromDict: any, toDict: any): any {
+  if (Array.isArray(fromDict) && Array.isArray(toDict)) {
+    if (fromDict.length === toDict.length) {
+      return null;
+    }
+    return fromDict;
+  }
+
+  if (typeof fromDict !== 'object' || fromDict === null) {
+    return fromDict;
+  }
+
+  const sampleIncompleteTranslations = ["", "--"];
+  return Object.keys(fromDict).reduce((result: any, key) => {
+    if (Array.isArray(fromDict[key])) {
+      result[key] = removeKeys(fromDict[key], toDict?.[key] || []);
+    } else if (typeof fromDict[key] === 'object' && fromDict[key] !== null && typeof toDict?.[key] === 'object' && toDict[key] !== null) {
+      result[key] = removeKeys(fromDict[key], toDict[key]);
+    } else if (!(key in toDict) || sampleIncompleteTranslations.includes(toDict[key]) || toDict[key] === fromDict[key]) {
+      result[key] = fromDict[key];
+    }
+    return result;
+  }, {});
+}
+
+
+export function mergeKeys(base: any, insert: any): any {
+  // If base is not an object or is null, return insert
+  if (typeof base !== 'object' || base === null) {
+    return insert;
+  }
+
+  // If insert is not an object or is null, return base
+  if (typeof insert !== 'object' || insert === null) {
+    return base;
+  }
+
+  // Handle arrays
+  if (Array.isArray(base) && Array.isArray(insert)) {
+    return insert;
+  }
+
+  // Handle objects
+  const result = { ...base };
+
+  for (const key in insert) {
+    if (Object.prototype.hasOwnProperty.call(insert, key)) {
+      if (key in result && typeof result[key] === 'object' && typeof insert[key] === 'object') {
+        // Recursively merge nested objects or arrays
+        result[key] = mergeKeys(result[key], insert[key]);
+      } else if (!(key in result)) {
+        // Add new key-value pair from insert if it doesn't exist in base
+        result[key] = insert[key];
+      } else if (key in result && typeof result[key] === 'string' && typeof insert[key] === 'string') {
+        // If key value is string take insert value
+        result[key] = insert[key];
+      }
+    }
+  }
+
+  return result;
+}

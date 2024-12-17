@@ -22,19 +22,43 @@ export async function fileTranslator(
 
   jsonObj = { data: JSON.parse(jsonObj) };
 
+  // step: check if translation file already exists, if exists save content of it in oldTranslations
+  let oldTranslations = JSON.parse("{}")
+  let latestPath = objectPath.replace(/\\/g, '/');
+  const fileExt = getFileExt(latestPath);
+  let rootFolder = getRootFolder(latestPath);
+
+  for (const lang of to) {
+    // Filename of tranlated file
+    let fileName = newFileName
+      ? `.\\${newFileName}.${lang}.${fileExt}`
+      : `.\\${lang}.${fileExt}`;
+
+    let response = await getFileFromPath(fileName);
+    let oldTranslation = response?.jsonObj
+    try{
+      if (oldTranslation === undefined) {
+        // Old Translation not found
+        oldTranslations[lang] = { data: {} };
+      } else {
+        oldTranslation = { data: JSON.parse(oldTranslation) };
+        oldTranslations[lang] = oldTranslation;
+      }
+    } catch{
+      // If error in parsing json skip it
+      oldTranslations[lang] = { data: {} };
+    }
+    
+  }
+
   // step: translate object
-  let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to);
+  let newJsonObj = await objectTranslator(TranslationConfig, jsonObj, from, to, oldTranslations);
   if (newJsonObj === undefined) {
     error(messages.file.cannot_translate);
     return;
   }
 
   // step: save translated data
-  let latestPath = objectPath.replace(/\\/g, '/');
-  const fileExt = getFileExt(latestPath);
-
-  let rootFolder = getRootFolder(latestPath);
-
   (newJsonObj as Array<translatedObject>).forEach(async (element, index) => {
     const currentJsonObj = element.data;
 

@@ -4,17 +4,18 @@ import { TaskQueue } from 'cwait';
 import { Promise as bluebirdPromise } from 'bluebird';
 import { TranslationConfig } from '../modules/modules';
 import { default_concurrency_limit } from '../utils/micro';
+import { mergeKeys, removeKeys } from '../utils/console';
 import {checkFile, getFile, saveFilePublic} from "./core";
 import {flatten} from "../utils/json";
 
 var queue = new TaskQueue(bluebirdPromise, default_concurrency_limit);
 
-
 export async function objectTranslator(
   TranslationConfig: TranslationConfig,
   object: translatedObject,
   from: string,
-  to: string[]
+  to: string[],
+  oldTranslations: { [key: string]: any }
 ): Promise<translatedObject[]> {
   queue.concurrency = TranslationConfig.concurrencyLimit;
 
@@ -22,16 +23,21 @@ export async function objectTranslator(
     let generalObject: translatedObject[] | null[] = [];
 
     await Promise.all(
-      Object.keys(to).map(async function(index) {
+      Object.keys(to).map(async function (index) {
         const indexAsNum = Number(index);
-        const copyObject = JSON.parse(JSON.stringify(object));
+        // Remove the keys which are already translated
+        const copyObject = removeKeys(JSON.parse(JSON.stringify(object)), oldTranslations[to[indexAsNum]]);
 
-        generalObject[indexAsNum] = await deepDiver(
+        const newTranslations = await deepDiver(
           TranslationConfig,
           copyObject,
           from,
           to[indexAsNum]
         );
+
+        // Insert old translations that we removed into the generalObject
+        generalObject[indexAsNum] = mergeKeys(oldTranslations[to[indexAsNum]], newTranslations)
+
       })
     );
 
@@ -42,7 +48,6 @@ export async function objectTranslator(
     );
   }
 }
-
 
 export async function deepDiver(
   TranslationConfig: TranslationConfig,
@@ -68,7 +73,7 @@ export async function deepDiver(
   }
 
   await Promise.all(
-    Object.keys(object).map(async function(k) {
+    Object.keys(object).map(async function (k) {
       if (has(k)) {
         switch (typeof object[k]) {
           case 'object':

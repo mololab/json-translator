@@ -1,3 +1,4 @@
+import 'openai/shims/node';
 import * as translator from '../core/translator';
 import { deepDiver, objectTranslator } from '../core/json_object';
 import { GoogleTranslateLanguages } from '../modules/languages';

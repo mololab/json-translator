@@ -1,3 +1,4 @@
+import 'openai/shims/node';
 import { fileTranslator } from '../core/json_file';
 import * as appConsole from '../utils/console';
 import * as jsonObject from '../core/json_object';
