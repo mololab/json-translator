@@ -33,7 +33,7 @@ export async function translateObject(
   config: TranslationConfigTemp = defaults
 ): Promise<translatedObject | translatedObject[]> {
   let hard_copy = JSON.parse(JSON.stringify(object));
-  return objectTranslator(config, hard_copy, from, to);
+  return objectTranslator(config, hard_copy, from, to, []);
 }
 
 export async function translateFile(
