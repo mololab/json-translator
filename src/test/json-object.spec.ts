@@ -72,10 +72,11 @@ describe(`JSON OBJECT`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act
-    await deepDiver(config, test_object, from, to);
+    await deepDiver(config, test_object, from, to, undefined);
 
     // assert
     expect(translator.plaintranslate).toBeCalledTimes(10);
@@ -90,6 +91,7 @@ describe(`JSON OBJECT`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act
@@ -108,6 +110,7 @@ describe(`JSON OBJECT`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act

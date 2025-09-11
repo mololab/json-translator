@@ -35,6 +35,7 @@ describe('TRANSLATOR', () => {
       TranslationModule: TranslationModules['deepl'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     const result = await plaintranslate(

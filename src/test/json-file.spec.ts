@@ -38,6 +38,7 @@ describe(`JSON FILE`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act
@@ -95,6 +96,7 @@ describe(`JSON FILE`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act
@@ -161,6 +163,7 @@ describe(`JSON FILE`, () => {
       TranslationModule: TranslationModules['google'],
       concurrencyLimit: default_concurrency_limit,
       fallback: default_fallback,
+      cacheEnabled: false,
     };
 
     // act
