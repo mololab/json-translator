@@ -144,12 +144,14 @@ export async function translateWithDeepL(
   to: string
 ): Promise<string> {
   const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
-  const DEEPL_API_URL = process.env.DEEPL_API_URL || "api-free.deepl.com";
+  const DEEPL_API_URL = process.env.DEEPL_API_URL || 'api-free.deepl.com';
   if (!DEEPL_API_KEY) {
     warn('process.env.DEEPL_API_KEY is not defined');
   }
   if (!process.env.DEEPL_API_URL) {
-    warn('process.env.DEEPL_API_URL is not defined, using api-free.deepl.com as default');
+    warn(
+      'process.env.DEEPL_API_URL is not defined, using api-free.deepl.com as default'
+    );
   }
 
   const body = {
@@ -214,7 +216,7 @@ export async function translateWithGPT(
   model: string,
   str: string,
   from: string,
-  to: string,
+  to: string
 ) {
   return translateWithLLM(model, str, from, to, 'openai');
 }
@@ -224,7 +226,7 @@ export async function translateWithGemma7B(
   from: string,
   to: string
 ) {
-  return translateWithGPT('gemma-7b-it', str, from, to);
+  return translateWithGroq('gemma-7b-it', str, from, to);
 }
 
 export async function translateWithGemma9B(
@@ -232,7 +234,7 @@ export async function translateWithGemma9B(
   from: string,
   to: string
 ) {
-  return translateWithGPT('gemma2-9b-it', str, from, to);
+  return translateWithGroq('gemma2-9b-it', str, from, to);
 }
 
 export async function translateWithMixtral8x7B(
@@ -240,7 +242,7 @@ export async function translateWithMixtral8x7B(
   from: string,
   to: string
 ) {
-  return translateWithGPT('mixtral-8x7b-32768', str, from, to);
+  return translateWithGroq('mixtral-8x7b-32768', str, from, to);
 }
 
 export async function translateWithLlama8B(
@@ -248,7 +250,7 @@ export async function translateWithLlama8B(
   from: string,
   to: string
 ) {
-  return translateWithGPT('llama3-8b-8192', str, from, to);
+  return translateWithGroq('llama3-8b-8192', str, from, to);
 }
 
 export async function translateWithLlama70B(
@@ -256,7 +258,7 @@ export async function translateWithLlama70B(
   from: string,
   to: string
 ) {
-  return translateWithGPT('llama3-70b-8192', str, from, to);
+  return translateWithGroq('llama3-70b-8192', str, from, to);
 }
 
 export async function translateWithGroq(

@@ -38,33 +38,43 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 
 ### 🥷 CLI Support:
 
-|    Translation Module    | Support |                   FREE                    |
-| :----------------------: | :-----: | :---------------------------------------: |
-|     Google Translate     |   ✅    |                 `✅ FREE`                 |
-|    Google Translate 2    |   ✅    |                 `✅ FREE`                 |
-| Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
-|     Libre Translate      |   ✅    |                 `✅ FREE`                 |
-|     Argos Translate      |   ✅    |                 `✅ FREE`                 |
-|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)`  |
-|          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|       gpt-4o-mini        |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|    Translation Module    | Support |                                           FREE                                           |
+| :----------------------: | :-----: | :--------------------------------------------------------------------------------------: |
+|     Google Translate     |   ✅    |                                        `✅ FREE`                                         |
+|    Google Translate 2    |   ✅    |                                        `✅ FREE`                                         |
+| Microsoft Bing Translate |   ✅    |                                        `✅ FREE`                                         |
+|     Libre Translate      |   ✅    |                                        `✅ FREE`                                         |
+|     Argos Translate      |   ✅    |                                        `✅ FREE`                                         |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)` |
+|          gpt-4o          |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|      gpt-3.5-turbo       |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|          gpt-4           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-4o-mini        |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|        gemma-7b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       gemma2-9b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama3-8b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama3-70b         |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 
 ### ⏳ Package Support:
 
-|    Translation Module    | Support |                   FREE                    |
-| :----------------------: | :-----: | :---------------------------------------: |
-|     Google Translate     |   ✅    |                 `✅ FREE`                 |
-|    Google Translate 2    |   ✅    |                 `✅ FREE`                 |
-| Microsoft Bing Translate |   ✅    |                 `✅ FREE`                 |
-|     Libre Translate      |   ✅    |                 `✅ FREE`                 |
-|     Argos Translate      |   ✅    |                 `✅ FREE`                 |
-|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)`  |
-|          gpt-4o          |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|      gpt-3.5-turbo       |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|          gpt-4           |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
-|       gpt-4o-mini        |   ✅    | `require API KEY (OPENAI_API_KEY as env)` |
+|    Translation Module    | Support |                                           FREE                                           |
+| :----------------------: | :-----: | :--------------------------------------------------------------------------------------: |
+|     Google Translate     |   ✅    |                                        `✅ FREE`                                         |
+|    Google Translate 2    |   ✅    |                                        `✅ FREE`                                         |
+| Microsoft Bing Translate |   ✅    |                                        `✅ FREE`                                         |
+|     Libre Translate      |   ✅    |                                        `✅ FREE`                                         |
+|     Argos Translate      |   ✅    |                                        `✅ FREE`                                         |
+|     DeepL Translate      |   ✅    | `require API KEY (DEEPL_API_KEY as env)` </br> `optional API URL (DEEPL_API_URL as env)` |
+|          gpt-4o          |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|      gpt-3.5-turbo       |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|          gpt-4           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-4o-mini        |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|        gemma-7b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       gemma2-9b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama3-8b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama3-70b         |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 
 `Browser support will come soon...`
 
@@ -652,20 +662,19 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Bing Translate option (in code package)
 
+* [ ] Openrouter Translate module
 
-- [ ] Openrouter Translate module
+* [ ] Cohere Translate module
 
-- [ ] Cohere Translate module
+* [ ] Anthropic/Claude Translate module
 
-- [ ] Anthropic/Claude Translate module
+* [ ] Together AI Translate module
 
-- [ ] Together AI Translate module
+* [ ] llamacpp Translate module
 
-- [ ] llamacpp Translate module
+* [ ] Google Gemini API Translate module
 
-- [ ] Google Gemini API Translate module
-
-- [ ] Groq support - [Full list](https://console.groq.com/docs/models) as new Translate modules
+* [ ] Groq support - [Full list](https://console.groq.com/docs/models) as new Translate modules
 
 :heavy_check_mark: ChatGPT support
 
@@ -679,12 +688,11 @@ Make sure your terminal has admin access while running these commands to prevent
 
 - [ ] Update name -> prefix in CLI / Ability to pass empty to prefix in CLI (better for autonomous tasks)
 
-- [ ] `--prettyPrint` to CLI which will print json in a pretty way 
+- [ ] `--prettyPrint` to CLI which will print json in a pretty way
 
 ## License
 
 **_@parvineyvazov/json-translator_** will be available under the [MIT license](LICENSE).
-
 
 <p align="center">
   <a href="#summary" target="_blank">
