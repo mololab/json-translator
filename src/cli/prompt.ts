@@ -118,7 +118,7 @@ export async function promptCacheEnabled() {
     },
   ]);
 
-  if (answers.fallback === '') {
+  if (answers.cache_enabled === '') {
     return 'no';
   }
 

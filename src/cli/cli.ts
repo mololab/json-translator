@@ -299,7 +299,7 @@ async function fallback(commandOptions: OptionValues): Promise<boolean> {
 }
 
 async function cacheEnabled(commandOptions: OptionValues): Promise<boolean> {
-  let cacheEnabledStr: string = commandOptions.cacheEnabled ?? undefined;
+  let cacheEnabledStr: string = commandOptions.cache ?? undefined;
   let cacheEnabled: boolean = false;
 
   if (!cacheEnabledStr) {

@@ -17,9 +17,9 @@ export function getKey(str: string, from: string, to: string):string {
 
 export function translateCacheModule(fallbackFn: Function, cacheObject: Record<string, any>, onSuccess: Function){
   return async (str: string, from: string, to: string): Promise<string> => {
-    let key =  getKey(str, from, to)
+    let key = getKey(str, from, to);
     if (cacheObject[key] !== undefined && cacheObject[key] !== default_value) {
-      onSuccess(true)
+      onSuccess(true);
       return Promise.resolve(cacheObject[key]);
     } else {
       return fallbackFn(str, from, to);
