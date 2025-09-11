@@ -30,22 +30,28 @@ export async function fileTranslator(
 
   for (const lang of to) {
     // Filename of tranlated file
-    let fileName = newFileName
-      ? `.\\${newFileName}.${lang}.${fileExt}`
-      : `.\\${lang}.${fileExt}`;
+    let baseFileName = newFileName
+      ? `${newFileName}.${lang}.${fileExt}`
+      : `${lang}.${fileExt}`;
+    
+    // Construct full path using rootFolder
+    let fileName = `${rootFolder}/${baseFileName}`;
 
     let response = await getFileFromPath(fileName);
     let oldTranslation = response?.jsonObj
     try{
       if (oldTranslation === undefined) {
         // Old Translation not found
+        console.log(`📋 Cache miss: No existing translation found for ${lang} in ${fileName}`);
         oldTranslations[lang] = { data: {} };
       } else {
         oldTranslation = { data: JSON.parse(oldTranslation) };
         oldTranslations[lang] = oldTranslation;
+        console.log(`📋 Cache hit: Found existing translation for ${lang} in ${fileName}`);
       }
     } catch{
       // If error in parsing json skip it
+      console.log(`⚠️  Error parsing translation file for ${lang} in ${fileName}`);
       oldTranslations[lang] = { data: {} };
     }
     
