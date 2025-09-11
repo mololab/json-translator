@@ -8,6 +8,7 @@ import { default_concurrency_limit, default_fallback } from '../utils/micro';
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var skipInCache: number;
   var proxyList: string[];
   var proxyIndex: number;
 }

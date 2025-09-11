@@ -14,13 +14,14 @@ const defaults: TranslationConfigTemp = {
   TranslationModule: TranslationModulesTemp['google'],
   concurrencyLimit: default_concurrency_limit,
   fallback: default_fallback,
+  cacheEnabled: false,
 };
 
 export async function translateWord(
   word: string,
   from: string,
   to: string,
-  config: TranslationConfigTemp = defaults
+  config: TranslationConfigTemp = defaults,
 ) {
   return await plaintranslate(config, word, from, to, []);
 }
@@ -32,7 +33,7 @@ export async function translateObject(
   config: TranslationConfigTemp = defaults
 ): Promise<translatedObject | translatedObject[]> {
   let hard_copy = JSON.parse(JSON.stringify(object));
-  return objectTranslator(config, hard_copy, from, to);
+  return objectTranslator(config, hard_copy, from, to, []);
 }
 
 export async function translateFile(

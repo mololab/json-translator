@@ -53,6 +53,7 @@ export const messages = {
     from: 'from language | e.g., -f en',
     to: 'to translates | e.g., -t ar fr zh-CN',
     new_file_name: 'optional ↵ | output filename | e.g., -n myApp',
+    cache_enabled: `optional ↵ | enabled cache | yes, no | default: no`,
     fallback:
       'optional ↵ | fallback logic, try other translation modules on fail | yes, no | default: no | e.g., -f yes',
     concurrency_limit:
@@ -81,7 +82,7 @@ export const messages = {
     proxy_file_notValid_or_not_empty_options: `
     - Please ensure that the value for the option "-m, --module <Translation>" is compatible
     - Please ensure that the value for the option "-f, --from <Language>" is compatible
-    - nPlease ensure that the value for the option "-t, --to <Languages...>" is compatible
+    - Please ensure that the value for the option "-t, --to <Languages...>" is compatible
     - Please ensure that the value for the option "-n, --name <string>" is valid
     - Please ensure that the value for the option "-f, --fallback <string>" is valid
     - Please ensure that the value for the option "-cl, --concurrencylimit <number>" is valid

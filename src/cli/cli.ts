@@ -16,7 +16,7 @@ import {
   translationStatistic,
   default_concurrency_limit,
   default_fallback,
-  fallbacks,
+  fallbacks, cacheEnableds,
 } from '../utils/micro';
 import { readProxyFile } from '../core/proxy_file';
 import { Command, Option, OptionValues } from 'commander';
@@ -27,6 +27,7 @@ import {
   promptModuleKey,
   promptFallback,
   promptConcurrencyLimit,
+  promptCacheEnabled
 } from './prompt';
 import { TranslationConfig, TranslationModule } from '../modules/modules';
 
@@ -35,6 +36,7 @@ const program = new Command();
 export async function initializeCli() {
   global.totalTranslation = 0;
   global.totalTranslated = 0;
+  global.skipInCache = 0;
   global.proxyIndex = 0;
   global.proxyList = [];
 
@@ -62,6 +64,7 @@ export async function initializeCli() {
         messages.cli.concurrency_limit
       )
     )
+    .addOption(new Option(`-c, --cache <boolean>`, messages.cli.cache_enabled))
     .addHelpText(
       'after',
       `\n${messages.cli.usage_with_proxy}\n${messages.cli.usage_by_ops}`
@@ -144,6 +147,9 @@ async function translate() {
   const concurrencyLimitValue = await concurrencyLimit(commandOptions);
   TranslationConfig.concurrencyLimit = concurrencyLimitValue;
 
+  const cacheEnabledValue = await cacheEnabled(commandOptions);
+  TranslationConfig.cacheEnabled = cacheEnabledValue;
+
   // set loading
   const { load, refreshInterval } = setLoading();
 
@@ -158,7 +164,8 @@ async function translate() {
   load.succeed(
     `DONE! ${translationStatistic(
       global.totalTranslation,
-      global.totalTranslation
+      global.totalTranslation,
+      global.skipInCache
     )}`
   );
   clearInterval(refreshInterval);
@@ -191,6 +198,7 @@ async function translationConfig(
     TranslationModule,
     concurrencyLimit: default_concurrency_limit,
     fallback: default_fallback,
+    cacheEnabled: false,
   };
 
   return translationConfig;
@@ -290,6 +298,28 @@ async function fallback(commandOptions: OptionValues): Promise<boolean> {
   return fallback;
 }
 
+async function cacheEnabled(commandOptions: OptionValues): Promise<boolean> {
+  let cacheEnabledStr: string = commandOptions.cacheEnabled ?? undefined;
+  let cacheEnabled: boolean = false;
+
+  if (!cacheEnabledStr) {
+    cacheEnabledStr = await promptCacheEnabled();
+
+    if (!Object.keys(cacheEnableds).includes(cacheEnabledStr)) {
+      error(`[${cacheEnabledStr}]: ${messages.cli.cache_enabled}`);
+      process.exit(1);
+    }
+  }
+
+  if (cacheEnabledStr === 'yes') {
+    cacheEnabled = cacheEnableds.yes;
+  } else {
+    cacheEnabled = cacheEnableds.no;
+  }
+
+  return cacheEnabled;
+}
+
 async function concurrencyLimit(commandOptions: OptionValues): Promise<number> {
   let concurrencyLimitInput: number =
     commandOptions.concurrencylimit ?? undefined;
@@ -309,7 +339,8 @@ function setLoading() {
   const load = loading({
     text: `Translating. Please wait. ${translationStatistic(
       global.totalTranslated,
-      global.totalTranslation
+      global.totalTranslation,
+      global.skipInCache,
     )}`,
     color: 'yellow',
     interval: 100,
@@ -320,7 +351,8 @@ function setLoading() {
   const refreshInterval = setInterval(() => {
     load.text = `Translating. Please wait. ${translationStatistic(
       global.totalTranslated,
-      global.totalTranslation
+      global.totalTranslation,
+      global.skipInCache
     )}`;
   }, 200);
 

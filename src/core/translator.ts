@@ -3,17 +3,37 @@ import {
   getTranslationModuleByKey,
   translationModuleKeys,
 } from '../modules/helpers';
-import { TranslationConfig } from '../modules/modules';
+import {TranslationConfig} from '../modules/modules';
 import { warn } from '../utils/console';
 import { default_value } from '../utils/micro';
 import * as ignorer from './ignorer';
+import * as crypto from 'crypto';
+
+
+export function getKey(str: string, from: string, to: string):string {
+  let strKey = crypto.createHash('md5').update(str).digest('hex')
+  return `${from}-${to}-${strKey}`;
+}
+
+export function translateCacheModule(fallbackFn: Function, cacheObject: Record<string, any>, onSuccess: Function){
+  return async (str: string, from: string, to: string): Promise<string> => {
+    let key =  getKey(str, from, to)
+    if (cacheObject[key] !== undefined && cacheObject[key] !== default_value) {
+      onSuccess(true)
+      return Promise.resolve(cacheObject[key]);
+    } else {
+      return fallbackFn(str, from, to);
+    }
+  };
+}
 
 export async function plaintranslate(
   TranslationConfig: TranslationConfig,
   str: string,
   from: string,
   to: string,
-  skipModuleKeys: string[]
+  skipModuleKeys: string[],
+  cacheObject?: Record<string, any>
 ): Promise<string> {
   // Check for empty strings and return immediately if empty
   if (str.trim() === '') return str;
@@ -28,7 +48,12 @@ export async function plaintranslate(
   // step: translate in try-catch to keep continuity
   try {
     // step: translate with proper source
-    let translatedStr = await TranslationConfig.TranslationModule.translate(
+    let defaultTranslateModule: Function = TranslationConfig.TranslationModule.translate
+    let moduleOrCache = TranslationConfig.cacheEnabled ? translateCacheModule(defaultTranslateModule, cacheObject || {}, ()=> {
+      global.skipInCache = global.skipInCache + 1;
+    }) : defaultTranslateModule
+
+    let translatedStr = await moduleOrCache(
       ignored_str,
       from,
       to
@@ -46,6 +71,7 @@ export async function plaintranslate(
     return translatedStr;
   } catch (e) {
     // error case
+    console.log(e)
     const clonedTranslationConfig = Object.assign({}, TranslationConfig); // cloning to escape ref value
     const clonedSkipModuleKeys = Object.assign([], skipModuleKeys); // cloning to escape ref value
 

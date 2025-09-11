@@ -4,6 +4,7 @@ import { error, info, success, warn } from '../src/utils/console';
 declare global {
   var totalTranslation: number;
   var totalTranslated: number;
+  var skipInCache: number;
   var proxyList: string[];
   var proxyIndex: number;
 }

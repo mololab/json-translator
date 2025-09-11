@@ -123,6 +123,7 @@ jsontt <your/path/to/file.yaml/yml>
                                     try other translation modules on fail | yes, no | default: no
   -cl, --concurrencylimit <number>  optional ↵ | set max concurrency limit
                                     (higher faster, but easy to get banned) | default: 3
+  -c, --cache                       optional ↵ | enabled cache | default: no
   -h, --help                        display help for command
 ```
 
