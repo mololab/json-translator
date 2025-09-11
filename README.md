@@ -50,6 +50,9 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      gpt-3.5-turbo       |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |          gpt-4           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |       gpt-4o-mini        |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|          gpt-5           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-5-nano         |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-5-mini         |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |        gemma-7b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       gemma2-9b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
@@ -70,6 +73,9 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      gpt-3.5-turbo       |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |          gpt-4           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |       gpt-4o-mini        |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|          gpt-5           |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-5-nano         |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
+|       gpt-5-mini         |   ✅    |                        `require API KEY (OPENAI_API_KEY as env)`                         |
 |        gemma-7b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       gemma2-9b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |

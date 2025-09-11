@@ -212,6 +212,30 @@ export async function translateWithGPT4oMini(
   return translateWithGPT('gpt-4o-mini', str, from, to);
 }
 
+export async function translateWithGPT5(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gpt-5', str, from, to);
+}
+
+export async function translateWithGPT5Nano(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gpt-5-nano-2025-08-07', str, from, to);
+}
+
+export async function translateWithGPT5Mini(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithGPT('gpt-5-mini-2025-08-07', str, from, to);
+}
+
 export async function translateWithGPT(
   model: string,
   str: string,

@@ -9,11 +9,14 @@ import {
   translateWithGPT4o,
   translateWithGPT4,
   translateWithGPT4oMini,
+  translateWithGPT5,
+  translateWithGPT5Nano,
+  translateWithGPT5Mini,
   translateWithGemma7B,
   translateWithGemma9B,
   translateWithMixtral8x7B,
   translateWithLlama8B,
-  translateWithLlama70B
+  translateWithLlama70B,
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -94,26 +97,47 @@ export const TranslationModules: TranslationModulesType = {
   },
   'gpt-3.5-turbo': {
     name: 'gpt-3.5-turbo model',
-    altName:
-      '\x1b[33m**NEW**\x1b[0m AI model: gpt-3.5-turbo model (104 languages)',
+    altName: 'AI model: gpt-3.5-turbo model (104 languages)',
     requirements: ['"OPENAI_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithGPT35Turbo,
   },
   'gpt-4': {
     name: 'gpt-4 model',
-    altName: '\x1b[33m**NEW**\x1b[0m AI model: gpt-4 model (104 languages)',
+    altName: 'AI model: gpt-4 model (104 languages)',
     requirements: ['"OPENAI_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithGPT4,
   },
   'gpt-4o-mini': {
     name: 'gpt-4o-mini model',
-    altName:
-      '\x1b[33m**NEW**\x1b[0m AI model: gpt-4o-mini model (104 languages)',
+    altName: 'AI model: gpt-4o-mini model (104 languages)',
     requirements: ['"OPENAI_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithGPT4oMini,
+  },
+  'gpt-5': {
+    name: 'gpt-5 model',
+    altName: '\x1b[33m**NEW**\x1b[0m AI model: gpt-5 model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT5,
+  },
+  'gpt-5-nano': {
+    name: 'gpt-5-nano model',
+    altName:
+      '\x1b[33m**NEW**\x1b[0m AI model: gpt-5-nano model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT5Nano,
+  },
+  'gpt-5-mini': {
+    name: 'gpt-5-mini model',
+    altName:
+      '\x1b[33m**NEW**\x1b[0m AI model: gpt-5-mini model (104 languages)',
+    requirements: ['"OPENAI_API_KEY" as env'],
+    languages: GTPTranslateLanguages,
+    translate: translateWithGPT5Mini,
   },
   'gemma-7b': {
     name: 'gemma-7b model',
