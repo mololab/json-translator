@@ -3,13 +3,11 @@ import * as packageJSON from '../../package.json';
 export function translationStatistic(
   totalTranslated: number,
   totalTranslation: number,
-  skipInCache: number,
+  skipInCache: number
 ): string {
   return `${totalTranslated} of ${totalTranslation} translated. In cache: ${skipInCache}`;
 }
-export function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+
 export const current_version = packageJSON.version;
 export const default_value = '--';
 export const translation_value_limit = 5000;

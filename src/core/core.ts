@@ -11,6 +11,7 @@ export async function checkFile(objectPath: string):Promise<boolean> {
     return Promise.resolve(false)
   }
 }
+
 export async function getFile(objectPath: string) {
   let json_file: any = undefined;
 
