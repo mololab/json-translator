@@ -294,12 +294,20 @@ export async function translateWithGroq(
   return translateWithLLM(model, str, from, to, 'groq');
 }
 
+export async function translateWithLlamaCpp(
+  str: string,
+  from: string,
+  to: string
+) {
+  return translateWithLLM('', str, from, to, 'llama-cpp');
+}
+
 export async function translateWithLLM(
   model: string,
   str: string,
   from: string,
   to: string,
-  provider: 'openai' | 'groq'
+  provider: 'openai' | 'groq' | 'llama-cpp'
 ) {
   type ChatCompletionRequestMessage = {
     role: 'system' | 'user' | 'assistant';
@@ -311,27 +319,32 @@ export async function translateWithLLM(
 
   let openai: OpenAI;
 
-  if (provider === 'openai') {
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-    if (!OPENAI_API_KEY) {
-      warn('process.env.OPENAI_API_KEY is not defined');
+  switch (provider) {
+    case 'openai': {
+      const apiKey = process.env.OPENAI_API_KEY;
+      if (!apiKey) warn('process.env.OPENAI_API_KEY is not defined');
+      openai = new OpenAI({ apiKey });
+      break;
     }
-
-    openai = new OpenAI({
-      apiKey: OPENAI_API_KEY,
-    });
-  } else if (provider === 'groq') {
-    const GROQ_API_KEY = process.env.GROQ_API_KEY;
-    if (!GROQ_API_KEY) {
-      warn('process.env.GROQ_API_KEY is not defined');
+    case 'groq': {
+      const apiKey = process.env.GROQ_API_KEY;
+      if (!apiKey) warn('process.env.GROQ_API_KEY is not defined');
+      openai = new OpenAI({
+        baseURL: 'https://api.groq.com/openai/v1',
+        apiKey,
+      });
+      break;
     }
-
-    openai = new OpenAI({
-      baseURL: 'https://api.groq.com/openai/v1',
-      apiKey: GROQ_API_KEY,
-    });
-  } else {
-    throw new Error(`Unsupported provider: ${provider}`);
+    case 'llama-cpp': {
+      const apiKey = process.env.LLAMA_API_KEY || 'not-needed';
+      openai = new OpenAI({
+        baseURL: 'http://localhost:8080/v1',
+        apiKey,
+      });
+      break;
+    }
+    default:
+      throw new Error(`Unsupported provider: ${provider}`);
   }
 
   try {

@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://npmcharts.com/compare/@parvineyvazov/json-translator?minimal=true">
     <img src="https://img.shields.io/npm/dt/@parvineyvazov/json-translator?label=npm%20downloads" alt="npm downloads">
-  </a> 
+  </a>
   <br>
   <a href="https://img.shields.io/npm/v/@parvineyvazov/json-translator?color=navy&label=version">
     <img src="https://img.shields.io/npm/v/@parvineyvazov/json-translator?color=navy&label=version" alt="version">
@@ -58,6 +58,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       llama3-8b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       llama3-70b         |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama-cpp          |   ✅    |                                        `✅ FREE`                                         |
 
 ### ⏳ Package Support:
 
@@ -81,6 +82,7 @@ This package will provide you to translate your JSON/YAML files or JSON objects 
 |      mixtral-8x7b        |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       llama3-8b          |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
 |       llama3-70b         |   ✅    |                         `require API KEY (GROQ_API_KEY as env)`                          |
+|       llama-cpp          |   ✅    |                                        `✅ FREE`                                         |
 
 `Browser support will come soon...`
 
@@ -377,7 +379,7 @@ const [french, georgian, japanese] = (await translator.translateObject(
   ]
 )) as Array<translator.translatedObject>; // FOR JAVASCRIPT YOU DO NOT NEED TO SPECIFY THE TYPE
 /*
-french: 
+french:
 {
   "login": {
     "title": "Connexion",
@@ -395,7 +397,7 @@ french:
   }
 }
 
-georgian: 
+georgian:
 {
   "login": {
     "title": "Შესვლა",
@@ -677,7 +679,7 @@ Make sure your terminal has admin access while running these commands to prevent
 
 * [ ] Together AI Translate module
 
-* [ ] llamacpp Translate module
+* [x] llamacpp Translate module
 
 * [ ] Google Gemini API Translate module
 
