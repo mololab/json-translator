@@ -176,8 +176,8 @@ export const TranslationModules: TranslationModulesType = {
     translate: translateWithLlama70B,
   },
   'llama-cpp': {
-    name: 'local model',
-    altName: '[FREE] AI model: local llama.cpp model',
+    name: 'llama.cpp model',
+    altName: '[FREE] AI model: llama.cpp model',
     languages: GTPTranslateLanguages,
     translate: translateWithLlamaCpp,
   },
