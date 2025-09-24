@@ -541,6 +541,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Afrikaans: [
     'google',
@@ -558,6 +559,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Albanian: [
     'google',
@@ -575,6 +577,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Amharic: [
     'google',
@@ -592,6 +595,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Arabic: [
     'google',
@@ -611,6 +615,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Assamese: ['bing'],
   Armenian: [
@@ -629,6 +634,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Azerbaijani: [
     'google',
@@ -647,6 +653,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Bashkir: ['bing'],
   Basque: [
@@ -665,6 +672,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Belarusian: [
     'google',
@@ -681,6 +689,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Bengali: [
     'google',
@@ -698,6 +707,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Bosnian: [
     'google',
@@ -715,6 +725,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Bulgarian: [
     'google',
@@ -733,6 +744,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Cantonese_Traditional: ['bing'],
   Catalan: [
@@ -751,6 +763,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Cebuano: [
     'google',
@@ -767,6 +780,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Chichewa: [
     'google',
@@ -783,6 +797,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Chinese_Literary: ['bing'],
   Chinese_Simplified: [
@@ -804,6 +819,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Chinese_Traditional: [
     'google',
@@ -821,6 +837,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Corsican: [
     'google',
@@ -837,6 +854,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Croatian: [
     'google',
@@ -854,6 +872,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Czech: [
     'google',
@@ -873,6 +892,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Danish: [
     'google',
@@ -892,6 +912,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Dari: ['bing'],
   Divehi: ['bing'],
@@ -913,6 +934,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   English: [
     'google',
@@ -933,6 +955,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Esperanto: [
     'google',
@@ -950,6 +973,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Estonian: [
     'google',
@@ -968,6 +992,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Faroese: ['bing'],
   Fijian: ['bing'],
@@ -987,6 +1012,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Finnish: [
     'google',
@@ -1006,6 +1032,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   French: [
     'google',
@@ -1026,6 +1053,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   French_Canada: ['bing'],
   Frisian: [
@@ -1043,6 +1071,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Galician: [
     'google',
@@ -1060,6 +1089,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Georgian: [
     'google',
@@ -1077,6 +1107,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   German: [
     'google',
@@ -1097,6 +1128,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Greek: [
     'google',
@@ -1116,6 +1148,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Gujarati: [
     'google',
@@ -1133,6 +1166,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Haitian_Creole: [
     'google',
@@ -1150,6 +1184,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hausa: [
     'google',
@@ -1166,6 +1201,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hawaiian: [
     'google',
@@ -1182,6 +1218,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hebrew: [
     'google',
@@ -1200,6 +1237,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hindi: [
     'google',
@@ -1219,6 +1257,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hmong: [
     'google',
@@ -1236,6 +1275,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Hungarian: [
     'google',
@@ -1255,6 +1295,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Icelandic: [
     'google',
@@ -1272,6 +1313,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Igbo: [
     'google',
@@ -1288,6 +1330,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Indonesian: [
     'google',
@@ -1308,6 +1351,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Inuinnaqtun: ['bing'],
   Inuktitut: ['bing'],
@@ -1330,6 +1374,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Italian: [
     'google',
@@ -1350,6 +1395,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Japanese: [
     'google',
@@ -1370,6 +1416,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Javanese: [
     'google',
@@ -1386,6 +1433,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Kannada: [
     'google',
@@ -1403,6 +1451,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Kazakh: [
     'google',
@@ -1420,6 +1469,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Khmer: [
     'google',
@@ -1437,6 +1487,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Klingon_Latin: ['bing'],
   Korean: [
@@ -1458,6 +1509,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Kurdish_Kurmanji: [
     'google',
@@ -1475,6 +1527,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Kurdish_Northern: ['bing'],
   Kyrgyz: [
@@ -1493,6 +1546,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Lao: [
     'google',
@@ -1510,6 +1564,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Latin: [
     'google',
@@ -1526,6 +1581,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Latvian: [
     'google',
@@ -1544,6 +1600,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Lithuanian: [
     'google',
@@ -1562,6 +1619,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Luxembourgish: [
     'google',
@@ -1578,6 +1636,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Macedonian: [
     'google',
@@ -1595,6 +1654,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Malagasy: [
     'google',
@@ -1612,6 +1672,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Malay: [
     'google',
@@ -1629,6 +1690,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Malayalam: [
     'google',
@@ -1646,6 +1708,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Maltese: [
     'google',
@@ -1663,6 +1726,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Maori: [
     'google',
@@ -1680,6 +1744,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Marathi: [
     'google',
@@ -1697,6 +1762,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Mongolian: [
     'google',
@@ -1714,6 +1780,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Mongolian_Cyrillic: ['bing'],
   Myanmar_Burmese: [
@@ -1732,6 +1799,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Nepali: [
     'google',
@@ -1749,6 +1817,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Norwegian: [
     'google',
@@ -1767,6 +1836,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Odia: ['bing'],
   Pashto: [
@@ -1785,6 +1855,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Persian: [
     'google',
@@ -1803,6 +1874,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Polish: [
     'google',
@@ -1823,6 +1895,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Portuguese: [
     'google',
@@ -1843,6 +1916,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Portuguese_Brazil: ['bing'],
   Punjabi: [
@@ -1861,6 +1935,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Querétaro_Otomi: ['bing'],
   Romanian: [
@@ -1880,6 +1955,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Russian: [
     'google',
@@ -1900,6 +1976,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Samoan: [
     'google',
@@ -1917,6 +1994,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Scots_Gaelic: [
     'google',
@@ -1933,6 +2011,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Serbian: [
     'google',
@@ -1950,6 +2029,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Serbian_Cyrillic: ['bing'],
   Sesotho: [
@@ -1967,6 +2047,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Shona: [
     'google',
@@ -1983,6 +2064,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Sindhi: [
     'google',
@@ -1999,6 +2081,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Sinhala: [
     'google',
@@ -2015,6 +2098,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Slovak: [
     'google',
@@ -2034,6 +2118,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Slovenian: [
     'google',
@@ -2052,6 +2137,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Somali: [
     'google',
@@ -2069,6 +2155,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Spanish: [
     'google',
@@ -2089,6 +2176,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Sundanese: [
     'google',
@@ -2105,6 +2193,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Swahili: [
     'google',
@@ -2122,6 +2211,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Swedish: [
     'google',
@@ -2141,6 +2231,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Tahitian: ['bing'],
   Tajik: [
@@ -2158,6 +2249,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Tamil: [
     'google',
@@ -2175,6 +2267,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Tatar: ['bing'],
   Telugu: [
@@ -2193,6 +2286,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Thai: [
     'google',
@@ -2210,6 +2304,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Tibetan: ['bing'],
   Tigrinya: ['bing'],
@@ -2233,6 +2328,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Turkmen: ['bing'],
   Ukrainian: [
@@ -2253,6 +2349,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Upper_Sorbian: ['bing'],
   Urdu: [
@@ -2271,6 +2368,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Uyghur: ['bing'],
   Uzbek: [
@@ -2289,6 +2387,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Vietnamese: [
     'google',
@@ -2307,6 +2406,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Welsh: [
     'google',
@@ -2324,6 +2424,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Xhosa: [
     'google',
@@ -2340,6 +2441,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Yiddish: [
     'google',
@@ -2356,6 +2458,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Yoruba: [
     'google',
@@ -2372,6 +2475,7 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
   Yucatec_Maya: ['bing'],
   Zulu: [
@@ -2390,5 +2494,6 @@ export const LanguageMapping: Record<string, Array<string>> = {
     'mixtral-8x7b',
     'llama3-8b',
     'llama3-70b',
+    'llama-cpp',
   ],
 };
