@@ -17,6 +17,7 @@ import {
   translateWithMixtral8x7B,
   translateWithLlama8B,
   translateWithLlama70B,
+  translateWithLlamaCpp,
 } from './functions';
 import {
   GoogleTranslateLanguages,
@@ -173,5 +174,11 @@ export const TranslationModules: TranslationModulesType = {
     requirements: ['"GROQ_API_KEY" as env'],
     languages: GTPTranslateLanguages,
     translate: translateWithLlama70B,
+  },
+  'llama-cpp': {
+    name: 'llama.cpp model',
+    altName: '[FREE] AI model: llama.cpp model',
+    languages: GTPTranslateLanguages,
+    translate: translateWithLlamaCpp,
   },
 };
